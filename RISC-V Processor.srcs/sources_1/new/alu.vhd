@@ -34,7 +34,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity alu is
     generic(
-        OPERAND_WIDTH_BITS : integer
+        OPERAND_WIDTH_BITS : integer := 32
     );
     port(
         alu_op : in std_logic_vector(3 downto 0);
