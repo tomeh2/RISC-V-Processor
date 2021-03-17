@@ -4,5 +4,7 @@ Nov 18 2020
 09:47:47
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/alu_tb.vhd,1616008891,vhdl,,,,alu_tb,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/register_file_tb.vhd,1615841386,vhdl,,,,register_file_tb,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/register_var_tb.vhd,1616011682,vhdl,,,,register_var_tb,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd,1615989822,vhdl2008,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/alu_tb.vhd,,,alu,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register.vhd,1616010987,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/register_var_tb.vhd,,,register_var,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register_file.vhd,1615841946,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/register_file_tb.vhd,,,register_file,,,,,,,,
