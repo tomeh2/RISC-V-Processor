@@ -32,7 +32,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity stage_execute is
---  Port ( );
+    port(
+        data_bus_1, data_bus_2 : in std_logic_vector(31 downto 0);
+    );
 end stage_execute;
 
 architecture arch of stage_execute is

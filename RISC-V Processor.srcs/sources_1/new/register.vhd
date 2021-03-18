@@ -39,7 +39,7 @@ entity register_var is
             d : in std_logic_vector(WIDTH_BITS - 1 downto 0);
             q : out std_logic_vector(WIDTH_BITS - 1 downto 0);
             clk : in std_logic;
-            rst, en : in std_logic
+            reset, en : in std_logic
     );
 end register_var;
 
@@ -49,7 +49,7 @@ begin
     process(clk)
     begin
         if (rising_edge(clk)) then
-            if (rst = '1') then
+            if (reset = '1') then
                 q <= (others => '0');
             elsif (en = '1') then
                 q <= d;
