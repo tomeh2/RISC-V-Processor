@@ -33,9 +33,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity stage_decode is
     port(
+        -- Input / Output data signals
         data_bus, instr_bus : in std_logic_vector(31 downto 0);
         reg_data_1, reg_data_2 : out std_logic_vector(31 downto 0);
-        clk, reset : in std_logic
+        
+        -- Input / Output control signals
+        clk, reset : in std_logic;
+        alu_op : out std_logic_vector (3 downto 0)
     );
 end stage_decode;
 
