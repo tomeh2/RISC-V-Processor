@@ -33,7 +33,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity stage_execute is
     port(
-        data_bus_1, data_bus_2 : in std_logic_vector(31 downto 0);
+        reg_data_bus_1, reg_data_bus_2 : in std_logic_vector(31 downto 0);
+        alu_op : in std_logic_vector(3 downto 0)
     );
 end stage_execute;
 
