@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: E:/Programs/Xilinx_Vivado/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 6f977d0df37f4ce7ae52c5f76e66322c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot register_var_tb_behav xil_defaultlib.register_var_tb -log elaborate.log 
+Running: E:/Programs/Xilinx_Vivado/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 6f977d0df37f4ce7ae52c5f76e66322c --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot instruction_decoder_tb_behav xil_defaultlib.instruction_decoder_tb -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -10,6 +10,6 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=64)\]
-Compiling architecture behavioral of entity xil_defaultlib.register_var_tb
-Built simulation snapshot register_var_tb_behav
+Compiling architecture rtl of entity xil_defaultlib.instruction_decoder [instruction_decoder_default]
+Compiling architecture behavioral of entity xil_defaultlib.instruction_decoder_tb
+Built simulation snapshot instruction_decoder_tb_behav

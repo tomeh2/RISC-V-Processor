@@ -32,12 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity stage_decode is
-    
+    port(
+        instr_bus : in std_logic_vector(31 downto 0)
+    );
 end stage_decode;
 
 architecture arch of stage_decode is
 
 begin
-
+    
 
 end arch;
