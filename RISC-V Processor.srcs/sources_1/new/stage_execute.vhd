@@ -33,7 +33,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity stage_execute is
     port(
+        -- Input / Output data signals
         reg_data_bus_1, reg_data_bus_2 : in std_logic_vector(31 downto 0);
+        alu_res_bus : out std_logic_vector(31 downto 0);
+        
+        -- Input / Output control signals
         alu_op : in std_logic_vector(3 downto 0)
     );
 end stage_execute;
@@ -41,6 +45,10 @@ end stage_execute;
 architecture arch of stage_execute is
 
 begin
-
+    alu : entity work.alu(rtl)
+          port map(op_1 => reg_data_bus_1,
+                   op_2 => reg_data_bus_2,
+                   alu_op => alu_op,
+                   res => alu_res_bus);
 
 end arch;

@@ -35,7 +35,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- signal [First 3 letters of the module]_[Signal name]_[In / Out]
 
 entity pipeline is
---  Port ( );
 end pipeline;
 
 architecture rtl of pipeline is
