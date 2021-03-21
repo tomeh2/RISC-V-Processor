@@ -65,13 +65,15 @@ begin
         -- Read from registers
         rd_data_1 <= reg_file(to_integer(unsigned(rd_addr_1)));
         rd_data_2 <= reg_file(to_integer(unsigned(rd_addr_2)));
-           
-        -- Write to register
-        if (reset = '1') then
-            reg_file <= (others => (others => '0'));
-        else
-            if (wr_en = '1' and wr_addr /= "00000") then
-                reg_file(to_integer(unsigned(wr_addr))) <= wr_data;
+        
+        if (rising_edge(clk)) then
+            -- Write to register
+            if (reset = '1') then
+                reg_file <= (others => (others => '0'));
+            else
+                if (wr_en = '1' and wr_addr /= "00000") then
+                    reg_file(to_integer(unsigned(wr_addr))) <= wr_data;
+                end if;
             end if;
         end if;
     end process;
