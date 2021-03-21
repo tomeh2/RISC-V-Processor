@@ -50,12 +50,11 @@ entity stage_decode is
 end stage_decode;
 
 architecture arch of stage_decode is
-    signal i_alu_op : std_logic_vector(3 downto 0);
     signal i_reg_rd_addr_1, i_reg_rd_addr_2 : std_logic_vector(4 downto 0);
 begin
     instruction_decoder : entity work.instruction_decoder
                           port map(instr_bus => instr_bus,
-                                   alu_op => i_alu_op,
+                                   alu_op => alu_op,
                                    reg_rd_addr_1 => i_reg_rd_addr_1,
                                    reg_rd_addr_2 => i_reg_rd_addr_2,
                                    reg_wr_addr => reg_wr_addr_out,
@@ -64,6 +63,8 @@ begin
     register_file : entity work.register_file
                     port map(rd_addr_1 => i_reg_rd_addr_1,
                              rd_addr_2 => i_reg_rd_addr_2,
+                             rd_data_1 => reg_data_1,
+                             rd_data_2 => reg_data_2,
                              wr_en => reg_wr_en,
                              wr_addr => reg_wr_addr_in,
                              wr_data => data_bus,      

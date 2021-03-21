@@ -30,6 +30,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 -- signal [First 3 letters of the module]_[Signal name]_[In / Out]
 
 entity pipeline is
+    port(
+        instr_bus_test : in std_logic_vector(31 downto 0);
+        clk, reset : in std_logic
+    );
 end pipeline;
 
 architecture rtl of pipeline is
@@ -58,10 +62,9 @@ architecture rtl of pipeline is
     signal pt_reg_wr_en_exe, pt_reg_wr_en_mem : std_logic;                              -- Register file write enable signal
     signal pt_reg_wr_addr_exe, pt_reg_wr_addr_mem : std_logic_vector(4 downto 0);       -- Destination register address
     
-    -- GLOBAL CONTROL SIGNALS
-    signal clk, reset : std_logic;
-    
 begin
+    dec_instr_bus_in <= instr_bus_test;
+
     -- ================== STAGE INITIALIZATIONS ==================
     stage_decode : entity work.stage_decode(arch)
                    port map(data_bus => dec_data_bus_in,
@@ -118,7 +121,7 @@ begin
                       -- Datapath data signals out
                       q(31 downto 0) => mem_data_bus_in,
                       -- Datapath control signals out
-                      d(36 downto 32) => pt_reg_wr_addr_mem,
+                      q(36 downto 32) => pt_reg_wr_addr_mem,
                       q(37) => pt_reg_wr_en_mem,
                       -- Register control
                       clk => clk,
