@@ -38,32 +38,39 @@ entity stage_decode is
         reg_data_1, reg_data_2 : out std_logic_vector(31 downto 0);
         
         -- Input / Output control signals
-        clk, reset : in std_logic;
-        alu_op : out std_logic_vector (3 downto 0)
+        alu_op : out std_logic_vector (3 downto 0);
+        reg_wr_addr_out : out std_logic_vector(4 downto 0);
+        reg_wr_en_dec_out : out std_logic;                  -- Register write enable signal decoder output
+        
+        reg_wr_addr_in : in std_logic_vector(4 downto 0);   -- Register write address signal used to address the register file (comes from the writeback stage)
+        reg_wr_en : in std_logic;                           -- Register write enable signal used to control the register file (comes from the writeback stage)
+        
+        clk, reset : in std_logic
     );
 end stage_decode;
 
 architecture arch of stage_decode is
     signal i_alu_op : std_logic_vector(3 downto 0);
-    signal i_reg_rd_addr_1, i_reg_rd_addr_2, i_reg_wr_addr : std_logic_vector(4 downto 0);
-    signal i_reg_wr_en : std_logic;
+    signal i_reg_rd_addr_1, i_reg_rd_addr_2 : std_logic_vector(4 downto 0);
 begin
     instruction_decoder : entity work.instruction_decoder
                           port map(instr_bus => instr_bus,
                                    alu_op => i_alu_op,
                                    reg_rd_addr_1 => i_reg_rd_addr_1,
                                    reg_rd_addr_2 => i_reg_rd_addr_2,
-                                   reg_wr_addr => i_reg_wr_addr,
-                                   reg_wr_en => i_reg_wr_en);
+                                   reg_wr_addr => reg_wr_addr_out,
+                                   reg_wr_en => reg_wr_en_dec_out);
                                    
     register_file : entity work.register_file
                     port map(rd_addr_1 => i_reg_rd_addr_1,
                              rd_addr_2 => i_reg_rd_addr_2,
-                             wr_en => i_reg_wr_en,
-                             wr_addr => i_reg_wr_addr,
+                             wr_en => reg_wr_en,
+                             wr_addr => reg_wr_addr_in,
                              wr_data => data_bus,      
                              reset => reset,                
                              clk => clk);
+                             
+    
 
 end arch;
 
