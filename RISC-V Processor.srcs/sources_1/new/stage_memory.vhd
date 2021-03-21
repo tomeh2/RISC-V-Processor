@@ -32,12 +32,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity stage_memory is
---  Port ( );
+    port(
+        -- Input / Output data signals
+        data_bus_in : in std_logic_vector(31 downto 0);
+        data_bus_out : out std_logic_vector(31 downto 0)
+        
+        -- Input / Output control signals
+    );
 end stage_memory;
 
 architecture arch of stage_memory is
 
 begin
-
+    data_bus_out <= data_bus_in;            -- Temporary until memory controller gets implemented (allows ALU operations on registers for testing)
 
 end arch;

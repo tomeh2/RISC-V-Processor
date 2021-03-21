@@ -22,14 +22,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+-- Note that WRITEBACK stage does not have its own module.
+-- That is because in the writeback stage we only bring the data
+-- signals to the registers without doing any processing on it.
 
 -- Signal naming convention:
 -- signal [First 3 letters of the module]_[Signal name]_[In / Out]
@@ -47,6 +42,15 @@ architecture rtl of pipeline is
     signal exe_reg_data_bus_1_in, exe_reg_data_bus_2_in : std_logic_vector(31 downto 0);
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
+    
+    -- MEMORY STAGE SIGNALS
+    signal mem_data_bus_in : std_logic_vector(31 downto 0);
+    signal mem_data_bus_out : std_logic_vector(31 downto 0);
+    
+    -- WRITEBACK STAGE SIGNALS
+    signal wrb_data_bus_out : std_logic_vector(31 downto 0);
+    signal wrb_reg_addr_out : std_logic_vector(4 downto 0);
+    signal wrb_reg_we : std_logic;
     
     -- GLOBAL CONTROL SIGNALS
     signal clk, reset : std_logic;
@@ -68,8 +72,12 @@ begin
                              alu_res_bus => exe_alu_res_out,
                              alu_op => exe_alu_op_in);
     
+    stage_memory : entity work.stage_memory(arch)
+                   port map(data_bus_in => mem_data_bus_in,
+                            data_bus_out => mem_data_bus_out);
+    
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
-    reg_de : entity work.register_var
+    reg_de : entity work.register_var(arch)
              generic map(WIDTH_BITS => 68)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
@@ -85,7 +93,32 @@ begin
                       clk => clk,
                       reset => reset,
                       en => '1');
-    
+                      
+    reg_em : entity work.register_var(arch)
+             generic map(WIDTH_BITS => 32)
+                      -- Datapath data signals in
+             port map(d(31 downto 0) => exe_alu_res_out,
+                      -- Datapath control signals in
+                      -- Datapath data signals out
+                      q(31 downto 0) => mem_data_bus_in,
+                      -- Datapath control signals out
+                      -- Register control
+                      clk => clk,
+                      reset => reset,
+                      en => '1');
+                      
+    reg_mw : entity work.register_var(arch)
+             generic map(WIDTH_BITS => 32)
+                      -- Datapath data signals in
+             port map(d(31 downto 0) => mem_data_bus_out,
+                      -- Datapath control signals in
+                      -- Datapath data signals out
+                      q(31 downto 0) => wrb_data_bus_out,
+                      -- Datapath control signals out
+                      -- Register control
+                      clk => clk,
+                      reset => reset,
+                      en => '1');
 end rtl;
 
 
