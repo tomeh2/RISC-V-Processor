@@ -44,12 +44,14 @@ architecture rtl of pipeline is
     signal dec_reg_wr_addr_out : std_logic_vector(4 downto 0);
     signal dec_alu_op_out : std_logic_vector(3 downto 0);
     signal dec_reg_wr_en_out : std_logic;
+    signal dec_sel_immediate_out : std_logic;
     
     -- EXECUTE STAGE SIGNALS
     signal exe_reg_data_bus_1_in, exe_reg_data_bus_2_in : std_logic_vector(31 downto 0);
     signal exe_alu_imm_data_in : std_logic_vector(11 downto 0);
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
+    signal exe_sel_immediate_in : std_logic;
     
     -- MEMORY STAGE SIGNALS
     signal mem_data_bus_in : std_logic_vector(31 downto 0);
@@ -75,6 +77,7 @@ begin
                             reg_data_2 => dec_reg_data_2_out,
                             alu_imm_data => dec_alu_imm_data_out,
                             alu_op => dec_alu_op_out,
+                            sel_immediate => dec_sel_immediate_out,
                             reg_wr_addr_in => wrb_reg_addr_out,
                             reg_wr_addr_out => dec_reg_wr_addr_out,
                             reg_wr_en_dec_out => dec_reg_wr_en_out,
@@ -87,7 +90,8 @@ begin
                              reg_data_bus_2 => exe_reg_data_bus_2_in,
                              alu_imm_data_bus => exe_alu_imm_data_in,
                              alu_res_bus => exe_alu_res_out,
-                             alu_op => exe_alu_op_in);
+                             alu_op => exe_alu_op_in,
+                             sel_immediate => exe_sel_immediate_in);
     
     stage_memory : entity work.stage_memory(arch)
                    port map(data_bus_in => mem_data_bus_in,
@@ -95,7 +99,7 @@ begin
     
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 86)
+             generic map(WIDTH_BITS => 87)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
@@ -104,6 +108,7 @@ begin
                       d(79 downto 76) => dec_alu_op_out,
                       d(84 downto 80) => dec_reg_wr_addr_out,
                       d(85) => dec_reg_wr_en_out,
+                      d(86) => dec_sel_immediate_out,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
@@ -112,6 +117,7 @@ begin
                       q(79 downto 76) => exe_alu_op_in,
                       q(84 downto 80) => pt_reg_wr_addr_exe,
                       q(85) => pt_reg_wr_en_exe,
+                      q(86) => exe_sel_immediate_in,
                       -- Register control
                       clk => clk,
                       reset => reset,

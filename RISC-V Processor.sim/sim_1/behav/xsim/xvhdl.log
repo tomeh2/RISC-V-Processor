@@ -1,4 +1,6 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/sign_extender.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'sign_extender'
-INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/sign_extender_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'sign_extender_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'stage_execute'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pipeline'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/pipeline_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pipeline_tb'

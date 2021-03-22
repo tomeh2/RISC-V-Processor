@@ -58,7 +58,19 @@ begin
     
     process
     begin
+        -- Writing starting values to registers using I-type instructions
         wait for T * 10;
+        instr_bus <= "00000000101000001000000010010011";        -- ADDI x1, x1, 10
+        wait for T;
+        instr_bus <= "00000001010000010110000100010011";        -- ORI x2, x2, 20
+        wait for T;
+        instr_bus <= "00000000111100100100001000010011";        -- XORI x4, x4, 15
+        wait for T;
+        instr_bus <= "00000000010100101000001010010011";        -- ADDI x5, x5, 5
+        wait for T;
+        instr_bus <= "00000000000000000000000000000000";        -- NOP
+        wait for T * 10;
+        
         instr_bus <= "00000000000100010000000110110011";        -- ADD x3, x2, x1 (x3 = x2 + x1)
         wait for T;
         instr_bus <= "01000000010100100000001100110011";        -- SUB x6, x4, x5 (x6 = x4 - x5)

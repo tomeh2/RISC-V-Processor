@@ -40,6 +40,7 @@ entity stage_decode is
         
         -- Input / Output control signals
         alu_op : out std_logic_vector (3 downto 0);
+        sel_immediate : out std_logic;
         reg_wr_addr_out : out std_logic_vector(4 downto 0);
         reg_wr_en_dec_out : out std_logic;                              -- Register write enable signal decoder output
         
@@ -57,6 +58,7 @@ begin
                           port map(instr_bus => instr_bus,
                                    alu_immediate_bus => alu_imm_data,
                                    alu_op => alu_op,
+                                   sel_immediate => sel_immediate,
                                    reg_rd_addr_1 => i_reg_rd_addr_1,
                                    reg_rd_addr_2 => i_reg_rd_addr_2,
                                    reg_wr_addr => reg_wr_addr_out,

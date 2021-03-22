@@ -33,11 +33,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity instruction_decoder is
     port(
-        instr_bus : in std_logic_vector(31 downto 0);              
-        alu_immediate_bus : out std_logic_vector(11 downto 0);                
+        instr_bus : in std_logic_vector(31 downto 0);         
+        
+        -- Generated data signals     
+        alu_immediate_bus : out std_logic_vector(11 downto 0);
+        
+        -- Generated output control signals
         alu_op : out std_logic_vector(3 downto 0);                                          -- Decoded ALU operation
         reg_rd_addr_1, reg_rd_addr_2, reg_wr_addr : out std_logic_vector(4 downto 0);       -- Decoded register selection addresses
-        reg_wr_en : out std_logic                                                           -- Register write enable control signal
+        reg_wr_en : out std_logic;                                                          -- Register write enable control signal
+        sel_immediate : out std_logic                                                       -- Selects whether the second ALU operand is from a register or immediate
     );
 end instruction_decoder;
 
@@ -49,6 +54,7 @@ begin
         -- Sets all outputs to zero to make sure that they don't have stray (or old) values
         alu_op <= (others => '0');
         reg_wr_en <= '0';
+        sel_immediate <= '0';
         
         -- Register addresses are always decoded, but not used unless needed to simplify decoding
         reg_rd_addr_1 <= instr_bus(19 downto 15);
@@ -65,6 +71,7 @@ begin
         elsif (instr_bus(6 downto 0) = "0010011") then
             alu_op <= '0' & instr_bus(14 downto 12);
             reg_wr_en <= '1';
+            sel_immediate <= '1';
         else 
             alu_op <= "0000";
         end if;

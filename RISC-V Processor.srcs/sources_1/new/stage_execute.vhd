@@ -39,17 +39,46 @@ entity stage_execute is
         alu_res_bus : out std_logic_vector(31 downto 0);
         
         -- Input / Output control signals
-        alu_op : in std_logic_vector(3 downto 0)
+        alu_op : in std_logic_vector(3 downto 0);
+        sel_immediate : in std_logic                                -- Selects whether the input to the ALU comes from the register or immediate value
     );
 end stage_execute;
 
 architecture arch of stage_execute is
-
+    signal i_sign_ext_out : std_logic_vector(31 downto 0);
+    signal i_alu_op_2 : std_logic_vector(31 downto 0);
 begin
     alu : entity work.alu(rtl)
           port map(op_1 => reg_data_bus_1,
-                   op_2 => reg_data_bus_2,
+                   op_2 => i_alu_op_2,
                    alu_op => alu_op,
                    res => alu_res_bus);
-
+                   
+    sign_extender : entity work.sign_extender(rtl)
+                    generic map(EXTENDED_SIZE_BITS => 32,
+                                IMMEDIATE_SIZE_BITS => 12)
+                    port map(immediate_in => alu_imm_data_bus,
+                             extended_out => i_sign_ext_out);
+    
+    -- This mux selects whether the second operant to the ALU comes from the register of an immediate value
+    mux_alu_op_2 : entity work.mux_2_1(rtl)
+                   generic map(WIDTH_BITS => 32)
+                   port map(in_0 => reg_data_bus_2,
+                            in_1 => i_sign_ext_out,
+                            output => i_alu_op_2,
+                            sel => sel_immediate);
 end arch;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
