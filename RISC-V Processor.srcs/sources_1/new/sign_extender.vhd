@@ -46,7 +46,7 @@ architecture rtl of sign_extender is
 
 begin
     GEN_EXTENDER:
-    for i in 0 to 20 generate
+    for i in 0 to EXTENDED_SIZE_BITS - IMMEDIATE_SIZE_BITS generate
         extended_out((EXTENDED_SIZE_BITS - 1) - i) <= immediate_in(IMMEDIATE_SIZE_BITS - 1);
     end generate GEN_EXTENDER;
     
