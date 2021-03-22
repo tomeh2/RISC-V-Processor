@@ -34,16 +34,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity stage_decode is
     port(
         -- Input / Output data signals
-        data_bus, instr_bus : in std_logic_vector(31 downto 0);
+        data_bus, instr_bus : in std_logic_vector(31 downto 0);         -- Data bus takes in data that is supposed to be written into the register file
         reg_data_1, reg_data_2 : out std_logic_vector(31 downto 0);
+        alu_imm_data : out std_logic_vector(11 downto 0);               -- Immediate values that are meant to be processed in the alu
         
         -- Input / Output control signals
         alu_op : out std_logic_vector (3 downto 0);
         reg_wr_addr_out : out std_logic_vector(4 downto 0);
-        reg_wr_en_dec_out : out std_logic;                  -- Register write enable signal decoder output
+        reg_wr_en_dec_out : out std_logic;                              -- Register write enable signal decoder output
         
-        reg_wr_addr_in : in std_logic_vector(4 downto 0);   -- Register write address signal used to address the register file (comes from the writeback stage)
-        reg_wr_en : in std_logic;                           -- Register write enable signal used to control the register file (comes from the writeback stage)
+        reg_wr_addr_in : in std_logic_vector(4 downto 0);               -- Register write address signal used to address the register file (comes from the writeback stage)
+        reg_wr_en : in std_logic;                                       -- Register write enable signal used to control the register file (comes from the writeback stage)
         
         clk, reset : in std_logic
     );
@@ -54,6 +55,7 @@ architecture arch of stage_decode is
 begin
     instruction_decoder : entity work.instruction_decoder
                           port map(instr_bus => instr_bus,
+                                   alu_immediate_bus => alu_imm_data,
                                    alu_op => alu_op,
                                    reg_rd_addr_1 => i_reg_rd_addr_1,
                                    reg_rd_addr_2 => i_reg_rd_addr_2,

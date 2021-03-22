@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="sign_extender_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="sign_extender_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="998333fs"></ZoomStartTime>
+      <ZoomEndTime time="1000334fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="250"></NameColumnWidth>
+      <ValueColumnWidth column_width="121"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="2" />
+   <wvobject fp_name="/sign_extender_tb/immediate" type="array">
+      <obj_property name="ElementShortName">immediate[11:0]</obj_property>
+      <obj_property name="ObjectShortName">immediate[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/sign_extender_tb/extended" type="array">
+      <obj_property name="ElementShortName">extended[31:0]</obj_property>
+      <obj_property name="ObjectShortName">extended[31:0]</obj_property>
+   </wvobject>
+</wave_config>

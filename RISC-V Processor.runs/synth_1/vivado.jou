@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Sun Mar 21 21:03:28 2021
-# Process ID: 1392
+# Start of session at: Sun Mar 21 23:46:40 2021
+# Process ID: 9592
 # Current directory: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1
-# Command line: vivado.exe -log register_file.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source register_file.tcl
-# Log file: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1/register_file.vds
+# Command line: vivado.exe -log pipeline.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pipeline.tcl
+# Log file: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1/pipeline.vds
 # Journal file: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source register_file.tcl -notrace
+source pipeline.tcl -notrace

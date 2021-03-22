@@ -35,6 +35,7 @@ entity stage_execute is
     port(
         -- Input / Output data signals
         reg_data_bus_1, reg_data_bus_2 : in std_logic_vector(31 downto 0);
+        alu_imm_data_bus : in std_logic_vector(11 downto 0);
         alu_res_bus : out std_logic_vector(31 downto 0);
         
         -- Input / Output control signals

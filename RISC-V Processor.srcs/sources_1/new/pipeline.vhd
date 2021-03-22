@@ -40,12 +40,14 @@ architecture rtl of pipeline is
     -- DECODE STAGE SIGNALS
     signal dec_data_bus_in, dec_instr_bus_in : std_logic_vector(31 downto 0);
     signal dec_reg_data_1_out, dec_reg_data_2_out : std_logic_vector(31 downto 0);
+    signal dec_alu_imm_data_out : std_logic_vector(11 downto 0);
     signal dec_reg_wr_addr_out : std_logic_vector(4 downto 0);
     signal dec_alu_op_out : std_logic_vector(3 downto 0);
     signal dec_reg_wr_en_out : std_logic;
     
     -- EXECUTE STAGE SIGNALS
     signal exe_reg_data_bus_1_in, exe_reg_data_bus_2_in : std_logic_vector(31 downto 0);
+    signal exe_alu_imm_data_in : std_logic_vector(11 downto 0);
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
     
@@ -71,6 +73,7 @@ begin
                             instr_bus => dec_instr_bus_in,
                             reg_data_1 => dec_reg_data_1_out,
                             reg_data_2 => dec_reg_data_2_out,
+                            alu_imm_data => dec_alu_imm_data_out,
                             alu_op => dec_alu_op_out,
                             reg_wr_addr_in => wrb_reg_addr_out,
                             reg_wr_addr_out => dec_reg_wr_addr_out,
@@ -82,6 +85,7 @@ begin
     stage_execute : entity work.stage_execute(arch)
                     port map(reg_data_bus_1 => exe_reg_data_bus_1_in,
                              reg_data_bus_2 => exe_reg_data_bus_2_in,
+                             alu_imm_data_bus => exe_alu_imm_data_in,
                              alu_res_bus => exe_alu_res_out,
                              alu_op => exe_alu_op_in);
     
@@ -91,21 +95,23 @@ begin
     
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 74)
+             generic map(WIDTH_BITS => 86)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
+                      d(75 downto 64) => dec_alu_imm_data_out,
                       -- Datapath control signals in
-                      d(67 downto 64) => dec_alu_op_out,
-                      d(72 downto 68) => dec_reg_wr_addr_out,
-                      d(73) => dec_reg_wr_en_out,
+                      d(79 downto 76) => dec_alu_op_out,
+                      d(84 downto 80) => dec_reg_wr_addr_out,
+                      d(85) => dec_reg_wr_en_out,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
+                      q(75 downto 64) => exe_alu_imm_data_in,
                       -- Datapath control signals out
-                      q(67 downto 64) => exe_alu_op_in,
-                      q(72 downto 68) => pt_reg_wr_addr_exe,
-                      q(73) => pt_reg_wr_en_exe,
+                      q(79 downto 76) => exe_alu_op_in,
+                      q(84 downto 80) => pt_reg_wr_addr_exe,
+                      q(85) => pt_reg_wr_en_exe,
                       -- Register control
                       clk => clk,
                       reset => reset,

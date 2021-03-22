@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03/17/2021 10:48:31 PM
+-- Create Date: 03/22/2021 08:31:25 PM
 -- Design Name: 
--- Module Name: stage_writeback - arch
+-- Module Name: sign_extender - rtl
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,13 +31,38 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity stage_writeback is
---  Port ( );
-end stage_writeback;
+entity sign_extender is
+    generic(
+        EXTENDED_SIZE_BITS : integer;
+        IMMEDIATE_SIZE_BITS : integer
+    );
+    port(
+        immediate_in : in std_logic_vector(IMMEDIATE_SIZE_BITS - 1 downto 0);
+        extended_out : out std_logic_vector(EXTENDED_SIZE_BITS - 1 downto 0)
+    );
+end sign_extender;
 
-architecture arch of stage_writeback is
+architecture rtl of sign_extender is
 
 begin
+    GEN_EXTENDER:
+    for i in 0 to 20 generate
+        extended_out((EXTENDED_SIZE_BITS - 1) - i) <= immediate_in(IMMEDIATE_SIZE_BITS - 1);
+    end generate GEN_EXTENDER;
+    
+    extended_out((IMMEDIATE_SIZE_BITS - 2) downto 0) <= immediate_in((IMMEDIATE_SIZE_BITS - 2) downto 0);
+end rtl;
 
 
-end arch;
+
+
+
+
+
+
+
+
+
+
+
+
