@@ -69,6 +69,8 @@ architecture rtl of pipeline is
 begin
     dec_instr_bus_in <= instr_bus_test;
 
+    -- ================ PIPELINE CONTROL ENTITIES ================
+
     -- ================== STAGE INITIALIZATIONS ==================
     stage_decode : entity work.stage_decode(arch)
                    port map(data_bus => dec_data_bus_in,

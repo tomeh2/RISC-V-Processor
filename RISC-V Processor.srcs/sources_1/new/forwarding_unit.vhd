@@ -2,14 +2,15 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03/22/2021 10:42:02 PM
+-- Create Date: 03/24/2021 08:29:21 PM
 -- Design Name: 
--- Module Name: hazard_detection_unit - rtl
+-- Module Name: forwarding_unit - rtl
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
 -- Description: 
--- 
+-- Detects and resolves RAW hazards by generating proper forwarding signals
+--
 -- Dependencies: 
 -- 
 -- Revision:
@@ -22,9 +23,16 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
--- Hazard detection signals are named depending on where (in what pipeline register) the needed data is located
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
 
-entity hazard_detection_unit is
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity forwarding_unit is
     port(
         -- Input control signals
         de_reg_src_addr_1, de_reg_src_addr_2 : in std_logic_vector(4 downto 0);
@@ -34,9 +42,9 @@ entity hazard_detection_unit is
         em_hazard_src_1, em_hazard_src_2 : out std_logic;       -- "_src_1" and "_src_2" specify what source register caused the hazard to trigger
         mw_hazard_src_1, mw_hazard_src_2 : out std_logic
     );
-end hazard_detection_unit;
+end forwarding_unit;
 
-architecture rtl of hazard_detection_unit is
+architecture rtl of forwarding_unit is
 
 begin
     process(all)
@@ -70,13 +78,3 @@ begin
     end process;
 
 end rtl;
-
-
-
-
-
-
-
-
-
-

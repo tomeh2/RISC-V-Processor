@@ -70,7 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -86,17 +86,19 @@ set_property ip_output_repo {e:/Vivado Projects/RISC-V Processor/RISC-V Processo
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -vhdl2008 -library xil_defaultlib {
-  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/instruction_decoder.vhd}
-  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register_file.vhd}
-  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd}
-}
 read_vhdl -library xil_defaultlib {
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_2_1.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/sign_extender.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_memory.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd}
+}
+read_vhdl -vhdl2008 -library xil_defaultlib {
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/instruction_decoder.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register_file.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
