@@ -19,7 +19,7 @@ Compiling architecture rtl of entity xil_defaultlib.sign_extender [\sign_extende
 Compiling architecture rtl of entity xil_defaultlib.mux_2_1 [\mux_2_1(width_bits=32)\]
 Compiling architecture arch of entity xil_defaultlib.stage_execute [stage_execute_default]
 Compiling architecture arch of entity xil_defaultlib.stage_memory [stage_memory_default]
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=87)\]
+Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=99)\]
 Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=38)\]
 Compiling architecture rtl of entity xil_defaultlib.pipeline [pipeline_default]
 Compiling architecture behavioral of entity xil_defaultlib.pipeline_tb

@@ -43,6 +43,8 @@ entity stage_decode is
         sel_immediate : out std_logic;
         reg_wr_addr_out : out std_logic_vector(4 downto 0);
         reg_wr_en_dec_out : out std_logic;                              -- Register write enable signal decoder output
+        reg_rd_addr_1_out, reg_rd_addr_2_out : out std_logic_vector(4 downto 0);
+        reg_rd_1_used, reg_rd_2_used : out std_logic;
         
         reg_wr_addr_in : in std_logic_vector(4 downto 0);               -- Register write address signal used to address the register file (comes from the writeback stage)
         reg_wr_en : in std_logic;                                       -- Register write enable signal used to control the register file (comes from the writeback stage)
@@ -62,6 +64,8 @@ begin
                                    reg_rd_addr_1 => i_reg_rd_addr_1,
                                    reg_rd_addr_2 => i_reg_rd_addr_2,
                                    reg_wr_addr => reg_wr_addr_out,
+                                   reg_rd_1_used => reg_rd_1_used,
+                                   reg_rd_2_used => reg_rd_2_used,
                                    reg_wr_en => reg_wr_en_dec_out);
                                    
     register_file : entity work.register_file
@@ -75,7 +79,8 @@ begin
                              reset => reset,                
                              clk => clk);
                              
-    
+    reg_rd_addr_1_out <= i_reg_rd_addr_1;
+    reg_rd_addr_2_out <= i_reg_rd_addr_2;
 
 end arch;
 

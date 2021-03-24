@@ -36,6 +36,7 @@ entity forwarding_unit is
     port(
         -- Input control signals
         de_reg_src_addr_1, de_reg_src_addr_2 : in std_logic_vector(4 downto 0);
+        de_reg_1_used, de_reg_2_used : in std_logic;
         em_reg_dest_addr, mw_reg_dest_addr : in std_logic_vector(4 downto 0);
         
         -- Output control signals
@@ -49,6 +50,10 @@ architecture rtl of forwarding_unit is
 begin
     process(all)
     begin
+        if (em_reg_dest_addr /= "00000" or mw_reg_dest_addr /= "00000") then
+            
+        end if;
+        
         if (de_reg_src_addr_1 = em_reg_dest_addr) then
             em_hazard_src_1 <= '1';
             em_hazard_src_2 <= '0';

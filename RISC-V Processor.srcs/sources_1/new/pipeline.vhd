@@ -42,6 +42,8 @@ architecture rtl of pipeline is
     signal dec_reg_data_1_out, dec_reg_data_2_out : std_logic_vector(31 downto 0);
     signal dec_alu_imm_data_out : std_logic_vector(11 downto 0);
     signal dec_reg_wr_addr_out : std_logic_vector(4 downto 0);
+    signal dec_reg_addr_1, dec_reg_addr_2 : std_logic_vector(4 downto 0);         -- Read register addresses for forwarding puropses
+    signal dec_reg_1_used, dec_reg_2_used : std_logic;
     signal dec_alu_op_out : std_logic_vector(3 downto 0);
     signal dec_reg_wr_en_out : std_logic;
     signal dec_sel_immediate_out : std_logic;
@@ -51,6 +53,8 @@ architecture rtl of pipeline is
     signal exe_alu_imm_data_in : std_logic_vector(11 downto 0);
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
+    signal exe_reg_addr_1, exe_reg_addr_2 : std_logic_vector(4 downto 0);
+    signal exe_reg_1_used, exe_reg_2_used : std_logic;
     signal exe_sel_immediate_in : std_logic;
     
     -- MEMORY STAGE SIGNALS
@@ -70,6 +74,7 @@ begin
     dec_instr_bus_in <= instr_bus_test;
 
     -- ================ PIPELINE CONTROL ENTITIES ================
+    
 
     -- ================== STAGE INITIALIZATIONS ==================
     stage_decode : entity work.stage_decode(arch)
@@ -80,9 +85,13 @@ begin
                             alu_imm_data => dec_alu_imm_data_out,
                             alu_op => dec_alu_op_out,
                             sel_immediate => dec_sel_immediate_out,
+                            reg_rd_addr_1_out => dec_reg_addr_1,
+                            reg_rd_addr_2_out => dec_reg_addr_2,
                             reg_wr_addr_in => wrb_reg_addr_out,
                             reg_wr_addr_out => dec_reg_wr_addr_out,
                             reg_wr_en_dec_out => dec_reg_wr_en_out,
+                            reg_rd_1_used => dec_reg_1_used,
+                            reg_rd_2_used => dec_reg_2_used,
                             reg_wr_en => wrb_reg_we,
                             clk => clk,
                             reset => reset);
@@ -101,25 +110,33 @@ begin
     
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 87)
+             generic map(WIDTH_BITS => 99)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
                       d(75 downto 64) => dec_alu_imm_data_out,
                       -- Datapath control signals in
-                      d(79 downto 76) => dec_alu_op_out,
-                      d(84 downto 80) => dec_reg_wr_addr_out,
-                      d(85) => dec_reg_wr_en_out,
-                      d(86) => dec_sel_immediate_out,
+                      d(80 downto 76) => dec_reg_addr_1,
+                      d(85 downto 81) => dec_reg_addr_2,
+                      d(89 downto 86) => dec_alu_op_out,
+                      d(94 downto 90) => dec_reg_wr_addr_out,
+                      d(95) => dec_reg_wr_en_out,
+                      d(96) => dec_sel_immediate_out,
+                      d(97) => dec_reg_1_used,
+                      d(98) => dec_reg_2_used,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
                       q(75 downto 64) => exe_alu_imm_data_in,
                       -- Datapath control signals out
-                      q(79 downto 76) => exe_alu_op_in,
-                      q(84 downto 80) => pt_reg_wr_addr_exe,
-                      q(85) => pt_reg_wr_en_exe,
-                      q(86) => exe_sel_immediate_in,
+                      q(80 downto 76) => exe_reg_addr_1,
+                      q(85 downto 81) => exe_reg_addr_2,
+                      q(89 downto 86) => exe_alu_op_in,
+                      q(94 downto 90) => pt_reg_wr_addr_exe,
+                      q(95) => pt_reg_wr_en_exe,
+                      q(96) => exe_sel_immediate_in,
+                      q(97) => exe_reg_1_used,
+                      q(98) => exe_reg_2_used,
                       -- Register control
                       clk => clk,
                       reset => reset,
