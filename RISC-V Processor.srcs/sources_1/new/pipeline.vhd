@@ -47,6 +47,8 @@ architecture rtl of pipeline is
     signal dec_alu_op_out : std_logic_vector(3 downto 0);
     signal dec_reg_wr_en_out : std_logic;
     signal dec_sel_immediate_out : std_logic;
+    signal dec_em_forward_1, dec_em_forward_2 : std_logic;
+    signal dec_mw_forward_1, dec_mw_forward_2 : std_logic;
     
     -- EXECUTE STAGE SIGNALS
     signal exe_reg_data_bus_1_in, exe_reg_data_bus_2_in : std_logic_vector(31 downto 0);
@@ -74,7 +76,19 @@ begin
     dec_instr_bus_in <= instr_bus_test;
 
     -- ================ PIPELINE CONTROL ENTITIES ================
-    
+    forwarding_unit : entity work.forwarding_unit(rtl)
+                      port map(de_reg_src_addr_1 => exe_reg_addr_1,
+                               de_reg_src_addr_2 => exe_reg_addr_2,
+                               de_reg_1_used => exe_reg_1_used,
+                               de_reg_2_used => exe_reg_2_used,
+                               em_reg_dest_used => pt_reg_wr_en_mem,
+                               mw_reg_dest_used => wrb_reg_we,
+                               em_reg_dest_addr => pt_reg_wr_addr_mem,
+                               mw_reg_dest_addr => wrb_reg_addr_out,
+                               em_hazard_src_1 => dec_em_forward_1,
+                               em_hazard_src_2 => dec_em_forward_2,
+                               mw_hazard_src_1 => dec_mw_forward_1,
+                               mw_hazard_src_2 => dec_mw_forward_2);
 
     -- ================== STAGE INITIALIZATIONS ==================
     stage_decode : entity work.stage_decode(arch)
@@ -99,10 +113,16 @@ begin
     stage_execute : entity work.stage_execute(arch)
                     port map(reg_data_bus_1 => exe_reg_data_bus_1_in,
                              reg_data_bus_2 => exe_reg_data_bus_2_in,
+                             forward_data_em => mem_data_bus_in,
+                             forward_data_mw => wrb_data_bus_out,
                              alu_imm_data_bus => exe_alu_imm_data_in,
                              alu_res_bus => exe_alu_res_out,
                              alu_op => exe_alu_op_in,
-                             sel_immediate => exe_sel_immediate_in);
+                             sel_immediate => exe_sel_immediate_in,
+                             em_forward_1 => dec_em_forward_1,
+                             em_forward_2 => dec_em_forward_2,
+                             mw_forward_1 => dec_mw_forward_1,
+                             mw_forward_2 => dec_mw_forward_2);
     
     stage_memory : entity work.stage_memory(arch)
                    port map(data_bus_in => mem_data_bus_in,

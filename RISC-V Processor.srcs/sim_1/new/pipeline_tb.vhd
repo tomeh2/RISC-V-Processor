@@ -76,7 +76,18 @@ begin
         instr_bus <= "01000000010100100000001100110011";        -- SUB x6, x4, x5 (x6 = x4 - x5)
         wait for T;
         instr_bus <= "00000000000000000000000000000000";
-        wait for T * 20;
+        wait for T * 10;
+        
+        instr_bus <= "00000000000100111000001110010011";
+        wait for T;
+        instr_bus <= "00000000000100111000001110010011";
+        wait for T;
+        instr_bus <= "00000000000100111000001110010011";
+        wait for T;
+        instr_bus <= "00000000000100111000001110010011";
+        wait for T;
+        instr_bus <= "00000000000100111000001110010011";
+        wait for T * 10;
     end process;
 
 end Behavioral;

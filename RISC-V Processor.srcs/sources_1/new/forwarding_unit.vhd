@@ -37,6 +37,7 @@ entity forwarding_unit is
         -- Input control signals
         de_reg_src_addr_1, de_reg_src_addr_2 : in std_logic_vector(4 downto 0);
         de_reg_1_used, de_reg_2_used : in std_logic;
+        em_reg_dest_used, mw_reg_dest_used : in std_logic;
         em_reg_dest_addr, mw_reg_dest_addr : in std_logic_vector(4 downto 0);
         
         -- Output control signals
@@ -50,26 +51,22 @@ architecture rtl of forwarding_unit is
 begin
     process(all)
     begin
-        if (em_reg_dest_addr /= "00000" or mw_reg_dest_addr /= "00000") then
-            
-        end if;
-        
-        if (de_reg_src_addr_1 = em_reg_dest_addr) then
+        if (de_reg_src_addr_1 = em_reg_dest_addr and em_reg_dest_addr /= "00000" and de_reg_1_used = '1' and em_reg_dest_used = '1') then
             em_hazard_src_1 <= '1';
             em_hazard_src_2 <= '0';
             mw_hazard_src_1 <= '0';
             mw_hazard_src_2 <= '0';
-        elsif (de_reg_src_addr_2 = em_reg_dest_addr) then
+        elsif (de_reg_src_addr_2 = em_reg_dest_addr and em_reg_dest_addr /= "00000" and de_reg_2_used = '1' and em_reg_dest_used = '1') then
             em_hazard_src_1 <= '0';
             em_hazard_src_2 <= '1';
             mw_hazard_src_1 <= '0';
             mw_hazard_src_2 <= '0';
-        elsif (de_reg_src_addr_1 = mw_reg_dest_addr) then
+        elsif (de_reg_src_addr_1 = mw_reg_dest_addr and mw_reg_dest_addr /= "00000" and de_reg_1_used = '1' and mw_reg_dest_used = '1') then
             em_hazard_src_1 <= '0';
             em_hazard_src_2 <= '0';
             mw_hazard_src_1 <= '1';
             mw_hazard_src_2 <= '0';
-        elsif (de_reg_src_addr_2 = mw_reg_dest_addr) then
+        elsif (de_reg_src_addr_2 = mw_reg_dest_addr and mw_reg_dest_addr /= "00000" and de_reg_2_used = '1' and mw_reg_dest_used = '1') then
             em_hazard_src_1 <= '0';
             em_hazard_src_2 <= '0';
             mw_hazard_src_1 <= '0';

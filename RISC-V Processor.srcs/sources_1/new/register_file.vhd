@@ -66,7 +66,7 @@ begin
         rd_data_1 <= reg_file(to_integer(unsigned(rd_addr_1)));
         rd_data_2 <= reg_file(to_integer(unsigned(rd_addr_2)));
         
-        if (rising_edge(clk)) then
+        if (falling_edge(clk)) then
             -- Write to register
             if (reset = '1') then
                 reg_file <= (others => (others => '0'));

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="pipeline_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="pipeline_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1123064fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="250"></NameColumnWidth>
+      <ValueColumnWidth column_width="113"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/de_reg_src_addr_1" type="array">
+      <obj_property name="ElementShortName">de_reg_src_addr_1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">de_reg_src_addr_1[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/de_reg_src_addr_2" type="array">
+      <obj_property name="ElementShortName">de_reg_src_addr_2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">de_reg_src_addr_2[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/de_reg_1_used" type="logic">
+      <obj_property name="ElementShortName">de_reg_1_used</obj_property>
+      <obj_property name="ObjectShortName">de_reg_1_used</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/de_reg_2_used" type="logic">
+      <obj_property name="ElementShortName">de_reg_2_used</obj_property>
+      <obj_property name="ObjectShortName">de_reg_2_used</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/em_reg_dest_used" type="logic">
+      <obj_property name="ElementShortName">em_reg_dest_used</obj_property>
+      <obj_property name="ObjectShortName">em_reg_dest_used</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/mw_reg_dest_used" type="logic">
+      <obj_property name="ElementShortName">mw_reg_dest_used</obj_property>
+      <obj_property name="ObjectShortName">mw_reg_dest_used</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/em_reg_dest_addr" type="array">
+      <obj_property name="ElementShortName">em_reg_dest_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">em_reg_dest_addr[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/mw_reg_dest_addr" type="array">
+      <obj_property name="ElementShortName">mw_reg_dest_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">mw_reg_dest_addr[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/em_hazard_src_1" type="logic">
+      <obj_property name="ElementShortName">em_hazard_src_1</obj_property>
+      <obj_property name="ObjectShortName">em_hazard_src_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/em_hazard_src_2" type="logic">
+      <obj_property name="ElementShortName">em_hazard_src_2</obj_property>
+      <obj_property name="ObjectShortName">em_hazard_src_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/mw_hazard_src_1" type="logic">
+      <obj_property name="ElementShortName">mw_hazard_src_1</obj_property>
+      <obj_property name="ObjectShortName">mw_hazard_src_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/forwarding_unit/mw_hazard_src_2" type="logic">
+      <obj_property name="ElementShortName">mw_hazard_src_2</obj_property>
+      <obj_property name="ObjectShortName">mw_hazard_src_2</obj_property>
+   </wvobject>
+</wave_config>
