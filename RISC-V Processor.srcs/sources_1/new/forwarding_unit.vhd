@@ -51,24 +51,19 @@ architecture rtl of forwarding_unit is
 begin
     process(all)
     begin
-        em_hazard_src_1 <= '0';
-        em_hazard_src_2 <= '0';
-        mw_hazard_src_1 <= '0';
-        mw_hazard_src_2 <= '0';
-    
         if (de_reg_src_addr_1 = em_reg_dest_addr and em_reg_dest_addr /= "00000" and de_reg_1_used = '1' and em_reg_dest_used = '1') then
             em_hazard_src_1 <= '1';
             mw_hazard_src_1 <= '0';
-        elsif (de_reg_src_addr_2 = em_reg_dest_addr and em_reg_dest_addr /= "00000" and de_reg_2_used = '1' and em_reg_dest_used = '1') then
+        elsif (de_reg_src_addr_1 = mw_reg_dest_addr and mw_reg_dest_addr /= "00000" and de_reg_1_used = '1' and mw_reg_dest_used = '1') then
             em_hazard_src_1 <= '0';
-            mw_hazard_src_1 <= '0';
+            mw_hazard_src_1 <= '1';
         else
             em_hazard_src_1 <= '0';
             mw_hazard_src_1 <= '0';
         end if;
             
-        if (de_reg_src_addr_1 = mw_reg_dest_addr and mw_reg_dest_addr /= "00000" and de_reg_1_used = '1' and mw_reg_dest_used = '1') then
-            em_hazard_src_2 <= '0';
+        if (de_reg_src_addr_2 = em_reg_dest_addr and em_reg_dest_addr /= "00000" and de_reg_2_used = '1' and em_reg_dest_used = '1') then
+            em_hazard_src_2 <= '1';
             mw_hazard_src_2 <= '0';
         elsif (de_reg_src_addr_2 = mw_reg_dest_addr and mw_reg_dest_addr /= "00000" and de_reg_2_used = '1' and mw_reg_dest_used = '1') then
             em_hazard_src_2 <= '0';
