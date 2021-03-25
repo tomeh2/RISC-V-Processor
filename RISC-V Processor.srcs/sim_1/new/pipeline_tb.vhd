@@ -87,6 +87,8 @@ begin
         instr_bus <= "00000000000100111000001110010011";
         wait for T;
         instr_bus <= "00000000000100111000001110010011";
+        wait for T;
+        instr_bus <= "00000000000000000000000000000000";
         wait for T * 10;
     end process;
 
