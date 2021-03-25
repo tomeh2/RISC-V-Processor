@@ -90,6 +90,19 @@ begin
         wait for T;
         instr_bus <= "00000000000000000000000000000000";
         wait for T * 10;
+        
+        instr_bus <= "00000000101001000000010000010011";        -- ADDI r8, r8, 10
+        wait for T; 
+        instr_bus <= "00000000001001001000010010010011";        -- ADDI r9, r9, 2
+        wait for T; 
+        instr_bus <= "01000000100001000000010000110011";        -- SUB r8, r8, r8
+        wait for T;
+        instr_bus <= "00000000100101000000010000110011";        -- ADD r8, r8, r9
+        wait for T;
+        instr_bus <= "11111111111101000100010000010011";        -- XORI r8, r8, X"FFF"
+        wait for T;
+        instr_bus <= "00000000000000000000000000000000";
+        wait for T * 10;
     end process;
 
 end Behavioral;
