@@ -31,12 +31,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity pipeline is
     port(
-        instr_bus_test : in std_logic_vector(31 downto 0);
         clk, reset : in std_logic
     );
 end pipeline;
 
 architecture rtl of pipeline is
+    -- FETCH STAGE SIGNALS
+    
+
     -- DECODE STAGE SIGNALS
     signal dec_data_bus_in, dec_instr_bus_in : std_logic_vector(31 downto 0);
     signal dec_reg_data_1_out, dec_reg_data_2_out : std_logic_vector(31 downto 0);
@@ -91,6 +93,9 @@ begin
                                mw_hazard_src_2 => dec_mw_forward_2);
 
     -- ================== STAGE INITIALIZATIONS ==================
+    stage_fetch : entity work.stage_fetch(arch)
+                  port map()
+    
     stage_decode : entity work.stage_decode(arch)
                    port map(data_bus => dec_data_bus_in,
                             instr_bus => dec_instr_bus_in,
