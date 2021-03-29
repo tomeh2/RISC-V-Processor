@@ -46,8 +46,8 @@ architecture arch of stage_fetch is
 begin
     program_counter : entity work.register_var(arch)
                       generic map(WIDTH_BITS => PC_WIDTH_BITS)
-                      port map(q => i_pc_in,
-                               d => i_pc_out,
+                      port map(q => i_pc_out,
+                               d => i_pc_in,
                                clk => clk,
                                reset => reset,
                                en => '1');
@@ -57,6 +57,6 @@ begin
                            data_out => instr_bus);
     
     -- Next instruction address logic                    
-    i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 4);
+    i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 1);
 
 end arch;

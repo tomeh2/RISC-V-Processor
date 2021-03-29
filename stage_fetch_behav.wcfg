@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="pipeline_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="pipeline_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1177420fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="296"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="5" />
+   <wvobject fp_name="/pipeline_tb/uut/stage_fetch/instr_bus" type="array">
+      <obj_property name="ElementShortName">instr_bus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_bus[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/stage_fetch/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/stage_fetch/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/stage_fetch/i_pc_out" type="array">
+      <obj_property name="ElementShortName">i_pc_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_pc_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipeline_tb/uut/stage_fetch/i_pc_in" type="array">
+      <obj_property name="ElementShortName">i_pc_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_pc_in[7:0]</obj_property>
+   </wvobject>
+</wave_config>

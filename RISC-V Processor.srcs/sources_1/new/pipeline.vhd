@@ -37,7 +37,7 @@ end pipeline;
 
 architecture rtl of pipeline is
     -- FETCH STAGE SIGNALS
-    
+    signal fet_instr_bus_out : std_logic_vector(31 downto 0);
 
     -- DECODE STAGE SIGNALS
     signal dec_data_bus_in, dec_instr_bus_in : std_logic_vector(31 downto 0);
@@ -75,8 +75,6 @@ architecture rtl of pipeline is
     signal pt_reg_wr_addr_exe, pt_reg_wr_addr_mem : std_logic_vector(4 downto 0);       -- Destination register address
     
 begin
-    dec_instr_bus_in <= instr_bus_test;
-
     -- ================ PIPELINE CONTROL ENTITIES ================
     forwarding_unit : entity work.forwarding_unit(rtl)
                       port map(de_reg_src_addr_1 => exe_reg_addr_1,
@@ -94,7 +92,9 @@ begin
 
     -- ================== STAGE INITIALIZATIONS ==================
     stage_fetch : entity work.stage_fetch(arch)
-                  port map()
+                  port map(instr_bus => fet_instr_bus_out,
+                           clk => clk,
+                           reset => reset);
     
     stage_decode : entity work.stage_decode(arch)
                    port map(data_bus => dec_data_bus_in,
@@ -134,6 +134,19 @@ begin
                             data_bus_out => mem_data_bus_out);
     
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
+    reg_fd : entity work.register_var(arch)
+             generic map(WIDTH_BITS => 32)
+                      -- Datapath data signals in
+             port map(d(31 downto 0) => fet_instr_bus_out,
+                      -- Datapath control signals in
+                      -- Datapath data signals out
+                      q(31 downto 0) => dec_instr_bus_in,
+                      -- Datapath control signals out
+                      -- Register control
+                      clk => clk,
+                      reset => reset,
+                      en => '1');
+    
     reg_de : entity work.register_var(arch)
              generic map(WIDTH_BITS => 99)
                       -- Datapath data signals in
