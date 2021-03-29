@@ -1,6 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/forwarding_unit.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'forwarding_unit'
-INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'pipeline'
-INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/pipeline_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'pipeline_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/rom_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'rom_tb'
