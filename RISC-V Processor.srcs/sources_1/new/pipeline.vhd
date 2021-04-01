@@ -31,6 +31,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity pipeline is
     port(
+        instr_addr_bus, data_addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
+        instr_bus : in std_logic_vector(31 downto 0);                          
+        data_bus : inout std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
+    
         clk, reset : in std_logic
     );
 end pipeline;
@@ -92,7 +96,7 @@ begin
 
     -- ================== STAGE INITIALIZATIONS ==================
     stage_fetch : entity work.stage_fetch(arch)
-                  port map(instr_bus => fet_instr_bus_out,
+                  port map(instr_addr_bus => instr_addr_bus,
                            clk => clk,
                            reset => reset);
     
@@ -137,7 +141,7 @@ begin
     reg_fd : entity work.register_var(arch)
              generic map(WIDTH_BITS => 32)
                       -- Datapath data signals in
-             port map(d(31 downto 0) => fet_instr_bus_out,
+             port map(d(31 downto 0) => instr_bus,
                       -- Datapath control signals in
                       -- Datapath data signals out
                       q(31 downto 0) => dec_instr_bus_in,

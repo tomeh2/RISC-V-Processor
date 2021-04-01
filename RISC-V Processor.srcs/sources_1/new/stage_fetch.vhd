@@ -33,14 +33,14 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity stage_fetch is
     port(
-        instr_bus : out std_logic_vector(31 downto 0);
+        instr_addr_bus : out std_logic_vector(31 downto 0); -- Instruction and data address busses
     
         clk, reset : in std_logic
     );
 end stage_fetch;
 
 architecture arch of stage_fetch is
-    constant PC_WIDTH_BITS : integer := 8;
+    constant PC_WIDTH_BITS : integer := 32;
 
     signal i_pc_out, i_pc_in : std_logic_vector(PC_WIDTH_BITS - 1 downto 0);
 begin
@@ -51,12 +51,11 @@ begin
                                clk => clk,
                                reset => reset,
                                en => '1');
-                               
-    program_rom : entity work.rom_memory(memory)
-                  port map(read_addr => i_pc_out,
-                           data_out => instr_bus);
     
     -- Next instruction address logic                    
     i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 1);
+    
+    -- Instrcution address bus setting
+    instr_addr_bus <= i_pc_out;
 
 end arch;
