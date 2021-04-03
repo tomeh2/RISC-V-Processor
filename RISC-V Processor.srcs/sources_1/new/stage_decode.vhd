@@ -36,7 +36,7 @@ entity stage_decode is
         -- Input / Output data signals
         data_bus, instr_bus : in std_logic_vector(31 downto 0);         -- Data bus takes in data that is supposed to be written into the register file
         reg_data_1, reg_data_2 : out std_logic_vector(31 downto 0);
-        alu_imm_data : out std_logic_vector(11 downto 0);               -- Immediate values that are meant to be processed in the alu
+        imm_field_data : out std_logic_vector(19 downto 0);             -- Immediate values that are meant to be processed in the alu
         
         -- Input / Output control signals
         alu_op : out std_logic_vector (3 downto 0);
@@ -58,7 +58,7 @@ architecture arch of stage_decode is
 begin
     instruction_decoder : entity work.instruction_decoder
                           port map(instr_bus => instr_bus,
-                                   alu_immediate_bus => alu_imm_data,
+                                   imm_field_data => imm_field_data,
                                    alu_op => alu_op,
                                    sel_immediate => sel_immediate,
                                    reg_rd_addr_1 => i_reg_rd_addr_1,

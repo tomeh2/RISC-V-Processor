@@ -46,7 +46,7 @@ architecture rtl of pipeline is
     -- DECODE STAGE SIGNALS
     signal dec_data_bus_in, dec_instr_bus_in : std_logic_vector(31 downto 0);
     signal dec_reg_data_1_out, dec_reg_data_2_out : std_logic_vector(31 downto 0);
-    signal dec_alu_imm_data_out : std_logic_vector(11 downto 0);
+    signal dec_imm_field_out : std_logic_vector(19 downto 0);
     signal dec_reg_wr_addr_out : std_logic_vector(4 downto 0);
     signal dec_reg_addr_1, dec_reg_addr_2 : std_logic_vector(4 downto 0);         -- Read register addresses for forwarding puropses
     signal dec_reg_1_used, dec_reg_2_used : std_logic;
@@ -58,7 +58,7 @@ architecture rtl of pipeline is
     
     -- EXECUTE STAGE SIGNALS
     signal exe_reg_data_bus_1_in, exe_reg_data_bus_2_in : std_logic_vector(31 downto 0);
-    signal exe_alu_imm_data_in : std_logic_vector(11 downto 0);
+    signal exe_alu_imm_data_in : std_logic_vector(19 downto 0);
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
     signal exe_reg_addr_1, exe_reg_addr_2 : std_logic_vector(4 downto 0);
@@ -105,7 +105,7 @@ begin
                             instr_bus => dec_instr_bus_in,
                             reg_data_1 => dec_reg_data_1_out,
                             reg_data_2 => dec_reg_data_2_out,
-                            alu_imm_data => dec_alu_imm_data_out,
+                            imm_field_data => dec_imm_field_out,
                             alu_op => dec_alu_op_out,
                             sel_immediate => dec_sel_immediate_out,
                             reg_rd_addr_1_out => dec_reg_addr_1,
@@ -124,7 +124,7 @@ begin
                              reg_data_bus_2 => exe_reg_data_bus_2_in,
                              forward_data_em => mem_data_bus_in,
                              forward_data_mw => wrb_data_bus_out,
-                             alu_imm_data_bus => exe_alu_imm_data_in,
+                             imm_field_data => exe_alu_imm_data_in,
                              alu_res_bus => exe_alu_res_out,
                              alu_op => exe_alu_op_in,
                              sel_immediate => exe_sel_immediate_in,
@@ -152,33 +152,33 @@ begin
                       en => '1');
     
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 99)
+             generic map(WIDTH_BITS => 107)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
-                      d(75 downto 64) => dec_alu_imm_data_out,
+                      d(83 downto 64) => dec_imm_field_out,
                       -- Datapath control signals in
-                      d(80 downto 76) => dec_reg_addr_1,
-                      d(85 downto 81) => dec_reg_addr_2,
-                      d(89 downto 86) => dec_alu_op_out,
-                      d(94 downto 90) => dec_reg_wr_addr_out,
-                      d(95) => dec_reg_wr_en_out,
-                      d(96) => dec_sel_immediate_out,
-                      d(97) => dec_reg_1_used,
-                      d(98) => dec_reg_2_used,
+                      d(88 downto 84) => dec_reg_addr_1,
+                      d(93 downto 89) => dec_reg_addr_2,
+                      d(97 downto 94) => dec_alu_op_out,
+                      d(102 downto 98) => dec_reg_wr_addr_out,
+                      d(103) => dec_reg_wr_en_out,
+                      d(104) => dec_sel_immediate_out,
+                      d(105) => dec_reg_1_used,
+                      d(106) => dec_reg_2_used,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
-                      q(75 downto 64) => exe_alu_imm_data_in,
+                      q(83 downto 64) => exe_alu_imm_data_in,
                       -- Datapath control signals out
-                      q(80 downto 76) => exe_reg_addr_1,
-                      q(85 downto 81) => exe_reg_addr_2,
-                      q(89 downto 86) => exe_alu_op_in,
-                      q(94 downto 90) => pt_reg_wr_addr_exe,
-                      q(95) => pt_reg_wr_en_exe,
-                      q(96) => exe_sel_immediate_in,
-                      q(97) => exe_reg_1_used,
-                      q(98) => exe_reg_2_used,
+                      q(88 downto 84) => exe_reg_addr_1,
+                      q(93 downto 89) => exe_reg_addr_2,
+                      q(97 downto 94) => exe_alu_op_in,
+                      q(102 downto 98) => pt_reg_wr_addr_exe,
+                      q(103) => pt_reg_wr_en_exe,
+                      q(104) => exe_sel_immediate_in,
+                      q(105) => exe_reg_1_used,
+                      q(106) => exe_reg_2_used,
                       -- Register control
                       clk => clk,
                       reset => reset,

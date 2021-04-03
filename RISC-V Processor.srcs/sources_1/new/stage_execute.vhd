@@ -36,7 +36,7 @@ entity stage_execute is
         -- Input / Output data signals
         reg_data_bus_1, reg_data_bus_2 : in std_logic_vector(31 downto 0);
         forward_data_em, forward_data_mw : in std_logic_vector(31 downto 0);
-        alu_imm_data_bus : in std_logic_vector(11 downto 0);
+        imm_field_data : in std_logic_vector(19 downto 0);
         alu_res_bus : out std_logic_vector(31 downto 0);
         
         -- Input / Output control signals
@@ -61,7 +61,7 @@ begin
     sign_extender : entity work.sign_extender(rtl)
                     generic map(EXTENDED_SIZE_BITS => 32,
                                 IMMEDIATE_SIZE_BITS => 12)
-                    port map(immediate_in => alu_imm_data_bus,
+                    port map(immediate_in => imm_field_data(11 downto 0),
                              extended_out => i_sign_ext_out);
     
     mux_alu_op_1 : entity work.mux_4_1(rtl)

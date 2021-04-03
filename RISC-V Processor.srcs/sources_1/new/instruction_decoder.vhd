@@ -36,9 +36,10 @@ entity instruction_decoder is
         instr_bus : in std_logic_vector(31 downto 0);         
         
         -- Generated data signals     
-        alu_immediate_bus : out std_logic_vector(11 downto 0);
+        imm_field_data : out std_logic_vector(19 downto 0);
         
         -- Generated output control signals
+        
         alu_op : out std_logic_vector(3 downto 0);                                          -- Decoded ALU operation
         reg_rd_addr_1, reg_rd_addr_2, reg_wr_addr : out std_logic_vector(4 downto 0);       -- Decoded register selection addresses
         reg_rd_1_used, reg_rd_2_used : out std_logic;                                       -- Specifies whether 
@@ -65,7 +66,7 @@ begin
         reg_wr_addr <= instr_bus(11 downto 7);
         
         -- Immediates are always decoded, but not used unless specified by the instruction
-        alu_immediate_bus <= instr_bus(31 downto 20);
+        imm_field_data <= (others => '0');
         
         -- ALU Operation decoding
         if (instr_bus(6 downto 0) = "0110011") then
@@ -76,11 +77,15 @@ begin
             reg_wr_en <= '1';
         elsif (instr_bus(6 downto 0) = "0010011") then
             alu_op <= '0' & instr_bus(14 downto 12);
+            imm_field_data <= "00000000" & instr_bus(31 downto 20);
             
             reg_rd_1_used <= '1';
             reg_rd_2_used <= '0';
             reg_wr_en <= '1';
             sel_immediate <= '1';
+        elsif (instr_bus(6 downto 0) = "1101111") then
+            alu_op <= "0000";
+            
         else 
             alu_op <= "0000";
         end if;
