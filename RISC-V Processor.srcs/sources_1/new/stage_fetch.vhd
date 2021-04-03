@@ -34,6 +34,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity stage_fetch is
     port(
         instr_addr_bus : out std_logic_vector(31 downto 0); -- Instruction and data address busses
+        pc_out : out std_logic_vector(31 downto 0);         -- Contents of the program counter
     
         clk, reset : in std_logic
     );

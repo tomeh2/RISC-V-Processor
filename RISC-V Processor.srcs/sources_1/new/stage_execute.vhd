@@ -41,6 +41,7 @@ entity stage_execute is
         
         -- Input / Output control signals
         alu_op : in std_logic_vector(3 downto 0);
+        prog_flow_cntrl : in std_logic_vector(1 downto 0);             -- Branching control signal
         em_forward_1, em_forward_2 : in std_logic;                     -- Forwards from pipeline register E/M
         mw_forward_1, mw_forward_2 : in std_logic;                     -- Forwards from pipeline register M/W
         sel_immediate : in std_logic                                   -- Selects whether the input to the ALU comes from the register or immediate value
@@ -50,7 +51,14 @@ end stage_execute;
 architecture arch of stage_execute is
     signal i_sign_ext_out : std_logic_vector(31 downto 0);
     signal i_alu_op_1, i_alu_op_2 : std_logic_vector(31 downto 0);  -- ALU operand input values
+    
+    -- Control signals multiplexers
     signal i_sel_mux_1, i_sel_mux_2 : std_logic_vector(1 downto 0);
+    
+    -- Control signals for branching
+    signal i_branch_unc, i_branch_cnd : std_logic;
+    signal i_branch_cnd_int : std_logic;
+    signal i_branch_en : std_logic;
 begin
     alu : entity work.alu(rtl)
           port map(op_1 => i_alu_op_1,
@@ -85,6 +93,13 @@ begin
     -- Control signal generation for multiplexers
     i_sel_mux_1 <= ((not em_forward_1) and mw_forward_1) & em_forward_1;
     i_sel_mux_2 <= (mw_forward_2 or sel_immediate) & ((em_forward_2 and not mw_forward_2) or sel_immediate);
+    
+    -- Control signals for branching
+    i_branch_unc <= prog_flow_cntrl(0) xor prog_flow_cntrl(1);
+    i_branch_cnd <= prog_flow_cntrl(0) and prog_flow_cntrl(1);
+    
+    i_branch_cnd_int <= i_branch_cnd and '0';       -- TEMPORARY '0' UNTIL CONDITIONAL BRANCHES GET IMPLEMENTED
+    i_branch_en <= i_branch_cnd_int or i_branch_unc;
 end arch;
 
 

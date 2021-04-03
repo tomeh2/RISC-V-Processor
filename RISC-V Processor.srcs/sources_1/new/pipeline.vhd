@@ -41,7 +41,7 @@ end pipeline;
 
 architecture rtl of pipeline is
     -- FETCH STAGE SIGNALS
-    signal fet_instr_bus_out : std_logic_vector(31 downto 0);
+    signal fet_instr_bus_out, fet_pc_out : std_logic_vector(31 downto 0);
 
     -- DECODE STAGE SIGNALS
     signal dec_data_bus_in, dec_instr_bus_in : std_logic_vector(31 downto 0);
@@ -51,6 +51,7 @@ architecture rtl of pipeline is
     signal dec_reg_addr_1, dec_reg_addr_2 : std_logic_vector(4 downto 0);         -- Read register addresses for forwarding puropses
     signal dec_reg_1_used, dec_reg_2_used : std_logic;
     signal dec_alu_op_out : std_logic_vector(3 downto 0);
+    signal dec_prog_flow_cntrl_out : std_logic_vector(1 downto 0);                
     signal dec_reg_wr_en_out : std_logic;
     signal dec_sel_immediate_out : std_logic;
     signal dec_em_forward_1, dec_em_forward_2 : std_logic;
@@ -60,7 +61,9 @@ architecture rtl of pipeline is
     signal exe_reg_data_bus_1_in, exe_reg_data_bus_2_in : std_logic_vector(31 downto 0);
     signal exe_alu_imm_data_in : std_logic_vector(19 downto 0);
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
+    signal exe_pc_val_in : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
+    signal exe_prog_flow_cntrl_in : std_logic_vector(1 downto 0);
     signal exe_reg_addr_1, exe_reg_addr_2 : std_logic_vector(4 downto 0);
     signal exe_reg_1_used, exe_reg_2_used : std_logic;
     signal exe_sel_immediate_in : std_logic;
@@ -77,6 +80,7 @@ architecture rtl of pipeline is
     -- PASSTHROUGH SIGNALS (Signal lines which are connected between pipeline registers)
     signal pt_reg_wr_en_exe, pt_reg_wr_en_mem : std_logic;                              -- Register file write enable signal
     signal pt_reg_wr_addr_exe, pt_reg_wr_addr_mem : std_logic_vector(4 downto 0);       -- Destination register address
+    signal pt_pc_val_fet : std_logic_vector(31 downto 0);
     
 begin
     -- ================ PIPELINE CONTROL ENTITIES ================
@@ -97,6 +101,7 @@ begin
     -- ================== STAGE INITIALIZATIONS ==================
     stage_fetch : entity work.stage_fetch(arch)
                   port map(instr_addr_bus => instr_addr_bus,
+                           pc_out => fet_pc_out,
                            clk => clk,
                            reset => reset);
     
@@ -107,6 +112,7 @@ begin
                             reg_data_2 => dec_reg_data_2_out,
                             imm_field_data => dec_imm_field_out,
                             alu_op => dec_alu_op_out,
+                            prog_flow_cntrl => dec_prog_flow_cntrl_out,
                             sel_immediate => dec_sel_immediate_out,
                             reg_rd_addr_1_out => dec_reg_addr_1,
                             reg_rd_addr_2_out => dec_reg_addr_2,
@@ -139,20 +145,22 @@ begin
     
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
     reg_fd : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 32)
+             generic map(WIDTH_BITS => 64)
                       -- Datapath data signals in
              port map(d(31 downto 0) => instr_bus,
                       -- Datapath control signals in
+                      d(63 downto 32) => fet_pc_out,
                       -- Datapath data signals out
                       q(31 downto 0) => dec_instr_bus_in,
                       -- Datapath control signals out
+                      q(63 downto 32) => pt_pc_val_fet,
                       -- Register control
                       clk => clk,
                       reset => reset,
                       en => '1');
     
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 107)
+             generic map(WIDTH_BITS => 141)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
@@ -161,11 +169,13 @@ begin
                       d(88 downto 84) => dec_reg_addr_1,
                       d(93 downto 89) => dec_reg_addr_2,
                       d(97 downto 94) => dec_alu_op_out,
-                      d(102 downto 98) => dec_reg_wr_addr_out,
-                      d(103) => dec_reg_wr_en_out,
-                      d(104) => dec_sel_immediate_out,
-                      d(105) => dec_reg_1_used,
-                      d(106) => dec_reg_2_used,
+                      d(99 downto 98) => dec_prog_flow_cntrl_out,
+                      d(104 downto 100) => dec_reg_wr_addr_out,
+                      d(136 downto 105) => pt_pc_val_fet,
+                      d(137) => dec_reg_wr_en_out,
+                      d(138) => dec_sel_immediate_out,
+                      d(138) => dec_reg_1_used,
+                      d(139) => dec_reg_2_used,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
@@ -174,11 +184,13 @@ begin
                       q(88 downto 84) => exe_reg_addr_1,
                       q(93 downto 89) => exe_reg_addr_2,
                       q(97 downto 94) => exe_alu_op_in,
-                      q(102 downto 98) => pt_reg_wr_addr_exe,
-                      q(103) => pt_reg_wr_en_exe,
-                      q(104) => exe_sel_immediate_in,
-                      q(105) => exe_reg_1_used,
-                      q(106) => exe_reg_2_used,
+                      q(99 downto 98) => exe_prog_flow_cntrl_in,
+                      q(104 downto 100) => pt_reg_wr_addr_exe,
+                      q(136 downto 105) => exe_pc_val_in,
+                      q(137) => pt_reg_wr_en_exe,
+                      q(138) => exe_sel_immediate_in,
+                      q(139) => exe_reg_1_used,
+                      q(140) => exe_reg_2_used,
                       -- Register control
                       clk => clk,
                       reset => reset,
