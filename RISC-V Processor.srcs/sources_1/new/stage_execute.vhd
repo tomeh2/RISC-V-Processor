@@ -39,9 +39,12 @@ entity stage_execute is
         imm_field_data : in std_logic_vector(19 downto 0);
         alu_res_bus : out std_logic_vector(31 downto 0);
         
+         pc_curr_addr : in std_logic_vector(31 downto 0);
+         pc_dest_addr : out std_logic_vector(31 downto 0);
         -- Input / Output control signals
         alu_op : in std_logic_vector(3 downto 0);
         prog_flow_cntrl : in std_logic_vector(1 downto 0);             -- Branching control signal
+        branch_taken_cntrl : out std_logic;                            -- Tells the pipeline whether the branch has been taken or not
         em_forward_1, em_forward_2 : in std_logic;                     -- Forwards from pipeline register E/M
         mw_forward_1, mw_forward_2 : in std_logic;                     -- Forwards from pipeline register M/W
         sel_immediate : in std_logic                                   -- Selects whether the input to the ALU comes from the register or immediate value
@@ -65,6 +68,12 @@ begin
                    op_2 => i_alu_op_2,
                    alu_op => alu_op,
                    res => alu_res_bus);
+                   
+    agu : entity work.address_generation_unit(rtl)
+          port map(pc_value => pc_curr_addr,
+                   imm_field_data => imm_field_data,
+                   pc_dest_addr => pc_dest_addr,
+                   prog_flow_cntrl => prog_flow_cntrl);
                    
     sign_extender : entity work.sign_extender(rtl)
                     generic map(EXTENDED_SIZE_BITS => 32,
@@ -100,6 +109,7 @@ begin
     
     i_branch_cnd_int <= i_branch_cnd and '0';       -- TEMPORARY '0' UNTIL CONDITIONAL BRANCHES GET IMPLEMENTED
     i_branch_en <= i_branch_cnd_int or i_branch_unc;
+    branch_taken_cntrl <= i_branch_en;
 end arch;
 
 

@@ -82,6 +82,13 @@ architecture rtl of pipeline is
     signal pt_reg_wr_addr_exe, pt_reg_wr_addr_mem : std_logic_vector(4 downto 0);       -- Destination register address
     signal pt_pc_val_fet : std_logic_vector(31 downto 0);
     
+    -- BRANCHING SPECIFIC SIGNALS
+    signal sp_branch_taken_cntrl : std_logic;
+    signal sp_pc_dest_addr : std_logic_vector(31 downto 0);
+    
+    -- PIPELINE REGISTER CONTROL SIGNALS
+    signal pc_reset_fd, pc_reset_de, pc_reset_em, pc_reset_mw : std_logic;
+    
 begin
     -- ================ PIPELINE CONTROL ENTITIES ================
     forwarding_unit : entity work.forwarding_unit(rtl)
@@ -102,6 +109,8 @@ begin
     stage_fetch : entity work.stage_fetch(arch)
                   port map(instr_addr_bus => instr_addr_bus,
                            pc_out => fet_pc_out,
+                           pc_overwrite_value => sp_pc_dest_addr,
+                           pc_overwrite_en => sp_branch_taken_cntrl,
                            clk => clk,
                            reset => reset);
     
@@ -131,9 +140,13 @@ begin
                              forward_data_em => mem_data_bus_in,
                              forward_data_mw => wrb_data_bus_out,
                              imm_field_data => exe_alu_imm_data_in,
+                             pc_curr_addr => exe_pc_val_in,
+                             pc_dest_addr => sp_pc_dest_addr,
                              alu_res_bus => exe_alu_res_out,
                              alu_op => exe_alu_op_in,
+                             prog_flow_cntrl => exe_prog_flow_cntrl_in,
                              sel_immediate => exe_sel_immediate_in,
+                             branch_taken_cntrl => sp_branch_taken_cntrl,
                              em_forward_1 => dec_em_forward_1,
                              em_forward_2 => dec_em_forward_2,
                              mw_forward_1 => dec_mw_forward_1,
@@ -156,7 +169,7 @@ begin
                       q(63 downto 32) => pt_pc_val_fet,
                       -- Register control
                       clk => clk,
-                      reset => reset,
+                      reset => pc_reset_fd,
                       en => '1');
     
     reg_de : entity work.register_var(arch)
@@ -174,8 +187,8 @@ begin
                       d(136 downto 105) => pt_pc_val_fet,
                       d(137) => dec_reg_wr_en_out,
                       d(138) => dec_sel_immediate_out,
-                      d(138) => dec_reg_1_used,
-                      d(139) => dec_reg_2_used,
+                      d(139) => dec_reg_1_used,
+                      d(140) => dec_reg_2_used,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
@@ -193,7 +206,7 @@ begin
                       q(140) => exe_reg_2_used,
                       -- Register control
                       clk => clk,
-                      reset => reset,
+                      reset => pc_reset_de,
                       en => '1');
                       
     reg_em : entity work.register_var(arch)
@@ -210,7 +223,7 @@ begin
                       q(37) => pt_reg_wr_en_mem,
                       -- Register control
                       clk => clk,
-                      reset => reset,
+                      reset => pc_reset_em,
                       en => '1');
                       
     reg_mw : entity work.register_var(arch)
@@ -227,11 +240,17 @@ begin
                       q(37) => wrb_reg_we,
                       -- Register control
                       clk => clk,
-                      reset => reset,
+                      reset => pc_reset_mw,
                       en => '1');
                       
     -- Signal assignments
     dec_data_bus_in <= wrb_data_bus_out;
+    
+    -- Pipeline register control signal assignments
+    pc_reset_fd <= reset or sp_branch_taken_cntrl; 
+    pc_reset_de <= reset or sp_branch_taken_cntrl; 
+    pc_reset_em <= reset; 
+    pc_reset_mw <= reset; 
 end rtl;
 
 

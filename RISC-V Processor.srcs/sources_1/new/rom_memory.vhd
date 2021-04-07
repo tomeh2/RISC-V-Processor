@@ -36,7 +36,8 @@ end rom_memory;
 
 architecture memory of rom_memory is
     type rom_type is array (0 to 2 ** ADDR_WIDTH_BITS) of std_logic_vector(DATA_WIDTH_BITS - 1 downto 0);
-
+    
+    signal shifted_addr : std_logic_vector(ADDR_WIDTH_BITS - 1 downto 0);
     signal rom_mem : rom_type := (
         0 => "00000000101000001000000010010011",
         1 => "00000001010000010110000100010011",
@@ -57,8 +58,14 @@ architecture memory of rom_memory is
         16 => "01000000100001000000010000110011",
         17 => "00000000100101000000010000110011",
         18 => "11111111111101000100010000010011",
+        19 => "00000000000000000000000000000000",
+        20 => "00000000000000000000000000000000",
+        21 => "00000000000000000000000000000000",
+        22 => "00000000000101010000010100010011",
+        23 => "11111111110111111111010111101111",
         others => (others => '0')
         );
 begin
-    data_out <= rom_mem(to_integer(unsigned(read_addr)));
+    shifted_addr <= "00" & read_addr(7 downto 2);
+    data_out <= rom_mem(to_integer(unsigned(shifted_addr)));
 end memory;

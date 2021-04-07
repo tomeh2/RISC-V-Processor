@@ -85,13 +85,15 @@ set_property ip_output_repo {e:/Vivado Projects/RISC-V Processor/RISC-V Processo
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_mem {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/rom.mem}}
 read_vhdl -library xil_defaultlib {
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd}
-  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/sign_extender.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_fetch.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_memory.vhd}
-  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd}
 }
 read_vhdl -vhdl2008 -library xil_defaultlib {
