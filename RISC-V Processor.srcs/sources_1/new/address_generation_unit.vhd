@@ -26,7 +26,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity address_generation_unit is
     port(
         -- Data
-        pc_value : in std_logic_vector(31 downto 0);
+        base_addr : in std_logic_vector(31 downto 0);
         imm_field_data : in std_logic_vector(19 downto 0);
         
         pc_dest_addr : out std_logic_vector(31 downto 0);
@@ -41,6 +41,9 @@ architecture rtl of address_generation_unit is
     signal i_gen_offset_cnd_unex : std_logic_vector(12 downto 0);
     signal i_gen_offset_unc_0, i_gen_offset_unc_1, i_gen_offset_cnd : std_logic_vector(31 downto 0);
     signal i_gen_offset : std_logic_vector(31 downto 0);
+    
+    signal i_base_addr : std_logic_vector(31 downto 0);
+    signal i_sel_base_addr_src : std_logic;
 begin
     mux_offset_gen : entity work.mux_4_1(rtl)
                      generic map(WIDTH_BITS => 32)
@@ -69,9 +72,6 @@ begin
                      port map(immediate_in => i_gen_offset_cnd_unex,
                               extended_out => i_gen_offset_cnd);
 
-    -- Destination address generator
-    pc_dest_addr <= std_logic_vector(signed(pc_value) + signed(i_gen_offset));
-
     -- Offset immediate generator
     i_gen_offset_unc_0_unex <= imm_field_data(19) &
                           imm_field_data(7 downto 0) &
@@ -88,7 +88,10 @@ begin
                              "0";
                              
     -- Address calculation
-    pc_dest_addr <= std_logic_vector(signed(pc_value) + signed(i_gen_offset));
+    pc_dest_addr <= std_logic_vector(signed(base_addr) + signed(i_gen_offset));
+    
+    -- Base address source selection
+    i_sel_base_addr_src <= prog_flow_cntrl(1) and not prog_flow_cntrl(0);
 end rtl;
 
 

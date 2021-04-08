@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="482317fs"></ZoomStartTime>
-      <ZoomEndTime time="551543fs"></ZoomEndTime>
-      <Cursor1Time time="510fs"></Cursor1Time>
+      <ZoomStartTime time="166666fs"></ZoomStartTime>
+      <ZoomEndTime time="1166667fs"></ZoomEndTime>
+      <Cursor1Time time="539547fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="89"></ValueColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="56" />
+   <WVObjectSize size="65" />
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/instr_addr_bus" type="array">
       <obj_property name="ElementShortName">instr_addr_bus[31:0]</obj_property>
       <obj_property name="ObjectShortName">instr_addr_bus[31:0]</obj_property>
@@ -242,5 +242,41 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/reg_mw/q" type="array">
       <obj_property name="ElementShortName">q[37:0]</obj_property>
       <obj_property name="ObjectShortName">q[37:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/alu/alu_op" type="array">
+      <obj_property name="ElementShortName">alu_op[3:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/alu/op_1" type="array">
+      <obj_property name="ElementShortName">op_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">op_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/alu/op_2" type="array">
+      <obj_property name="ElementShortName">op_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">op_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/alu/res" type="array">
+      <obj_property name="ElementShortName">res[31:0]</obj_property>
+      <obj_property name="ObjectShortName">res[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_branch_base_addr" type="array">
+      <obj_property name="ElementShortName">i_branch_base_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_branch_base_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_branch_base_addr_sel" type="array">
+      <obj_property name="ElementShortName">i_branch_base_addr_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">i_branch_base_addr_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/agu/base_addr" type="array">
+      <obj_property name="ElementShortName">base_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">base_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/agu/pc_dest_addr" type="array">
+      <obj_property name="ElementShortName">pc_dest_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_dest_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/agu/i_gen_offset" type="array">
+      <obj_property name="ElementShortName">i_gen_offset[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_gen_offset[31:0]</obj_property>
    </wvobject>
 </wave_config>

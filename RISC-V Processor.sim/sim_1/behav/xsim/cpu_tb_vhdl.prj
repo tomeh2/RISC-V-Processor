@@ -18,6 +18,7 @@ vhdl2008 xil_defaultlib  \
 
 vhdl xil_defaultlib  \
 "../../../../RISC-V Processor.srcs/sources_1/new/stage_decode.vhd" \
+"../../../../RISC-V Processor.srcs/sources_1/new/mux_8_1.vhd" \
 "../../../../RISC-V Processor.srcs/sources_1/new/stage_execute.vhd" \
 "../../../../RISC-V Processor.srcs/sources_1/new/stage_memory.vhd" \
 "../../../../RISC-V Processor.srcs/sources_1/new/pipeline.vhd" \

@@ -89,7 +89,15 @@ begin
             alu_op <= "0000";
             imm_field_data <= instr_bus(31 downto 12);
             
+            reg_wr_en <= '1';
             prog_flow_cntrl <= "01";
+        elsif (instr_bus(6 downto 0) = "1100111") then
+            alu_op <= "0000";
+            imm_field_data <= "00000000" & instr_bus(31 downto 20);
+            
+            reg_rd_1_used <= '1';
+            reg_wr_en <= '1';
+            prog_flow_cntrl <= "10";
         else 
             alu_op <= "0000";
         end if;
