@@ -1,14 +1,14 @@
-
-*** Running vivado
-    with args -log io_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source io_wrapper.tcl
-
-
-
-****** Vivado v2020.2 (64-bit)
-  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
-  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Apr  8 19:41:25 2021
+# Process ID: 2748
+# Current directory: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1
+# Command line: vivado.exe -log io_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source io_wrapper.tcl
+# Log file: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1/io_wrapper.vds
+# Journal file: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
 source io_wrapper.tcl -notrace
 Command: synth_design -top io_wrapper -part xc7a100tcsg324-1
 Starting synth_design
