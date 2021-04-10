@@ -73,7 +73,7 @@ begin
                    alu_op => alu_op,
                    res => alu_res_bus);
                    
-    agu : entity work.address_generation_unit(rtl)
+    agu : entity work.branch_unit(rtl)
           port map(base_addr => i_branch_base_addr,
                    imm_field_data => imm_field_data,
                    pc_dest_addr => pc_dest_addr,

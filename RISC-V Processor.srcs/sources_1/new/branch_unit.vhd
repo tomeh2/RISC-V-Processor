@@ -23,7 +23,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity address_generation_unit is
+entity branch_unit is
     port(
         -- Data
         base_addr : in std_logic_vector(31 downto 0);
@@ -33,9 +33,9 @@ entity address_generation_unit is
         -- Control
         prog_flow_cntrl : in std_logic_vector(1 downto 0)
     );
-end address_generation_unit;
+end branch_unit;
 
-architecture rtl of address_generation_unit is
+architecture rtl of branch_unit is
     signal i_gen_offset_unc_0_unex : std_logic_vector(20 downto 0);
     signal i_gen_offset_unc_1_unex : std_logic_vector(11 downto 0);
     signal i_gen_offset_cnd_unex : std_logic_vector(12 downto 0);

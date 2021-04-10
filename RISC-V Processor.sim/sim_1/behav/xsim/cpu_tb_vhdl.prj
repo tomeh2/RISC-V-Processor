@@ -1,11 +1,13 @@
 # compile vhdl design source files
+vhdl2008 xil_defaultlib  \
+"../../../../RISC-V Processor.srcs/sources_1/new/alu.vhd" \
+
 vhdl xil_defaultlib  \
 "../../../../RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd" \
 "../../../../RISC-V Processor.srcs/sources_1/new/sign_extender.vhd" \
-"../../../../RISC-V Processor.srcs/sources_1/new/address_generation_unit.vhd" \
+"../../../../RISC-V Processor.srcs/sources_1/new/branch_unit.vhd" \
 
 vhdl2008 xil_defaultlib  \
-"../../../../RISC-V Processor.srcs/sources_1/new/alu.vhd" \
 "../../../../RISC-V Processor.srcs/sources_1/new/forwarding_unit.vhd" \
 
 vhdl xil_defaultlib  \
