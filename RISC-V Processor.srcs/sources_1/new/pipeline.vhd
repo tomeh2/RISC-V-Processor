@@ -51,6 +51,7 @@ architecture rtl of pipeline is
     signal dec_reg_addr_1, dec_reg_addr_2 : std_logic_vector(4 downto 0);         -- Read register addresses for forwarding puropses
     signal dec_reg_1_used, dec_reg_2_used : std_logic;
     signal dec_alu_op_out : std_logic_vector(3 downto 0);
+    signal dec_branch_condition_out : std_logic_vector(2 downto 0);
     signal dec_prog_flow_cntrl_out : std_logic_vector(1 downto 0);                
     signal dec_reg_wr_en_out : std_logic;
     signal dec_sel_immediate_out : std_logic;
@@ -63,6 +64,7 @@ architecture rtl of pipeline is
     signal exe_alu_res_out : std_logic_vector(31 downto 0);
     signal exe_pc_val_in : std_logic_vector(31 downto 0);
     signal exe_alu_op_in : std_logic_vector(3 downto 0);
+    signal exe_branch_condition_in : std_logic_vector(2 downto 0);
     signal exe_prog_flow_cntrl_in : std_logic_vector(1 downto 0);
     signal exe_reg_addr_1, exe_reg_addr_2 : std_logic_vector(4 downto 0);
     signal exe_reg_1_used, exe_reg_2_used : std_logic;
@@ -121,6 +123,7 @@ begin
                             reg_data_2 => dec_reg_data_2_out,
                             imm_field_data => dec_imm_field_out,
                             alu_op => dec_alu_op_out,
+                            branch_condition => dec_branch_condition_out,
                             prog_flow_cntrl => dec_prog_flow_cntrl_out,
                             sel_immediate => dec_sel_immediate_out,
                             reg_rd_addr_1_out => dec_reg_addr_1,
@@ -144,6 +147,7 @@ begin
                              pc_dest_addr => sp_pc_dest_addr,
                              alu_res_bus => exe_alu_res_out,
                              alu_op => exe_alu_op_in,
+                             branch_condition => exe_branch_condition_in,
                              prog_flow_cntrl => exe_prog_flow_cntrl_in,
                              sel_immediate => exe_sel_immediate_in,
                              branch_taken_cntrl => sp_branch_taken_cntrl,
@@ -173,7 +177,7 @@ begin
                       en => '1');
     
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 141)
+             generic map(WIDTH_BITS => 144)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
@@ -185,10 +189,11 @@ begin
                       d(99 downto 98) => dec_prog_flow_cntrl_out,
                       d(104 downto 100) => dec_reg_wr_addr_out,
                       d(136 downto 105) => pt_pc_val_fet,
-                      d(137) => dec_reg_wr_en_out,
-                      d(138) => dec_sel_immediate_out,
-                      d(139) => dec_reg_1_used,
-                      d(140) => dec_reg_2_used,
+                      d(139 downto 137) => dec_branch_condition_out,
+                      d(140) => dec_reg_wr_en_out,
+                      d(141) => dec_sel_immediate_out,
+                      d(142) => dec_reg_1_used,
+                      d(143) => dec_reg_2_used,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
@@ -200,10 +205,11 @@ begin
                       q(99 downto 98) => exe_prog_flow_cntrl_in,
                       q(104 downto 100) => pt_reg_wr_addr_exe,
                       q(136 downto 105) => exe_pc_val_in,
-                      q(137) => pt_reg_wr_en_exe,
-                      q(138) => exe_sel_immediate_in,
-                      q(139) => exe_reg_1_used,
-                      q(140) => exe_reg_2_used,
+                      q(139 downto 137) => exe_branch_condition_in,
+                      q(140) => pt_reg_wr_en_exe,
+                      q(141) => exe_sel_immediate_in,
+                      q(142) => exe_reg_1_used,
+                      q(143) => exe_reg_2_used,
                       -- Register control
                       clk => clk,
                       reset => pc_reset_de,

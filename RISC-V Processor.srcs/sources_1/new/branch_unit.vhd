@@ -31,7 +31,13 @@ entity branch_unit is
         
         pc_dest_addr : out std_logic_vector(31 downto 0);
         -- Control
-        prog_flow_cntrl : in std_logic_vector(1 downto 0)
+        sel_condition_cntrl : in std_logic_vector(2 downto 0);
+        prog_flow_cntrl : in std_logic_vector(1 downto 0);
+        branch_taken_cntrl : out std_logic;
+        branch_unconditional : out std_logic;
+        
+        -- ALU Comparison Result
+        alu_comp_res : in std_logic
     );
 end branch_unit;
 
@@ -43,7 +49,9 @@ architecture rtl of branch_unit is
     signal i_gen_offset : std_logic_vector(31 downto 0);
     
     signal i_base_addr : std_logic_vector(31 downto 0);
-    signal i_sel_base_addr_src : std_logic;
+
+    
+    signal i_branch_unc, i_branch_cnd, i_branch_inv, i_branch_en : std_logic;
 begin
     mux_offset_gen : entity work.mux_4_1(rtl)
                      generic map(WIDTH_BITS => 32)
@@ -53,7 +61,7 @@ begin
                               in_3 => i_gen_offset_cnd,
                               output => i_gen_offset,
                               sel => prog_flow_cntrl);
-                              
+
     sign_ext_unc_0 : entity work.sign_extender(rtl)
                      generic map(EXTENDED_SIZE_BITS => 32,
                                  IMMEDIATE_SIZE_BITS => 21)
@@ -88,10 +96,19 @@ begin
                              "0";
                              
     -- Address calculation
-    pc_dest_addr <= std_logic_vector(signed(base_addr) + signed(i_gen_offset));
+    pc_dest_addr <= std_logic_vector(signed(base_addr) + signed(i_gen_offset)) and x"FFFFFFFE";
     
-    -- Base address source selection
-    i_sel_base_addr_src <= prog_flow_cntrl(1) and not prog_flow_cntrl(0);
+    -- Control signals for branching
+    i_branch_unc <= prog_flow_cntrl(0) xor prog_flow_cntrl(1);
+    i_branch_inv <= ((not sel_condition_cntrl(1)) and sel_condition_cntrl(0)) or 
+                    (sel_condition_cntrl(2) and sel_condition_cntrl(0));
+    i_branch_cnd <= (i_branch_inv xor alu_comp_res) and (prog_flow_cntrl(1) and prog_flow_cntrl(0));
+    i_branch_en <= i_branch_unc or i_branch_cnd;
+    
+    branch_unconditional <= i_branch_unc;
+    branch_taken_cntrl <= i_branch_en;
+    
+    -- Condition control signal assignment
 end rtl;
 
 

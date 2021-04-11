@@ -76,9 +76,14 @@ begin
             res <= std_logic_vector(signed(op_1) - signed(op_2));
         elsif (alu_op = "1101") then                                    -- SRA (Shift Right Arithmetic)
             res <= op_1(31) & op_1((OPERAND_WIDTH_BITS - 1) downto 1);
+        elsif (alu_op = "1110") then
+            if (op_1 = op_2) then
+                res <= X"00000001";
+            else
+                res <= X"00000000";
+            end if;
         else 
             res <= (others => '0');
         end if;
     end process;
-
 end rtl;

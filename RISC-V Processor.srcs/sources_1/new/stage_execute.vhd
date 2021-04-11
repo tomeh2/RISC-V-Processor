@@ -44,6 +44,7 @@ entity stage_execute is
         -- Input / Output control signals
         alu_op : in std_logic_vector(3 downto 0);
         prog_flow_cntrl : in std_logic_vector(1 downto 0);             -- Branching control signal
+        branch_condition : in std_logic_vector(2 downto 0);
         branch_taken_cntrl : out std_logic;                            -- Tells the pipeline whether the branch has been taken or not
         em_forward_1, em_forward_2 : in std_logic;                     -- Forwards from pipeline register E/M
         mw_forward_1, mw_forward_2 : in std_logic;                     -- Forwards from pipeline register M/W
@@ -54,6 +55,7 @@ end stage_execute;
 architecture arch of stage_execute is
     signal i_sign_ext_out : std_logic_vector(31 downto 0);
     signal i_alu_op_1, i_alu_op_2 : std_logic_vector(31 downto 0);  -- ALU operand input values
+    signal i_alu_res : std_logic_vector(31 downto 0);
     
     -- Control signals multiplexers
     signal i_sel_mux_1 : std_logic_vector(1 downto 0);
@@ -63,20 +65,23 @@ architecture arch of stage_execute is
     signal i_branch_base_addr : std_logic_vector(31 downto 0);
     signal i_branch_base_addr_sel : std_logic_vector(1 downto 0);
     
-    signal i_branch_unc, i_branch_cnd : std_logic;
-    signal i_branch_cnd_int : std_logic;
-    signal i_branch_en : std_logic;
+    signal i_branch_en, i_branch_unc : std_logic;
+    signal i_alu_comp_res : std_logic;
 begin
     alu : entity work.alu(rtl)
           port map(op_1 => i_alu_op_1,
                    op_2 => i_alu_op_2,
                    alu_op => alu_op,
-                   res => alu_res_bus);
+                   res => i_alu_res);
                    
-    agu : entity work.branch_unit(rtl)
+    bu : entity work.branch_unit(rtl)
           port map(base_addr => i_branch_base_addr,
                    imm_field_data => imm_field_data,
                    pc_dest_addr => pc_dest_addr,
+                   alu_comp_res => i_alu_comp_res,
+                   sel_condition_cntrl => branch_condition,
+                   branch_unconditional => i_branch_unc,
+                   branch_taken_cntrl => i_branch_en,
                    prog_flow_cntrl => prog_flow_cntrl);
                    
     sign_extender : entity work.sign_extender(rtl)
@@ -116,16 +121,14 @@ begin
                                  output => i_branch_base_addr,
                                  sel => i_branch_base_addr_sel);
                             
+    alu_res_bus <= i_alu_res;
+                            
     -- Control signal generation for multiplexers
-    i_sel_mux_1 <= (((not em_forward_1) and mw_forward_1) or i_branch_en) & (em_forward_1 or i_branch_en);
-    i_sel_mux_2 <= i_branch_en & (mw_forward_2 or sel_immediate) & ((em_forward_2 and not mw_forward_2) or sel_immediate);
+    i_sel_mux_1 <= (((not em_forward_1) and mw_forward_1) or i_branch_unc) & (em_forward_1 or i_branch_unc);
+    i_sel_mux_2 <= i_branch_unc & (mw_forward_2 or sel_immediate) & ((em_forward_2 and not mw_forward_2) or sel_immediate);
     
-    -- Control signals for branching
-    i_branch_unc <= prog_flow_cntrl(0) xor prog_flow_cntrl(1);
-    i_branch_cnd <= prog_flow_cntrl(0) and prog_flow_cntrl(1);
+    i_alu_comp_res <= i_alu_res(0);
     
-    i_branch_cnd_int <= i_branch_cnd and '0';       -- TEMPORARY '0' UNTIL CONDITIONAL BRANCHES GET IMPLEMENTED
-    i_branch_en <= i_branch_cnd_int or i_branch_unc;
     branch_taken_cntrl <= i_branch_en;
     
     -- Branch address calculation base address data source selection signal

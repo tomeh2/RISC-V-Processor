@@ -42,6 +42,7 @@ entity instruction_decoder is
         
         alu_op : out std_logic_vector(3 downto 0);                                          -- Decoded ALU operation
         prog_flow_cntrl : out std_logic_vector(1 downto 0);                                 -- Determines whether to branch and what type of branch it is (00 - NO BRANCH | 01 - UNCOND_1 | 10 - UNCOND_2 | 11 - COND)
+        branch_condition : out std_logic_vector(2 downto 0);                                -- Determines the branching condition
         reg_rd_addr_1, reg_rd_addr_2, reg_wr_addr : out std_logic_vector(4 downto 0);       -- Decoded register selection addresses
         reg_rd_1_used, reg_rd_2_used : out std_logic;                                       -- Specifies whether 
         reg_wr_en : out std_logic;                                                          -- Register write enable control signal
@@ -61,6 +62,7 @@ begin
         reg_rd_1_used <= '0';
         reg_rd_2_used <= '0';
         prog_flow_cntrl <= "00";
+        branch_condition <= "000";
         
         -- Register addresses are always decoded, but not used unless needed to simplify decoding
         reg_rd_addr_1 <= instr_bus(19 downto 15);
@@ -89,17 +91,32 @@ begin
             alu_op <= "0000";
             imm_field_data <= instr_bus(31 downto 12);
             
+            branch_condition <= "010";
             reg_wr_en <= '1';
             prog_flow_cntrl <= "01";
         elsif (instr_bus(6 downto 0) = "1100111") then
             alu_op <= "0000";
             imm_field_data <= "00000000" & instr_bus(31 downto 20);
             
+            branch_condition <= "010";
             reg_rd_1_used <= '1';
             reg_wr_en <= '1';
             prog_flow_cntrl <= "10";
-        else 
-            alu_op <= "0000";
+        elsif (instr_bus(6 downto 0) = "1100011") then
+            if (instr_bus(14 downto 13) = "00") then
+                alu_op <= "1110";
+            elsif (instr_bus(14 downto 13) = "10") then
+                alu_op <= "0010";
+            elsif (instr_bus(14 downto 13) = "11") then
+                alu_op <= "0011";
+            end if;
+            imm_field_data <= "00000000" & instr_bus(31 downto 25) & instr_bus(11 downto 7);
+            
+            branch_condition <= instr_bus(14 downto 12);
+            
+            reg_rd_1_used <= '1';
+            reg_rd_2_used <= '1';
+            prog_flow_cntrl <= "11";
         end if;
     end process;
 
