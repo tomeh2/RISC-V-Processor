@@ -73,28 +73,30 @@ begin
         imm_field_data <= (others => '0');
         
         -- ALU Operation decoding
-        if (instr_bus(6 downto 0) = "0110011") then
+        if (instr_bus(6 downto 0) = "0110011") then                 -- Reg-Reg ALU Operations
             alu_op <= instr_bus(30) & instr_bus(14 downto 12);
             
             reg_rd_1_used <= '1';
             reg_rd_2_used <= '1';
             reg_wr_en <= '1';
-        elsif (instr_bus(6 downto 0) = "0010011") then
+        elsif (instr_bus(6 downto 0) = "0010011") then              -- Reg-Imm ALU Operations
             alu_op <= '0' & instr_bus(14 downto 12);
-            imm_field_data <= "00000000" & instr_bus(31 downto 20);
+            imm_field_data <= "00000000" & instr_bus(31 downto 20); 
             
             reg_rd_1_used <= '1';
             reg_rd_2_used <= '0';
             reg_wr_en <= '1';
             sel_immediate <= '1';
-        elsif (instr_bus(6 downto 0) = "1101111") then
+        elsif (instr_bus(6 downto 0) = "0110111") then              -- LUI Instruction
+            
+        elsif (instr_bus(6 downto 0) = "1101111") then              -- JAL Instrunction
             alu_op <= "0000";
             imm_field_data <= instr_bus(31 downto 12);
             
             branch_condition <= "010";
             reg_wr_en <= '1';
             prog_flow_cntrl <= "01";
-        elsif (instr_bus(6 downto 0) = "1100111") then
+        elsif (instr_bus(6 downto 0) = "1100111") then              -- JALR Instruction
             alu_op <= "0000";
             imm_field_data <= "00000000" & instr_bus(31 downto 20);
             
@@ -102,7 +104,7 @@ begin
             reg_rd_1_used <= '1';
             reg_wr_en <= '1';
             prog_flow_cntrl <= "10";
-        elsif (instr_bus(6 downto 0) = "1100011") then
+        elsif (instr_bus(6 downto 0) = "1100011") then              -- Conditional Branch Instructions
             if (instr_bus(14 downto 13) = "00") then
                 alu_op <= "1110";
             elsif (instr_bus(14 downto 13) = "10") then

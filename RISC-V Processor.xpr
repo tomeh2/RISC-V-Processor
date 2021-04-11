@@ -46,7 +46,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="nexys-a7-100t"/>
-    <Option Name="WTXSimLaunchSim" Val="322"/>
+    <Option Name="WTXSimLaunchSim" Val="328"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -373,6 +373,11 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/cpu_tb_alu.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="cpu_tb"/>
@@ -399,6 +404,7 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_behav.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/address_generation_unit_tb_behav.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_branch_unit.wcfg"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_alu.wcfg"/>
         <Option Name="Incremental" Val="0"/>
         <Option Name="NLNetlistMode" Val="funcsim"/>
       </Config>
