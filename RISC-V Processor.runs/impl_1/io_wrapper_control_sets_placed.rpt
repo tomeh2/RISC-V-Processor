@@ -1,0 +1,111 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Tue Apr 13 22:33:51 2021
+| Host         : DESKTOP-JMFHVJF running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file io_wrapper_control_sets_placed.rpt
+| Design       : io_wrapper
+| Device       : xc7a100t
+---------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    33 |
+|    Minimum number of control sets                        |    33 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    12 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    33 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    33 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             107 |           50 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             193 |           60 |
+| Yes          | No                    | No                     |             992 |          357 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------+------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+|     Clock Signal     |               Enable Signal              |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------+------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[26]_58 |                                                |                9 |             32 |         3.56 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[10]_56 |                                                |               10 |             32 |         3.20 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[18]_49 |                                                |                7 |             32 |         4.57 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[14]_57 |                                                |               11 |             32 |         2.91 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[15]_60 |                                                |                9 |             32 |         3.56 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[2]_47  |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[8]_43  |                                                |               19 |             32 |         1.68 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[30]_37 |                                                |               19 |             32 |         1.68 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[5]_45  |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[17]_46 |                                                |                9 |             32 |         3.56 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[21]_33 |                                                |               11 |             32 |         2.91 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[7]_51  |                                                |               18 |             32 |         1.78 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[4]_40  |                                                |                7 |             32 |         4.57 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[11]_59 |                                                |                7 |             32 |         4.57 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[27]_61 |                                                |                7 |             32 |         4.57 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[24]_41 |                                                |                9 |             32 |         3.56 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[1]_44  |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[28]_31 |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[31]_38 |                                                |               21 |             32 |         1.52 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[16]_42 |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[6]_48  |                                                |               18 |             32 |         1.78 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[23]_35 |                                                |               20 |             32 |         1.60 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[22]_34 |                                                |               18 |             32 |         1.78 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[25]_55 |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[3]_50  |                                                |               10 |             32 |         3.20 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[9]_53  |                                                |               22 |             32 |         1.45 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[12]_39 |                                                |                8 |             32 |         4.00 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[19]_52 |                                                |                9 |             32 |         3.56 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[20]_32 |                                                |               10 |             32 |         3.20 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[13]_54 |                                                |               11 |             32 |         2.91 |
+| ~CLK100MHZ_IBUF_BUFG | cpu/core/pipeline/reg_mw/reg_file[29]_36 |                                                |               10 |             32 |         3.20 |
+|  CLK100MHZ_IBUF_BUFG |                                          |                                                |               50 |            107 |         2.14 |
+|  CLK100MHZ_IBUF_BUFG |                                          | cpu/core/pipeline/reg_de/sp_branch_taken_cntrl |               60 |            193 |         3.22 |
++----------------------+------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
+
+

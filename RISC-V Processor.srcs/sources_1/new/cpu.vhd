@@ -35,7 +35,7 @@ entity cpu is
     port(
         addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
                      
-        data_bus : inout std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
+        data_bus : out std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
         
         clk_temp : in std_logic;
         
@@ -52,7 +52,7 @@ begin
         core : entity work.core(rtl)
                port map(instr_addr_bus => i_instr_addr_bus,
                         instr_bus => i_instr_bus,
-                        data_bus => "00000000000000000000000000000000",
+                        data_bus => data_bus,
                         clk => clk_temp,
                         reset => reset);
 

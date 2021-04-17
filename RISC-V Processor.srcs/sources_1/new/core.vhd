@@ -9,7 +9,7 @@ entity core is
     port(
         instr_addr_bus, data_addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
         instr_bus : in std_logic_vector(31 downto 0);                          
-        data_bus : inout std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
+        data_bus : out std_logic_vector(31 downto 0);                           -- Data bus for reading/writing memory or I/O devices
     
         clk, reset : in std_logic
         );

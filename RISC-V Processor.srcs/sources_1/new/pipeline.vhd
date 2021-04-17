@@ -33,7 +33,7 @@ entity pipeline is
     port(
         instr_addr_bus, data_addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
         instr_bus : in std_logic_vector(31 downto 0);                          
-        data_bus : inout std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
+        data_bus : out std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
     
         clk, reset : in std_logic
     );
@@ -92,6 +92,9 @@ architecture rtl of pipeline is
     signal pc_reset_fd, pc_reset_de, pc_reset_em, pc_reset_mw : std_logic;
     
 begin
+    -- TEMP
+    data_bus <= wrb_data_bus_out;
+
     -- ================ PIPELINE CONTROL ENTITIES ================
     forwarding_unit : entity work.forwarding_unit(rtl)
                       port map(de_reg_src_addr_1 => exe_reg_addr_1,

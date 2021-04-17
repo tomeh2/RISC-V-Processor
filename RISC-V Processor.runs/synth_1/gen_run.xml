@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1617903682">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1618345949">
   <File Type="PA-TCL" Name="io_wrapper.tcl"/>
   <File Type="REPORTS-TCL" Name="io_wrapper_reports.tcl"/>
   <File Type="RDS-RDS" Name="io_wrapper.vds"/>
+  <File Type="RDS-UTIL" Name="io_wrapper_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="io_wrapper_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="io_wrapper.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
@@ -18,7 +20,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/address_generation_unit.vhd">
+    <File Path="$PSRCDIR/sources_1/new/branch_unit.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -67,6 +69,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/mux_8_1.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/stage_execute.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -109,6 +117,20 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/mux_8_1_nv.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/address_generation_unit.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/mux_2_1.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -118,6 +140,13 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/rom.mem">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/bus_controller.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>

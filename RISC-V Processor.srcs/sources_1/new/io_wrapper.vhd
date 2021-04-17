@@ -33,16 +33,20 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity io_wrapper is
     port(
-        CLK100MHZ : std_logic
+        LED : out std_logic_vector(15 downto 0);
+    
+        CLK100MHZ : in std_logic
     );
 end io_wrapper;
 
 architecture wrapper of io_wrapper is
-
+    signal i_temp : std_logic_vector(31 downto 0);
 begin
     cpu : entity work.cpu(rtl)
-          port map(data_bus => x"00000000",
+          port map(data_bus => i_temp,
                    clk_temp => CLK100MHZ,
                    reset => '0');
+
+    LED <= i_temp(15 downto 0);
 
 end wrapper;
