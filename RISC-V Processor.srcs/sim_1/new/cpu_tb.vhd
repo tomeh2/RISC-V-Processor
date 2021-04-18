@@ -44,6 +44,7 @@ begin
           port map(addr_bus => addr_bus,
                    data_bus => data_bus,
                    clk_temp => clk,
+                   ack_bus => '0',
                    reset => reset);
                    
     reset <= '1', '0' after T * 2;

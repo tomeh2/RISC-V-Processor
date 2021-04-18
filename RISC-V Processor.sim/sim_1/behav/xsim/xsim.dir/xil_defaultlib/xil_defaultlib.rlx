@@ -2,17 +2,18 @@
 2020.2
 Nov 18 2020
 09:47:47
-E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/cpu_tb.vhd,1617306351,vhdl,,,,cpu_tb,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/cpu_tb.vhd,1618776486,vhdl,,,,cpu_tb,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd,1618079415,vhdl2008,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd,,,alu,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/branch_unit.vhd,1618171504,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd,,,branch_unit,,,,,,,,
-E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/core.vhd,1618343399,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/cpu.vhd,,,core,,,,,,,,
-E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/cpu.vhd,1618343546,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/cpu_tb.vhd,,,cpu,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/bus_controller.vhd,1618682925,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/cpu.vhd,,,bus_controller,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/core.vhd,1618776980,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/cpu.vhd,,,core,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/cpu.vhd,1618777014,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sim_1/new/cpu_tb.vhd,,,cpu,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/forwarding_unit.vhd,1616707430,vhdl2008,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,,,forwarding_unit,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/instruction_decoder.vhd,1618173546,vhdl2008,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd,,,instruction_decoder,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_2_1.vhd,1616446293,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_memory.vhd,,,mux_2_1,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd,1616450582,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/branch_unit.vhd;E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd,,,mux_4_1,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_8_1.vhd,1617904445,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd,,,mux_8_1,,,,,,,,
-E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,1618773573,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/core.vhd,,,pipeline,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,1618776968,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/core.vhd,,,pipeline,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register.vhd,1616105611,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd;E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_fetch.vhd,,,register_var,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register_file.vhd,1616701153,vhdl2008,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd,,,register_file,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/rom_memory.vhd,1618172982,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/cpu.vhd,,,rom_memory,,,,,,,,
@@ -20,4 +21,4 @@ E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/sign_ext
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd,1618773585,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,,,stage_decode,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_execute.vhd,1618169482,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,,,stage_execute,,,,,,,,
 E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_fetch.vhd,1617819979,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,,,stage_fetch,,,,,,,,
-E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_memory.vhd,1618773239,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,,,stage_memory,,,,,,,,
+E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_memory.vhd,1618777025,vhdl,E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/pipeline.vhd,,,stage_memory,,,,,,,,

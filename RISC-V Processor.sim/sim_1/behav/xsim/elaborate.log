@@ -11,6 +11,7 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
+Compiling architecture rtl of entity xil_defaultlib.bus_controller [bus_controller_default]
 Compiling architecture rtl of entity xil_defaultlib.forwarding_unit [forwarding_unit_default]
 Compiling architecture arch of entity xil_defaultlib.register_var [register_var_default]
 Compiling architecture arch of entity xil_defaultlib.stage_fetch [stage_fetch_default]

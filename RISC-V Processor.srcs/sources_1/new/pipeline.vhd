@@ -31,10 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity pipeline is
     port(
-        instr_addr_bus, data_addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
+        instr_addr_bus, addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
         instr_bus : in std_logic_vector(31 downto 0);                          
-        data_bus : out std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
+        data_bus_out : out std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
+        data_bus_in : in std_logic_vector(31 downto 0);
+        size_bus : out std_logic_vector(1 downto 0);
+        r_w : out std_logic;
+        execute : out std_logic;
     
+        bus_cntrl_ready : in std_logic;
         clk, reset : in std_logic
     );
 end pipeline;
@@ -77,6 +82,7 @@ architecture rtl of pipeline is
     signal mem_data_bus_out : std_logic_vector(31 downto 0);
     signal mem_addr_bus_in : std_logic_vector(31 downto 0);
     signal mem_sel_output_in : std_logic;
+    signal mem_busy : std_logic;
     
     -- WRITEBACK STAGE SIGNALS
     signal wrb_data_bus_out : std_logic_vector(31 downto 0);
@@ -96,6 +102,7 @@ architecture rtl of pipeline is
     
     -- PIPELINE REGISTER CONTROL SIGNALS
     signal pc_reset_fd, pc_reset_de, pc_reset_em, pc_reset_mw : std_logic;
+    signal pc_enable : std_logic;
     
 begin
     -- ================ PIPELINE CONTROL ENTITIES ================
@@ -168,7 +175,17 @@ begin
                    port map(mem_data_in => mem_data_bus_in,
                             mem_data_out => mem_data_bus_out,
                             mem_addr_in => mem_addr_bus_in,
-                            sel_output => mem_sel_output_in);
+                            sel_output => mem_sel_output_in,
+                            
+                            -- Memory controller bussing
+                            data_bus_out => data_bus_out,
+                            data_bus_in => data_bus_in,
+                            addr_bus => addr_bus,
+                            size => size_bus,
+                            r_w => r_w,
+                            execute => execute,
+                            bus_cntrl_ready => bus_cntrl_ready,
+                            mem_busy => mem_busy);
     
     -- ============ PIPELINE REGISTER INITIALIZATIONS ============
     reg_fd : entity work.register_var(arch)
@@ -184,7 +201,7 @@ begin
                       -- Register control
                       clk => clk,
                       reset => pc_reset_fd,
-                      en => '1');
+                      en => pc_enable);
     
     reg_de : entity work.register_var(arch)
              generic map(WIDTH_BITS => 177)
@@ -227,7 +244,7 @@ begin
                       -- Register control
                       clk => clk,
                       reset => pc_reset_de,
-                      en => '1');
+                      en => pc_enable);
                       
     reg_em : entity work.register_var(arch)
              generic map(WIDTH_BITS => 71)
@@ -248,7 +265,7 @@ begin
                       -- Register control
                       clk => clk,
                       reset => pc_reset_em,
-                      en => '1');
+                      en => pc_enable);
                       
     reg_mw : entity work.register_var(arch)
              generic map(WIDTH_BITS => 38)
@@ -265,7 +282,7 @@ begin
                       -- Register control
                       clk => clk,
                       reset => pc_reset_mw,
-                      en => '1');
+                      en => pc_enable);
                       
     -- Signal assignments
     dec_data_bus_in <= wrb_data_bus_out;
@@ -275,6 +292,8 @@ begin
     pc_reset_de <= reset or sp_branch_taken_cntrl; 
     pc_reset_em <= reset; 
     pc_reset_mw <= reset; 
+    
+    pc_enable <= not mem_busy;
 end rtl;
 
 

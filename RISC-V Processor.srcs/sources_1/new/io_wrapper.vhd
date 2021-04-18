@@ -45,7 +45,8 @@ begin
     cpu : entity work.cpu(rtl)
           port map(data_bus => i_temp,
                    clk_temp => CLK100MHZ,
-                   reset => '0');
+                   reset => '0',
+                   ack_bus => '0');
 
     LED <= i_temp(15 downto 0);
 
