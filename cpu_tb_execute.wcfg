@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="cpu_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="cpu_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1164372fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="250"></NameColumnWidth>
+      <ValueColumnWidth column_width="65"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="28" />
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/reg_data_bus_1" type="array">
+      <obj_property name="ElementShortName">reg_data_bus_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_data_bus_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/reg_data_bus_2" type="array">
+      <obj_property name="ElementShortName">reg_data_bus_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_data_bus_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/forward_data_em" type="array">
+      <obj_property name="ElementShortName">forward_data_em[31:0]</obj_property>
+      <obj_property name="ObjectShortName">forward_data_em[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/forward_data_mw" type="array">
+      <obj_property name="ElementShortName">forward_data_mw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">forward_data_mw[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/imm_field_data" type="array">
+      <obj_property name="ElementShortName">imm_field_data[19:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_field_data[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/alu_res_bus" type="array">
+      <obj_property name="ElementShortName">alu_res_bus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_res_bus[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/pc_curr_addr" type="array">
+      <obj_property name="ElementShortName">pc_curr_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_curr_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/pc_dest_addr" type="array">
+      <obj_property name="ElementShortName">pc_dest_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_dest_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/alu_op" type="array">
+      <obj_property name="ElementShortName">alu_op[3:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/prog_flow_cntrl" type="array">
+      <obj_property name="ElementShortName">prog_flow_cntrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">prog_flow_cntrl[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/branch_condition" type="array">
+      <obj_property name="ElementShortName">branch_condition[2:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_condition[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/branch_taken_cntrl" type="logic">
+      <obj_property name="ElementShortName">branch_taken_cntrl</obj_property>
+      <obj_property name="ObjectShortName">branch_taken_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/em_forward_1" type="logic">
+      <obj_property name="ElementShortName">em_forward_1</obj_property>
+      <obj_property name="ObjectShortName">em_forward_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/em_forward_2" type="logic">
+      <obj_property name="ElementShortName">em_forward_2</obj_property>
+      <obj_property name="ObjectShortName">em_forward_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/mw_forward_1" type="logic">
+      <obj_property name="ElementShortName">mw_forward_1</obj_property>
+      <obj_property name="ObjectShortName">mw_forward_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/mw_forward_2" type="logic">
+      <obj_property name="ElementShortName">mw_forward_2</obj_property>
+      <obj_property name="ObjectShortName">mw_forward_2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/sel_immediate" type="logic">
+      <obj_property name="ElementShortName">sel_immediate</obj_property>
+      <obj_property name="ObjectShortName">sel_immediate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_sign_ext_out" type="array">
+      <obj_property name="ElementShortName">i_sign_ext_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_sign_ext_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_alu_op_1" type="array">
+      <obj_property name="ElementShortName">i_alu_op_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_alu_op_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_alu_op_2" type="array">
+      <obj_property name="ElementShortName">i_alu_op_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_alu_op_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_alu_res" type="array">
+      <obj_property name="ElementShortName">i_alu_res[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_alu_res[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_sel_mux_1" type="array">
+      <obj_property name="ElementShortName">i_sel_mux_1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">i_sel_mux_1[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_sel_mux_2" type="array">
+      <obj_property name="ElementShortName">i_sel_mux_2[2:0]</obj_property>
+      <obj_property name="ObjectShortName">i_sel_mux_2[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_branch_base_addr" type="array">
+      <obj_property name="ElementShortName">i_branch_base_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_branch_base_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_branch_base_addr_sel" type="array">
+      <obj_property name="ElementShortName">i_branch_base_addr_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">i_branch_base_addr_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_branch_en" type="logic">
+      <obj_property name="ElementShortName">i_branch_en</obj_property>
+      <obj_property name="ObjectShortName">i_branch_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_branch_unc" type="logic">
+      <obj_property name="ElementShortName">i_branch_unc</obj_property>
+      <obj_property name="ObjectShortName">i_branch_unc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_execute/i_alu_comp_res" type="logic">
+      <obj_property name="ElementShortName">i_alu_comp_res</obj_property>
+      <obj_property name="ObjectShortName">i_alu_comp_res</obj_property>
+   </wvobject>
+</wave_config>

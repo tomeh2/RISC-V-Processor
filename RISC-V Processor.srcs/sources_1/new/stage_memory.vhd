@@ -34,16 +34,41 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity stage_memory is
     port(
         -- Input / Output data signals
-        data_bus_in : in std_logic_vector(31 downto 0);
-        data_bus_out : out std_logic_vector(31 downto 0)
+        mem_data_in, mem_addr_in : in std_logic_vector(31 downto 0);
+        mem_data_out : out std_logic_vector(31 downto 0);
         
         -- Input / Output control signals
+        sel_output : in std_logic                                       -- Selects the output between ALU and memory 
     );
 end stage_memory;
 
 architecture arch of stage_memory is
 
 begin
-    data_bus_out <= data_bus_in;            -- Temporary until memory controller gets implemented (allows ALU operations on registers for testing)
+    mux_sel_out : entity work.mux_2_1(rtl)
+                  generic map(WIDTH_BITS => 32)
+                  port map(in_0 => mem_addr_in,
+                           in_1 => X"00000000",
+                           output => mem_data_out,
+                           sel => sel_output);
+
+    --mem_data_out <= mem_addr_in;            -- Temporary until memory controller gets implemented (allows ALU operations on registers for testing)
 
 end arch;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

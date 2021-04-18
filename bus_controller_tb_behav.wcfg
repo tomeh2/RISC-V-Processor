@@ -12,13 +12,13 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="1000001fs"></ZoomEndTime>
-      <Cursor1Time time="523204fs"></Cursor1Time>
+      <Cursor1Time time="523fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="224"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="16" />
    <wvobject fp_name="/bus_controller_tb/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -78,5 +78,9 @@
    <wvobject fp_name="/bus_controller_tb/reset" type="logic">
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/bus_controller_tb/uut/r_w_bus" type="logic">
+      <obj_property name="ElementShortName">r_w_bus</obj_property>
+      <obj_property name="ObjectShortName">r_w_bus</obj_property>
    </wvobject>
 </wave_config>

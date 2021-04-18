@@ -36,6 +36,7 @@ entity stage_decode is
         -- Input / Output data signals
         data_bus, instr_bus : in std_logic_vector(31 downto 0);         -- Data bus takes in data that is supposed to be written into the register file
         reg_data_1, reg_data_2 : out std_logic_vector(31 downto 0);
+        reg_mem_data : out std_logic_vector(31 downto 0);
         imm_field_data : out std_logic_vector(19 downto 0);             -- Immediate values that are meant to be processed in the alu
         
         -- Input / Output control signals
@@ -47,6 +48,7 @@ entity stage_decode is
         reg_wr_en_dec_out : out std_logic;                              -- Register write enable signal decoder output
         reg_rd_addr_1_out, reg_rd_addr_2_out : out std_logic_vector(4 downto 0);
         reg_rd_1_used, reg_rd_2_used : out std_logic;
+        sel_mem_output : out std_logic;
         
         reg_wr_addr_in : in std_logic_vector(4 downto 0);               -- Register write address signal used to address the register file (comes from the writeback stage)
         reg_wr_en : in std_logic;                                       -- Register write enable signal used to control the register file (comes from the writeback stage)
@@ -57,6 +59,7 @@ end stage_decode;
 
 architecture arch of stage_decode is
     signal i_reg_rd_addr_1, i_reg_rd_addr_2 : std_logic_vector(4 downto 0);
+    signal i_reg_data_2 : std_logic_vector(31 downto 0);
 begin
     instruction_decoder : entity work.instruction_decoder
                           port map(instr_bus => instr_bus,
@@ -82,6 +85,11 @@ begin
                              wr_data => data_bus,      
                              reset => reset,                
                              clk => clk);
+                             
+    --reg_data_2 <= i_reg_data_2;
+    --reg_mem_data <= i_reg_data_2;
+    
+    sel_mem_output <= '0';
                              
     reg_rd_addr_1_out <= i_reg_rd_addr_1;
     reg_rd_addr_2_out <= i_reg_rd_addr_2;

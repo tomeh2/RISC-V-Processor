@@ -44,6 +44,7 @@ entity bus_controller is
         -- BUS SIDE SIGNALS
         data_bus : inout std_logic_vector(31 downto 0);
         addr_bus : out std_logic_vector(31 downto 0);
+        r_w_bus : out std_logic;
         address_strobe : out std_logic;
         size : out std_logic_vector(1 downto 0);
         ack : in std_logic;
@@ -133,6 +134,7 @@ begin
             ready <= '0';
             data_bus <= (others => 'Z');
             addr_bus <= (others => '0');
+            r_w_bus <= '0';
             address_strobe <= '0';
             size <= "00";
             
@@ -142,6 +144,7 @@ begin
             ready <= '0';
             data_bus <= (others => 'Z');
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '0';
             size <= size_in;
         elsif (i_state = SR_SET_STROBE) then
@@ -149,6 +152,7 @@ begin
             ready <= '0';
             data_bus <= (others => 'Z');
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
         elsif (i_state = SR_WAIT_ACK) then
@@ -156,12 +160,14 @@ begin
             ready <= '0';
             data_bus <= (others => 'Z');
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
         elsif (i_state = SR_FINALIZE) then
             data_out <= data_bus;
             ready <= '1';
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
         
@@ -171,6 +177,7 @@ begin
             ready <= '0';
             data_bus <= data_in;
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '0';
             size <= size_in;
         elsif (i_state = SW_SET_STROBE) then
@@ -178,6 +185,7 @@ begin
             ready <= '0';
             data_bus <= data_in;
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
         elsif (i_state = SW_WAIT_ACK) then
@@ -185,6 +193,7 @@ begin
             ready <= '0';
             data_bus <= data_in;
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
         elsif (i_state = SW_FINALIZE) then
@@ -192,8 +201,17 @@ begin
             ready <= '1';
             data_bus <= data_in;
             addr_bus <= addr_in;
+            r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
+        else
+            data_out <= (others => '0');
+            ready <= '0';
+            data_bus <= (others => 'Z');
+            addr_bus <= (others => '0');
+            r_w_bus <= '0';
+            address_strobe <= '0';
+            size <= "00";
         end if;
     end process;
 end rtl;
