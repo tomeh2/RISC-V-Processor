@@ -11,14 +11,26 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1164372fs"></ZoomEndTime>
-      <Cursor1Time time="192771fs"></Cursor1Time>
+      <ZoomEndTime time="2000001fs"></ZoomEndTime>
+      <Cursor1Time time="192fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="65"></ValueColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
+   <WVObjectSize size="15" />
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/addr_bus" type="array">
+      <obj_property name="ElementShortName">addr_bus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_bus[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/data_bus_out" type="array">
+      <obj_property name="ElementShortName">data_bus_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bus_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/data_bus_in" type="array">
+      <obj_property name="ElementShortName">data_bus_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bus_in[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_data_in" type="array">
       <obj_property name="ElementShortName">mem_data_in[31:0]</obj_property>
       <obj_property name="ObjectShortName">mem_data_in[31:0]</obj_property>
@@ -30,5 +42,41 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_data_out" type="array">
       <obj_property name="ElementShortName">mem_data_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">mem_data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/bus_cntrl_ready" type="logic">
+      <obj_property name="ElementShortName">bus_cntrl_ready</obj_property>
+      <obj_property name="ObjectShortName">bus_cntrl_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/size" type="array">
+      <obj_property name="ElementShortName">size[1:0]</obj_property>
+      <obj_property name="ObjectShortName">size[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/r_w" type="logic">
+      <obj_property name="ElementShortName">r_w</obj_property>
+      <obj_property name="ObjectShortName">r_w</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/execute" type="logic">
+      <obj_property name="ElementShortName">execute</obj_property>
+      <obj_property name="ObjectShortName">execute</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_busy" type="logic">
+      <obj_property name="ElementShortName">mem_busy</obj_property>
+      <obj_property name="ObjectShortName">mem_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/sel_output" type="logic">
+      <obj_property name="ElementShortName">sel_output</obj_property>
+      <obj_property name="ObjectShortName">sel_output</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_wr_cntrl" type="logic">
+      <obj_property name="ElementShortName">mem_wr_cntrl</obj_property>
+      <obj_property name="ObjectShortName">mem_wr_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_rd_cntrl" type="logic">
+      <obj_property name="ElementShortName">mem_rd_cntrl</obj_property>
+      <obj_property name="ObjectShortName">mem_rd_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/i_bus_cntrl_data_out" type="array">
+      <obj_property name="ElementShortName">i_bus_cntrl_data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i_bus_cntrl_data_out[31:0]</obj_property>
    </wvobject>
 </wave_config>

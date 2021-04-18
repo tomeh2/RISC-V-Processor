@@ -46,7 +46,8 @@ entity stage_memory is
         r_w : out std_logic;
         execute : out std_logic;
         mem_busy : out std_logic;
-        sel_output : in std_logic                                       -- Selects the output between ALU and memory 
+        sel_output : in std_logic;                                          -- Selects the output between ALU and memory 
+        mem_wr_cntrl, mem_rd_cntrl : in std_logic
     );
 end stage_memory;
 
@@ -56,12 +57,14 @@ begin
     mux_sel_out : entity work.mux_2_1(rtl)
                   generic map(WIDTH_BITS => 32)
                   port map(in_0 => mem_addr_in,
-                           in_1 => X"00000000",
+                           in_1 => data_bus_in,
                            output => mem_data_out,
                            sel => sel_output);
                            
-    mem_busy <= '0';
-    execute <= '0';
+    mem_busy <= (not bus_cntrl_ready) and (mem_wr_cntrl or mem_rd_cntrl);
+    execute <= mem_wr_cntrl or mem_rd_cntrl;
+    size <= "00";
+    r_w <= mem_rd_cntrl;
 end arch;
 
 

@@ -11,29 +11,49 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1000001fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomEndTime time="2000001fs"></ZoomEndTime>
+      <Cursor1Time time="1000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="65"></ValueColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="59" />
+   <WVObjectSize size="78" />
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/instr_addr_bus" type="array">
       <obj_property name="ElementShortName">instr_addr_bus[31:0]</obj_property>
       <obj_property name="ObjectShortName">instr_addr_bus[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/data_addr_bus" type="array">
-      <obj_property name="ElementShortName">data_addr_bus[31:0]</obj_property>
-      <obj_property name="ObjectShortName">data_addr_bus[31:0]</obj_property>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/addr_bus" type="array">
+      <obj_property name="ElementShortName">addr_bus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_bus[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/instr_bus" type="array">
       <obj_property name="ElementShortName">instr_bus[31:0]</obj_property>
       <obj_property name="ObjectShortName">instr_bus[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/data_bus" type="array">
-      <obj_property name="ElementShortName">data_bus[31:0]</obj_property>
-      <obj_property name="ObjectShortName">data_bus[31:0]</obj_property>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/data_bus_out" type="array">
+      <obj_property name="ElementShortName">data_bus_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bus_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/data_bus_in" type="array">
+      <obj_property name="ElementShortName">data_bus_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_bus_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/size_bus" type="array">
+      <obj_property name="ElementShortName">size_bus[1:0]</obj_property>
+      <obj_property name="ObjectShortName">size_bus[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/r_w" type="logic">
+      <obj_property name="ElementShortName">r_w</obj_property>
+      <obj_property name="ObjectShortName">r_w</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/execute" type="logic">
+      <obj_property name="ElementShortName">execute</obj_property>
+      <obj_property name="ObjectShortName">execute</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/bus_cntrl_ready" type="logic">
+      <obj_property name="ElementShortName">bus_cntrl_ready</obj_property>
+      <obj_property name="ObjectShortName">bus_cntrl_ready</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -107,6 +127,18 @@
       <obj_property name="ElementShortName">dec_prog_flow_cntrl_out[1:0]</obj_property>
       <obj_property name="ObjectShortName">dec_prog_flow_cntrl_out[1:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_mem_data_size_out" type="array">
+      <obj_property name="ElementShortName">dec_mem_data_size_out[1:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_mem_data_size_out[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_mem_wr_cntrl" type="logic">
+      <obj_property name="ElementShortName">dec_mem_wr_cntrl</obj_property>
+      <obj_property name="ObjectShortName">dec_mem_wr_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_mem_rd_cntrl" type="logic">
+      <obj_property name="ElementShortName">dec_mem_rd_cntrl</obj_property>
+      <obj_property name="ObjectShortName">dec_mem_rd_cntrl</obj_property>
+   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_reg_wr_en_out" type="logic">
       <obj_property name="ElementShortName">dec_reg_wr_en_out</obj_property>
       <obj_property name="ObjectShortName">dec_reg_wr_en_out</obj_property>
@@ -114,6 +146,10 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_sel_immediate_out" type="logic">
       <obj_property name="ElementShortName">dec_sel_immediate_out</obj_property>
       <obj_property name="ObjectShortName">dec_sel_immediate_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_sel_mem_output_out" type="logic">
+      <obj_property name="ElementShortName">dec_sel_mem_output_out</obj_property>
+      <obj_property name="ObjectShortName">dec_sel_mem_output_out</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_em_forward_1" type="logic">
       <obj_property name="ElementShortName">dec_em_forward_1</obj_property>
@@ -195,6 +231,26 @@
       <obj_property name="ElementShortName">mem_addr_bus_in[31:0]</obj_property>
       <obj_property name="ObjectShortName">mem_addr_bus_in[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_sel_output_in" type="logic">
+      <obj_property name="ElementShortName">mem_sel_output_in</obj_property>
+      <obj_property name="ObjectShortName">mem_sel_output_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_busy" type="logic">
+      <obj_property name="ElementShortName">mem_busy</obj_property>
+      <obj_property name="ObjectShortName">mem_busy</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_data_size_in" type="array">
+      <obj_property name="ElementShortName">mem_data_size_in[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data_size_in[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_wr_cntrl" type="logic">
+      <obj_property name="ElementShortName">mem_wr_cntrl</obj_property>
+      <obj_property name="ObjectShortName">mem_wr_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_rd_cntrl" type="logic">
+      <obj_property name="ElementShortName">mem_rd_cntrl</obj_property>
+      <obj_property name="ObjectShortName">mem_rd_cntrl</obj_property>
+   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/wrb_data_bus_out" type="array">
       <obj_property name="ElementShortName">wrb_data_bus_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">wrb_data_bus_out[31:0]</obj_property>
@@ -215,6 +271,10 @@
       <obj_property name="ElementShortName">pt_reg_wr_en_mem</obj_property>
       <obj_property name="ObjectShortName">pt_reg_wr_en_mem</obj_property>
    </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_mem_sel_output" type="logic">
+      <obj_property name="ElementShortName">pt_mem_sel_output</obj_property>
+      <obj_property name="ObjectShortName">pt_mem_sel_output</obj_property>
+   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_reg_wr_addr_exe" type="array">
       <obj_property name="ElementShortName">pt_reg_wr_addr_exe[4:0]</obj_property>
       <obj_property name="ObjectShortName">pt_reg_wr_addr_exe[4:0]</obj_property>
@@ -230,6 +290,18 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_reg_mem_data_exe" type="array">
       <obj_property name="ElementShortName">pt_reg_mem_data_exe[31:0]</obj_property>
       <obj_property name="ObjectShortName">pt_reg_mem_data_exe[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_mem_data_size_exe" type="array">
+      <obj_property name="ElementShortName">pt_mem_data_size_exe[1:0]</obj_property>
+      <obj_property name="ObjectShortName">pt_mem_data_size_exe[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_mem_wr_cntrl" type="logic">
+      <obj_property name="ElementShortName">pt_mem_wr_cntrl</obj_property>
+      <obj_property name="ObjectShortName">pt_mem_wr_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_mem_rd_cntrl" type="logic">
+      <obj_property name="ElementShortName">pt_mem_rd_cntrl</obj_property>
+      <obj_property name="ObjectShortName">pt_mem_rd_cntrl</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/sp_branch_taken_cntrl" type="logic">
       <obj_property name="ElementShortName">sp_branch_taken_cntrl</obj_property>
@@ -254,5 +326,9 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/pc_reset_mw" type="logic">
       <obj_property name="ElementShortName">pc_reset_mw</obj_property>
       <obj_property name="ObjectShortName">pc_reset_mw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/pc_enable" type="logic">
+      <obj_property name="ElementShortName">pc_enable</obj_property>
+      <obj_property name="ObjectShortName">pc_enable</obj_property>
    </wvobject>
 </wave_config>

@@ -49,6 +49,9 @@ entity stage_decode is
         reg_rd_addr_1_out, reg_rd_addr_2_out : out std_logic_vector(4 downto 0);
         reg_rd_1_used, reg_rd_2_used : out std_logic;
         sel_mem_output : out std_logic;
+        mem_data_size : out std_logic_vector(1 downto 0);
+        mem_wr_cntrl : out std_logic;
+        mem_rd_cntrl : out std_logic;
         
         reg_wr_addr_in : in std_logic_vector(4 downto 0);               -- Register write address signal used to address the register file (comes from the writeback stage)
         reg_wr_en : in std_logic;                                       -- Register write enable signal used to control the register file (comes from the writeback stage)
@@ -73,21 +76,24 @@ begin
                                    reg_wr_addr => reg_wr_addr_out,
                                    reg_rd_1_used => reg_rd_1_used,
                                    reg_rd_2_used => reg_rd_2_used,
-                                   reg_wr_en => reg_wr_en_dec_out);
+                                   reg_wr_en => reg_wr_en_dec_out,
+                                   mem_data_size => mem_data_size,
+                                   mem_wr_cntrl => mem_wr_cntrl,
+                                   mem_rd_cntrl => mem_rd_cntrl);
                                    
     register_file : entity work.register_file
                     port map(rd_addr_1 => i_reg_rd_addr_1,
                              rd_addr_2 => i_reg_rd_addr_2,
                              rd_data_1 => reg_data_1,
-                             rd_data_2 => reg_data_2,
+                             rd_data_2 => i_reg_data_2,
                              wr_en => reg_wr_en,
                              wr_addr => reg_wr_addr_in,
                              wr_data => data_bus,      
                              reset => reset,                
                              clk => clk);
                              
-    --reg_data_2 <= i_reg_data_2;
-    --reg_mem_data <= i_reg_data_2;
+    reg_data_2 <= i_reg_data_2;
+    reg_mem_data <= i_reg_data_2;
     
     sel_mem_output <= '0';
                              
