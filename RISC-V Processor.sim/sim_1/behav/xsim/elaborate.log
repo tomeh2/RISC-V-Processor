@@ -36,5 +36,6 @@ Compiling architecture rtl of entity xil_defaultlib.pipeline [pipeline_default]
 Compiling architecture rtl of entity xil_defaultlib.core [core_default]
 Compiling architecture memory of entity xil_defaultlib.rom_memory [rom_memory_default]
 Compiling architecture rtl of entity xil_defaultlib.cpu [cpu_default]
+Compiling architecture rtl of entity xil_defaultlib.led_interface [led_interface_default]
 Compiling architecture behavioral of entity xil_defaultlib.cpu_tb
 Built simulation snapshot cpu_tb_behav

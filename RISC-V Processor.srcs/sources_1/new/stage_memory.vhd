@@ -50,6 +50,9 @@ entity stage_memory is
     );
 end stage_memory;
 
+-- IMPORTANT!!!!
+-- MEMORY STAGE ALSO NEEDS FORWARDING FOR THE REGISTER DATA BUS!!!!!!
+
 architecture arch of stage_memory is
     signal i_bus_cntrl_data_out : std_logic_vector(31 downto 0);
 begin
@@ -60,6 +63,11 @@ begin
                            output => mem_data_out,
                            sel => mem_rd_cntrl);
                            
+    -- Data signals to bus controller
+    data_bus_out <= mem_data_in;
+    addr_bus <= mem_addr_in;
+    
+    -- Control signals to bus controller                       
     mem_busy <= (not bus_cntrl_ready) and (mem_wr_cntrl or mem_rd_cntrl);
     execute <= mem_wr_cntrl or mem_rd_cntrl;
     size <= "00";

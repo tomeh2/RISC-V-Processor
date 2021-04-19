@@ -12,13 +12,13 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="2000001fs"></ZoomEndTime>
-      <Cursor1Time time="192fs"></Cursor1Time>
+      <Cursor1Time time="454078fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="61"></ValueColumnWidth>
+      <NameColumnWidth column_width="249"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/addr_bus" type="array">
       <obj_property name="ElementShortName">addr_bus[31:0]</obj_property>
       <obj_property name="ObjectShortName">addr_bus[31:0]</obj_property>
@@ -63,10 +63,6 @@
       <obj_property name="ElementShortName">mem_busy</obj_property>
       <obj_property name="ObjectShortName">mem_busy</obj_property>
    </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/sel_output" type="logic">
-      <obj_property name="ElementShortName">sel_output</obj_property>
-      <obj_property name="ObjectShortName">sel_output</obj_property>
-   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_wr_cntrl" type="logic">
       <obj_property name="ElementShortName">mem_wr_cntrl</obj_property>
       <obj_property name="ObjectShortName">mem_wr_cntrl</obj_property>
@@ -74,9 +70,5 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/mem_rd_cntrl" type="logic">
       <obj_property name="ElementShortName">mem_rd_cntrl</obj_property>
       <obj_property name="ObjectShortName">mem_rd_cntrl</obj_property>
-   </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_memory/i_bus_cntrl_data_out" type="array">
-      <obj_property name="ElementShortName">i_bus_cntrl_data_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_bus_cntrl_data_out[31:0]</obj_property>
    </wvobject>
 </wave_config>
