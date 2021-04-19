@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -90,6 +91,7 @@ read_vhdl -library xil_defaultlib {
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/sign_extender.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/branch_unit.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/bus_controller.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/register.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_fetch.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/stage_decode.vhd}

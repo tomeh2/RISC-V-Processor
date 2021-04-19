@@ -63,7 +63,6 @@ architecture rtl of pipeline is
     signal dec_mem_wr_cntrl, dec_mem_rd_cntrl : std_logic; 
     signal dec_reg_wr_en_out : std_logic;
     signal dec_sel_immediate_out : std_logic;
-    signal dec_sel_mem_output_out : std_logic;
     signal dec_em_forward_1, dec_em_forward_2 : std_logic;
     signal dec_mw_forward_1, dec_mw_forward_2 : std_logic;
     
@@ -83,7 +82,6 @@ architecture rtl of pipeline is
     signal mem_data_bus_in : std_logic_vector(31 downto 0);
     signal mem_data_bus_out : std_logic_vector(31 downto 0);
     signal mem_addr_bus_in : std_logic_vector(31 downto 0);
-    signal mem_sel_output_in : std_logic;
     signal mem_busy : std_logic;
     signal mem_data_size_in : std_logic_vector(1 downto 0);
     signal mem_wr_cntrl, mem_rd_cntrl : std_logic;
@@ -95,7 +93,6 @@ architecture rtl of pipeline is
     
     -- PASSTHROUGH SIGNALS (Signal lines which are connected between pipeline registers)
     signal pt_reg_wr_en_exe, pt_reg_wr_en_mem : std_logic;                              -- Register file write enable signal
-    signal pt_mem_sel_output : std_logic;
     signal pt_reg_wr_addr_exe, pt_reg_wr_addr_mem : std_logic_vector(4 downto 0);       -- Destination register address
     signal pt_pc_val_fet : std_logic_vector(31 downto 0);
     signal pt_reg_mem_data_exe : std_logic_vector(31 downto 0);
@@ -132,6 +129,7 @@ begin
                            pc_out => fet_pc_out,
                            pc_overwrite_value => sp_pc_dest_addr,
                            pc_overwrite_en => sp_branch_taken_cntrl,
+                           pc_count_en => pc_enable,
                            clk => clk,
                            reset => reset);
     
@@ -154,7 +152,6 @@ begin
                             reg_rd_1_used => dec_reg_1_used,
                             reg_rd_2_used => dec_reg_2_used,
                             reg_wr_en => wrb_reg_we,
-                            sel_mem_output => dec_sel_mem_output_out,
                             mem_wr_cntrl => dec_mem_wr_cntrl,
                             mem_rd_cntrl => dec_mem_rd_cntrl,
                             mem_data_size => dec_mem_data_size_out,
@@ -184,7 +181,6 @@ begin
                    port map(mem_data_in => mem_data_bus_in,
                             mem_data_out => mem_data_bus_out,
                             mem_addr_in => mem_addr_bus_in,
-                            sel_output => mem_sel_output_in,
                             mem_wr_cntrl => mem_wr_cntrl,
                             mem_rd_cntrl => mem_rd_cntrl,
                             
@@ -215,7 +211,7 @@ begin
                       en => pc_enable);
     
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 181)
+             generic map(WIDTH_BITS => 180)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
@@ -234,9 +230,8 @@ begin
                       d(175) => dec_sel_immediate_out,
                       d(176) => dec_reg_1_used,
                       d(177) => dec_reg_2_used,
-                      d(178) => dec_sel_mem_output_out,
-                      d(179) => dec_mem_wr_cntrl,
-                      d(180) => dec_mem_rd_cntrl,
+                      d(178) => dec_mem_wr_cntrl,
+                      d(179) => dec_mem_rd_cntrl,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
@@ -255,16 +250,15 @@ begin
                       q(175) => exe_sel_immediate_in,
                       q(176) => exe_reg_1_used,
                       q(177) => exe_reg_2_used,
-                      q(178) => pt_mem_sel_output,
-                      q(179) => pt_mem_wr_cntrl,
-                      q(180) => pt_mem_rd_cntrl,
+                      q(178) => pt_mem_wr_cntrl,
+                      q(179) => pt_mem_rd_cntrl,
                       -- Register control
                       clk => clk,
                       reset => pc_reset_de,
                       en => pc_enable);
                       
     reg_em : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 75)
+             generic map(WIDTH_BITS => 74)
                       -- Datapath data signals in
              port map(d(31 downto 0) => exe_alu_res_out,
                       -- Datapath control signals in
@@ -272,9 +266,8 @@ begin
                       d(68 downto 37) => pt_reg_mem_data_exe,
                       d(70 downto 69) => pt_mem_data_size_exe,
                       d(71) => pt_reg_wr_en_exe,
-                      d(72) => pt_mem_sel_output,
-                      d(73) => pt_mem_wr_cntrl,
-                      d(74) => pt_mem_rd_cntrl,
+                      d(72) => pt_mem_wr_cntrl,
+                      d(73) => pt_mem_rd_cntrl,
                       -- Datapath data signals out
                       q(31 downto 0) => mem_addr_bus_in,
                       -- Datapath control signals out
@@ -282,9 +275,8 @@ begin
                       q(68 downto 37) => mem_data_bus_in,
                       q(70 downto 69) => mem_data_size_in,
                       q(71) => pt_reg_wr_en_mem,
-                      q(72) => mem_sel_output_in,
-                      q(73) => mem_wr_cntrl,
-                      q(74) => mem_rd_cntrl,
+                      q(72) => mem_wr_cntrl,
+                      q(73) => mem_rd_cntrl,
                       -- Register control
                       clk => clk,
                       reset => pc_reset_em,

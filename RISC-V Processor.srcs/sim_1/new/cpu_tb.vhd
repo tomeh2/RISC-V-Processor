@@ -38,13 +38,13 @@ architecture Behavioral of cpu_tb is
     constant T : time := 20ns;
 
     signal addr_bus, data_bus : std_logic_vector(31 downto 0);
-    signal clk, reset : std_logic;
+    signal clk, reset, ack_bus : std_logic;
 begin
     uut : entity work.cpu(rtl)
           port map(addr_bus => addr_bus,
                    data_bus => data_bus,
                    clk_temp => clk,
-                   ack_bus => '0',
+                   ack_bus => ack_bus,
                    reset => reset);
                    
     reset <= '1', '0' after T * 2;
@@ -61,7 +61,13 @@ begin
     begin
         addr_bus <= (others => '0');
         data_bus <= (others => '0');
+        ack_bus <= '0';
         wait for T * 50;
+        data_bus <= X"FFFFFFFF";
+        ack_bus <= '1';
+        wait for T * 10;
+        data_bus <= (others => 'Z');
+        ack_bus <= '0';
     end process;
 
 end Behavioral;

@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1164372fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomEndTime time="2000001fs"></ZoomEndTime>
+      <Cursor1Time time="117907fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="65"></ValueColumnWidth>
+      <ValueColumnWidth column_width="61"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
+   <WVObjectSize size="9" />
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_fetch/instr_addr_bus" type="array">
       <obj_property name="ElementShortName">instr_addr_bus[31:0]</obj_property>
       <obj_property name="ObjectShortName">instr_addr_bus[31:0]</obj_property>
@@ -34,6 +34,10 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_fetch/pc_overwrite_en" type="logic">
       <obj_property name="ElementShortName">pc_overwrite_en</obj_property>
       <obj_property name="ObjectShortName">pc_overwrite_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_fetch/pc_count_en" type="logic">
+      <obj_property name="ElementShortName">pc_count_en</obj_property>
+      <obj_property name="ObjectShortName">pc_count_en</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/stage_fetch/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>

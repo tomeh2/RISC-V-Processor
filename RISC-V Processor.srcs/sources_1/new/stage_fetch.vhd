@@ -38,6 +38,7 @@ entity stage_fetch is
     
         pc_overwrite_value : in std_logic_vector(31 downto 0);
         pc_overwrite_en : in std_logic;
+        pc_count_en : in std_logic;
     
         clk, reset : in std_logic
     );
@@ -56,14 +57,29 @@ begin
                                reset => reset,
                                en => '1');
     
-    -- Next instruction address logic                   
-    with pc_overwrite_en select i_pc_in <=
-        std_logic_vector(unsigned(i_pc_out) + 4) when '0',  -- Normal program flow
-        pc_overwrite_value when '1',                        -- Branch taken
-        x"00000000" when others;
+    -- Next instruction address logic  
+    process(all)
+    begin
+        if (pc_count_en = '1') then
+            if (pc_overwrite_en = '1') then
+                i_pc_in <= pc_overwrite_value;
+            else
+                i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 4);
+            end if;
+        else
+            i_pc_in <= i_pc_out;
+        end if;
+    end process;
     
     -- Instrcution address bus setting
     instr_addr_bus <= i_pc_out;
     pc_out <= i_pc_out;
 
 end arch;
+
+
+
+
+
+
+

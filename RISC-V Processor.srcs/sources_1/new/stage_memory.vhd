@@ -46,7 +46,6 @@ entity stage_memory is
         r_w : out std_logic;
         execute : out std_logic;
         mem_busy : out std_logic;
-        sel_output : in std_logic;                                          -- Selects the output between ALU and memory 
         mem_wr_cntrl, mem_rd_cntrl : in std_logic
     );
 end stage_memory;
@@ -59,7 +58,7 @@ begin
                   port map(in_0 => mem_addr_in,
                            in_1 => data_bus_in,
                            output => mem_data_out,
-                           sel => sel_output);
+                           sel => mem_rd_cntrl);
                            
     mem_busy <= (not bus_cntrl_ready) and (mem_wr_cntrl or mem_rd_cntrl);
     execute <= mem_wr_cntrl or mem_rd_cntrl;
