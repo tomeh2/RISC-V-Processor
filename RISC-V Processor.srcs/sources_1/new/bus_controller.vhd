@@ -168,7 +168,7 @@ begin
             ready <= '1';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
-            address_strobe <= '1';
+            address_strobe <= '0';
             size <= size_in;
         
         -- Writing to the bus
@@ -202,7 +202,7 @@ begin
             data_bus <= data_in;
             addr_bus <= addr_in;
             r_w_bus <= r_w;
-            address_strobe <= '1';
+            address_strobe <= '0';
             size <= size_in;
         else
             data_out <= (others => '0');

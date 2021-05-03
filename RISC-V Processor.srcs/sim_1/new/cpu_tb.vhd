@@ -47,6 +47,7 @@ begin
           port map(addr_bus => addr_bus,
                    data_bus => data_bus,
                    clk_temp => clk,
+                   CLK100MHZ => '0',
                    address_strobe => as,
                    r_w_bus => r_w_bus,
                    ack_bus => ack_bus,

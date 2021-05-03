@@ -1,3 +1,9 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_1/sim/ila_1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'ila_1'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_0/sim/ila_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'ila_0'
 INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'alu'
 INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd" into library xil_defaultlib

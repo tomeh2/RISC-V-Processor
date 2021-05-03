@@ -33,6 +33,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity stage_fetch is
     port(
+        CLK100MHZ : in std_logic;
+    
         instr_addr_bus : out std_logic_vector(31 downto 0); -- Instruction and data address busses
         pc_out : out std_logic_vector(31 downto 0);         -- Contents of the program counter
     
@@ -45,9 +47,25 @@ entity stage_fetch is
 end stage_fetch;
 
 architecture arch of stage_fetch is
+    -- ========== DEBUGGING ==========
+    COMPONENT ila_0
+
+    PORT (
+        clk : IN STD_LOGIC;
+    
+    
+    
+        probe0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        probe1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        probe2 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+    );
+    END COMPONENT  ;
+    
     constant PC_WIDTH_BITS : integer := 32;
 
     signal i_pc_out, i_pc_in : std_logic_vector(PC_WIDTH_BITS - 1 downto 0);
+    
+    signal temp_clk : std_logic_vector(0 downto 0); 
 begin
     program_counter : entity work.register_var(arch)
                       generic map(WIDTH_BITS => PC_WIDTH_BITS)
@@ -74,6 +92,19 @@ begin
     -- Instrcution address bus setting
     instr_addr_bus <= i_pc_out;
     pc_out <= i_pc_out;
+    
+    temp_clk(0) <= clk;
+    
+    pc_debug : ila_0
+PORT MAP (
+	clk => CLK100MHZ,
+
+
+
+	probe0 => i_pc_out,
+	probe1 => i_pc_in,
+	probe2 => temp_clk
+);
 
 end arch;
 

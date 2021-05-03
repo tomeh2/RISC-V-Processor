@@ -33,6 +33,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity cpu is
     port(
+        CLK100MHZ : in std_logic;
+    
         addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)           
         data_bus : inout std_logic_vector(31 downto 0);    -- Data bus for reading/writing memory or I/O devices
         address_strobe : out std_logic;
@@ -90,6 +92,7 @@ begin
                     r_w => i_r_w,
                     execute => i_execute,
                     clk => clk_temp,
+                    CLK100MHZ => CLK100MHZ,
                     reset => reset);
 
     program_rom : entity work.rom_memory(memory)

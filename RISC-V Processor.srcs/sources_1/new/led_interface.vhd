@@ -83,7 +83,7 @@ begin
             end if;
         elsif (i_state = READ_ACTIVE) then
             if (address_strobe = '1') then
-                i_next <= READ_ACTIVE;
+                i_next <= READ_ACTIVE;                 -- TESTING (ORIG: i_next <= READ_ACTIVE)
             else
                 i_next <= INACTIVE;
             end if;
@@ -102,7 +102,7 @@ begin
         end if;
     end process;
     
-    process(reset, i_data_register_write)
+    process(all)
     begin
         if (reset = '1') then
             i_data_register <= X"00000000";

@@ -60,8 +60,30 @@ entity stage_decode is
 end stage_decode;
 
 architecture arch of stage_decode is
+    -- ========== DEBUG COMPONENTS ==========
+    COMPONENT ila_1
+    PORT (
+        clk : IN STD_LOGIC;
+    
+    
+    
+        probe0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe4 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe5 : IN STD_LOGIC_VECTOR(19 DOWNTO 0);
+        probe6 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+    );
+    END COMPONENT  ;
+    -- ========== END DEBUG COMPONENTS ==========
+
     signal i_reg_rd_addr_1, i_reg_rd_addr_2 : std_logic_vector(4 downto 0);
     signal i_reg_data_2 : std_logic_vector(31 downto 0);
+    
+    
+    
+    signal i_clk_temp : std_logic_vector(0 downto 0);
 begin
     instruction_decoder : entity work.instruction_decoder
                           port map(instr_bus => instr_bus,
@@ -96,6 +118,23 @@ begin
                              
     reg_rd_addr_1_out <= i_reg_rd_addr_1;
     reg_rd_addr_2_out <= i_reg_rd_addr_2;
+    
+    
+    i_clk_temp(0) <= clk;
+    decode_stage_probes : ila_1
+    PORT MAP (
+        clk => clk,
+    
+    
+    
+        probe0 => data_bus, 
+        probe1 => instr_bus, 
+        probe2 => i_reg_data_2, 
+        probe3 => i_reg_data_2, 
+        probe4 => i_reg_data_2, 
+        probe5 => i_reg_data_2(19 downto 0),
+        probe6 => i_clk_temp
+);
 
 end arch;
 

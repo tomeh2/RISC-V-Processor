@@ -31,6 +31,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity pipeline is
     port(
+        CLK100MHZ : in std_logic;
+    
         instr_addr_bus, addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)
         instr_bus : in std_logic_vector(31 downto 0);                          
         data_bus_out : out std_logic_vector(31 downto 0);                         -- Data bus for reading/writing memory or I/O devices
@@ -131,6 +133,7 @@ begin
                            pc_overwrite_en => sp_branch_taken_cntrl,
                            pc_count_en => pc_enable,
                            clk => clk,
+                           CLK100MHZ => CLK100MHZ,
                            reset => reset);
     
     stage_decode : entity work.stage_decode(arch)
