@@ -47,6 +47,8 @@ entity instruction_decoder is
         reg_rd_1_used, reg_rd_2_used : out std_logic;                                       -- Specifies whether 
         reg_wr_en : out std_logic;                                                          -- Register write enable control signal
         sel_immediate : out std_logic;                                                      -- Selects whether the second ALU operand is from a register or immediate
+        sel_big_immediate : out std_logic;
+        sel_op_1_pc : out std_logic;
         mem_data_size : out std_logic_vector(1 downto 0);                                   -- Determines the size of data for the bus controller
         mem_wr_cntrl, mem_rd_cntrl : out std_logic
     );
@@ -60,6 +62,7 @@ begin
         -- Sets all outputs to zero to make sure that they don't have stray (or old) values
         alu_op <= (others => '0');
         reg_wr_en <= '0';
+        sel_big_immediate <= '0';
         sel_immediate <= '0';
         reg_rd_1_used <= '0';
         reg_rd_2_used <= '0';
@@ -68,6 +71,7 @@ begin
         mem_data_size <= "00";
         mem_wr_cntrl <= '0';
         mem_rd_cntrl <= '0';
+        sel_op_1_pc <= '0';
         
         -- Register addresses are always decoded, but not used unless needed to simplify decoding
         reg_rd_addr_1 <= instr_bus(19 downto 15);
@@ -102,7 +106,18 @@ begin
             reg_wr_en <= '1';
             sel_immediate <= '1';
         elsif (instr_bus(6 downto 0) = "0110111") then              -- LUI Instruction
+            alu_op <= "0000";
+            imm_field_data <= instr_bus(31 downto 12);
             
+            sel_big_immediate <= '1';
+            reg_wr_en <= '1';
+        elsif (instr_bus(6 downto 0) = "0010111") then              -- AUIPC Instruction
+            alu_op <= "0000";
+            imm_field_data <= instr_bus(31 downto 12);
+            
+            sel_big_immediate <= '1';
+            sel_op_1_pc <= '1';
+            reg_wr_en <= '1';
         elsif (instr_bus(6 downto 0) = "1101111") then              -- JAL Instrunction
             alu_op <= "0000";
             imm_field_data <= instr_bus(31 downto 12);

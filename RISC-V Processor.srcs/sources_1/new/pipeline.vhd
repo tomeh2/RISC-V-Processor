@@ -64,7 +64,9 @@ architecture rtl of pipeline is
     signal dec_mem_data_size_out : std_logic_vector(1 downto 0);       
     signal dec_mem_wr_cntrl, dec_mem_rd_cntrl : std_logic; 
     signal dec_reg_wr_en_out : std_logic;
+    signal dec_sel_op_1_pc_out : std_logic;
     signal dec_sel_immediate_out : std_logic;
+    signal dec_sel_big_immediate_out : std_logic;
     signal dec_em_forward_1, dec_em_forward_2 : std_logic;
     signal dec_mw_forward_1, dec_mw_forward_2 : std_logic;
     
@@ -79,6 +81,8 @@ architecture rtl of pipeline is
     signal exe_reg_addr_1, exe_reg_addr_2 : std_logic_vector(4 downto 0);
     signal exe_reg_1_used, exe_reg_2_used : std_logic;
     signal exe_sel_immediate_in : std_logic;
+    signal exe_sel_op_1_pc_in : std_logic;
+    signal exe_sel_big_immediate_in : std_logic;
     
     -- MEMORY STAGE SIGNALS
     signal mem_data_bus_in : std_logic_vector(31 downto 0);
@@ -156,6 +160,7 @@ begin
                             branch_condition => dec_branch_condition_out,
                             prog_flow_cntrl => dec_prog_flow_cntrl_out,
                             sel_immediate => dec_sel_immediate_out,
+                            sel_big_immediate => dec_sel_big_immediate_out,
                             reg_rd_addr_1_out => dec_reg_addr_1,
                             reg_rd_addr_2_out => dec_reg_addr_2,
                             reg_wr_addr_in => wrb_reg_addr_out,
@@ -167,6 +172,7 @@ begin
                             mem_wr_cntrl => dec_mem_wr_cntrl,
                             mem_rd_cntrl => dec_mem_rd_cntrl,
                             mem_data_size => dec_mem_data_size_out,
+                            sel_op_1_pc => dec_sel_op_1_pc_out,
                             clk => clk,
                             reset => reset);
                             
@@ -183,6 +189,8 @@ begin
                              branch_condition => exe_branch_condition_in,
                              prog_flow_cntrl => exe_prog_flow_cntrl_in,
                              sel_immediate => exe_sel_immediate_in,
+                             sel_big_immediate => exe_sel_big_immediate_in,
+                             sel_op_1_pc => exe_sel_op_1_pc_in,
                              branch_taken_cntrl => sp_branch_taken_cntrl,
                              em_forward_1 => dec_em_forward_1,
                              em_forward_2 => dec_em_forward_2,
@@ -225,7 +233,7 @@ begin
                       en => pc_enable);
     
     reg_de : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 180)
+             generic map(WIDTH_BITS => 182)
                       -- Datapath data signals in
              port map(d(31 downto 0) => dec_reg_data_1_out,
                       d(63 downto 32) => dec_reg_data_2_out,
@@ -246,6 +254,8 @@ begin
                       d(177) => dec_reg_2_used,
                       d(178) => dec_mem_wr_cntrl,
                       d(179) => dec_mem_rd_cntrl,
+                      d(180) => dec_sel_big_immediate_out,
+                      d(181) => dec_sel_op_1_pc_out,
                       -- Datapath data signals out
                       q(31 downto 0) => exe_reg_data_bus_1_in,
                       q(63 downto 32) => exe_reg_data_bus_2_in,
@@ -266,6 +276,8 @@ begin
                       q(177) => exe_reg_2_used,
                       q(178) => pt_mem_wr_cntrl,
                       q(179) => pt_mem_rd_cntrl,
+                      q(180) => exe_sel_big_immediate_in,
+                      q(181) => exe_sel_op_1_pc_in,
                       -- Register control
                       clk => clk,
                       reset => pc_reset_de,

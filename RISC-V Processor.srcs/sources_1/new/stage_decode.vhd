@@ -42,6 +42,7 @@ entity stage_decode is
         -- Input / Output control signals
         alu_op : out std_logic_vector (3 downto 0);
         sel_immediate : out std_logic;
+        sel_big_immediate : out std_logic;
         prog_flow_cntrl : out std_logic_vector(1 downto 0); 
         branch_condition : out std_logic_vector(2 downto 0);
         reg_wr_addr_out : out std_logic_vector(4 downto 0);
@@ -51,6 +52,7 @@ entity stage_decode is
         mem_data_size : out std_logic_vector(1 downto 0);
         mem_wr_cntrl : out std_logic;
         mem_rd_cntrl : out std_logic;
+        sel_op_1_pc : out std_logic;
         
         reg_wr_addr_in : in std_logic_vector(4 downto 0);               -- Register write address signal used to address the register file (comes from the writeback stage)
         reg_wr_en : in std_logic;                                       -- Register write enable signal used to control the register file (comes from the writeback stage)
@@ -91,6 +93,7 @@ begin
                                    alu_op => alu_op,
                                    branch_condition => branch_condition,
                                    sel_immediate => sel_immediate,
+                                   sel_big_immediate => sel_big_immediate,
                                    prog_flow_cntrl => prog_flow_cntrl,
                                    reg_rd_addr_1 => i_reg_rd_addr_1,
                                    reg_rd_addr_2 => i_reg_rd_addr_2,
@@ -100,7 +103,8 @@ begin
                                    reg_wr_en => reg_wr_en_dec_out,
                                    mem_data_size => mem_data_size,
                                    mem_wr_cntrl => mem_wr_cntrl,
-                                   mem_rd_cntrl => mem_rd_cntrl);
+                                   mem_rd_cntrl => mem_rd_cntrl,
+                                   sel_op_1_pc => sel_op_1_pc);
                                    
     register_file : entity work.register_file
                     port map(rd_addr_1 => i_reg_rd_addr_1,

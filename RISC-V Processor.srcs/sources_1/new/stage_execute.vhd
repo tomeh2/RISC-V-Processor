@@ -48,12 +48,16 @@ entity stage_execute is
         branch_taken_cntrl : out std_logic;                            -- Tells the pipeline whether the branch has been taken or not
         em_forward_1, em_forward_2 : in std_logic;                     -- Forwards from pipeline register E/M
         mw_forward_1, mw_forward_2 : in std_logic;                     -- Forwards from pipeline register M/W
-        sel_immediate : in std_logic                                   -- Selects whether the input to the ALU comes from the register or immediate value
+        sel_immediate : in std_logic;                                  -- Selects whether the input to the ALU comes from the register or immediate value
+        sel_big_immediate : in std_logic;
+        sel_op_1_pc : in std_logic
     );
 end stage_execute;
 
 architecture arch of stage_execute is
     signal i_sign_ext_out : std_logic_vector(31 downto 0);
+    signal i_sign_ext_out_shifted : std_logic_vector(31 downto 0);
+    signal i_sign_ext_shift_sel_out : std_logic_vector(31 downto 0);
     signal i_alu_op_1, i_alu_op_2 : std_logic_vector(31 downto 0);  -- ALU operand input values
     signal i_alu_res : std_logic_vector(31 downto 0);
     
@@ -106,7 +110,7 @@ begin
                             in_2 => forward_data_mw,
                             in_3 => i_sign_ext_out,
                             in_4 => x"00000004",
-                            in_5 => x"00000000",
+                            in_5 => i_sign_ext_out_shifted,
                             in_6 => x"00000000",
                             in_7 => x"00000000",
                             output => i_alu_op_2,
@@ -121,11 +125,14 @@ begin
                                  output => i_branch_base_addr,
                                  sel => i_branch_base_addr_sel);
                             
+    i_sign_ext_out_shifted <= i_sign_ext_out(19 downto 0) & "000000000000";
+                            
     alu_res_bus <= i_alu_res;
                             
     -- Control signal generation for multiplexers
-    i_sel_mux_1 <= (((not em_forward_1) and mw_forward_1) or i_branch_unc) & (em_forward_1 or i_branch_unc);
-    i_sel_mux_2 <= i_branch_unc & (mw_forward_2 or sel_immediate) & ((em_forward_2 and not mw_forward_2) or sel_immediate);
+    i_sel_mux_1 <= (((not em_forward_1) and mw_forward_1) or i_branch_unc or sel_op_1_pc) & (em_forward_1 or i_branch_unc or sel_op_1_pc);
+    --i_sel_mux_2 <= i_branch_unc & (mw_forward_2 or sel_immediate) & ((em_forward_2 and not mw_forward_2) or sel_immediate);
+    i_sel_mux_2 <= (i_branch_unc or sel_big_immediate) & (mw_forward_2 or sel_immediate) & ((em_forward_2 and not mw_forward_2) or sel_immediate or sel_big_immediate);
     
     i_alu_comp_res <= i_alu_res(0);
     
