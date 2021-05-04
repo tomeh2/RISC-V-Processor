@@ -86,7 +86,16 @@ begin
             reg_wr_en <= '1';
         elsif (instr_bus(6 downto 0) = "0010011") then              -- Reg-Imm ALU Operations
             alu_op <= '0' & instr_bus(14 downto 12);
-            imm_field_data <= "00000000" & instr_bus(31 downto 20); 
+            --imm_field_data <= "00000000" & instr_bus(31 downto 20); 
+            imm_field_data <= instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31 downto 20);
             
             reg_rd_1_used <= '1';
             reg_rd_2_used <= '0';
@@ -128,7 +137,16 @@ begin
             alu_op <= "0000";
             sel_immediate <= '1';
             
-            imm_field_data <= "00000000" & instr_bus(31 downto 20);
+            --imm_field_data <= "00000000" & instr_bus(31 downto 20);
+            imm_field_data <= instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31 downto 20);
             
             mem_rd_cntrl <= '1';
             
@@ -139,7 +157,17 @@ begin
             alu_op <= "0000";
             sel_immediate <= '1';
             
-            imm_field_data <= "00000000" & instr_bus(31 downto 25) & instr_bus(11 downto 7);
+            --imm_field_data <= "00000000" & instr_bus(31 downto 25) & instr_bus(11 downto 7);
+            imm_field_data <= instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31) &
+                              instr_bus(31 downto 25) &
+                              instr_bus(11 downto 7);
             
             mem_wr_cntrl <= '1';
             

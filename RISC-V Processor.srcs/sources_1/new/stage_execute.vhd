@@ -86,8 +86,8 @@ begin
                    
     sign_extender : entity work.sign_extender(rtl)
                     generic map(EXTENDED_SIZE_BITS => 32,
-                                IMMEDIATE_SIZE_BITS => 12)
-                    port map(immediate_in => imm_field_data(11 downto 0),
+                                IMMEDIATE_SIZE_BITS => 20)
+                    port map(immediate_in => imm_field_data,
                              extended_out => i_sign_ext_out);
     
     mux_alu_op_1 : entity work.mux_4_1(rtl)
