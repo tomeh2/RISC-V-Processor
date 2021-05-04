@@ -34,7 +34,7 @@ Compiling architecture rtl of entity xil_defaultlib.mux_2_1 [\mux_2_1(width_bits
 Compiling architecture arch of entity xil_defaultlib.stage_memory [stage_memory_default]
 Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=64)\]
 Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=180)\]
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=74)\]
+Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=84)\]
 Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=38)\]
 Compiling architecture rtl of entity xil_defaultlib.pipeline [pipeline_default]
 Compiling architecture rtl of entity xil_defaultlib.core [core_default]

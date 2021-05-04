@@ -2,8 +2,8 @@
 # Webtalk v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon May  3 23:11:37 2021
-# Process ID: 14428
+# Start of session at: Tue May  4 18:37:32 2021
+# Process ID: 17416
 # Current directory: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.sim/sim_1/behav/xsim
 # Command line: wbtcv.exe -mode batch -source E:/Vivado Projects/RISC-V Processor/RISC-V Processor.sim/sim_1/behav/xsim/xsim.dir/cpu_tb_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: E:/Vivado Projects/RISC-V Processor/RISC-V Processor.sim/sim_1/behav/xsim/webtalk.log
@@ -11,4 +11,4 @@
 #-----------------------------------------------------------
 source E:/Vivado -notrace
 couldn't read file "E:/Vivado": permission denied
-INFO: [Common 17-206] Exiting Webtalk at Mon May  3 23:11:37 2021...
+INFO: [Common 17-206] Exiting Webtalk at Tue May  4 18:37:32 2021...

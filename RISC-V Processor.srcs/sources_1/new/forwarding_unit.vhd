@@ -34,6 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity forwarding_unit is
     port(
+        -- ========== ALU DATA FORWARDING ==========
         -- Input control signals
         de_reg_src_addr_1, de_reg_src_addr_2 : in std_logic_vector(4 downto 0);
         de_reg_1_used, de_reg_2_used : in std_logic;
@@ -42,14 +43,20 @@ entity forwarding_unit is
         
         -- Output control signals
         em_hazard_src_1, em_hazard_src_2 : out std_logic;       -- "_src_1" and "_src_2" specify what source register caused the hazard to trigger
-        mw_hazard_src_1, mw_hazard_src_2 : out std_logic
+        mw_hazard_src_1, mw_hazard_src_2 : out std_logic;
+        
+        -- ========== MEM DATA FORWARDING ==========
+        mem_reg_data_src : in std_logic_vector(4 downto 0);
+        mem_wr_cntrl : in std_logic;
+        
+        mem_hazard_src : out std_logic
     );
 end forwarding_unit;
 
 architecture rtl of forwarding_unit is
-
+    signal i_mem_active : std_logic;
 begin
-    process(all)
+    alu_forwarding : process(all)
     begin
         if (de_reg_src_addr_1 = em_reg_dest_addr and em_reg_dest_addr /= "00000" and de_reg_1_used = '1' and em_reg_dest_used = '1') then
             em_hazard_src_1 <= '1';
@@ -74,4 +81,12 @@ begin
         end if;
     end process;
 
+    mem_forwarding : process(all)
+    begin
+        if (mem_reg_data_src = mw_reg_dest_addr and mw_reg_dest_addr /= "00000" and mw_reg_dest_used = '1' and mem_wr_cntrl = '1') then
+            mem_hazard_src <= '1';
+        else
+            mem_hazard_src <= '0';
+        end if;
+    end process;
 end rtl;

@@ -40,6 +40,9 @@ entity stage_memory is
         mem_data_in, mem_addr_in : in std_logic_vector(31 downto 0);
         mem_data_out : out std_logic_vector(31 downto 0);
         
+        mem_data_fwd : in std_logic_vector(31 downto 0);
+        mem_data_fwd_cntrl, mem_addr_fwd_cntrl : in std_logic;
+        
         -- Input / Output control signals
         bus_cntrl_ready : in std_logic;
         size : out std_logic_vector(1 downto 0);
@@ -55,6 +58,7 @@ end stage_memory;
 
 architecture arch of stage_memory is
     signal i_bus_cntrl_data_out : std_logic_vector(31 downto 0);
+    signal i_mem_data_in : std_logic_vector(31 downto 0);
 begin
     mux_sel_out : entity work.mux_2_1(rtl)
                   generic map(WIDTH_BITS => 32)
@@ -63,8 +67,15 @@ begin
                            output => mem_data_out,
                            sel => mem_rd_cntrl);
                            
+    mux_data_fwd : entity work.mux_2_1(rtl)
+                   generic map(WIDTH_BITS => 32)
+                   port map(in_0 => mem_data_in,
+                            in_1 => mem_data_fwd,
+                            output => i_mem_data_in,
+                            sel => mem_data_fwd_cntrl);
+                           
     -- Data signals to bus controller
-    data_bus_out <= mem_data_in;
+    data_bus_out <= i_mem_data_in;
     addr_bus <= mem_addr_in;
     
     -- Control signals to bus controller                       

@@ -6,19 +6,20 @@
       <db_ref path="cpu_tb_behav.wdb" id="1">
          <top_modules>
             <top_module name="cpu_tb" />
+            <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="2000001fs"></ZoomEndTime>
-      <Cursor1Time time="1000fs"></Cursor1Time>
+      <ZoomEndTime time="3000000fs"></ZoomEndTime>
+      <Cursor1Time time="1320000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="250"></NameColumnWidth>
-      <ValueColumnWidth column_width="61"></ValueColumnWidth>
+      <NameColumnWidth column_width="249"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="78" />
+   <WVObjectSize size="77" />
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/instr_addr_bus" type="array">
       <obj_property name="ElementShortName">instr_addr_bus[31:0]</obj_property>
       <obj_property name="ObjectShortName">instr_addr_bus[31:0]</obj_property>
@@ -147,10 +148,6 @@
       <obj_property name="ElementShortName">dec_sel_immediate_out</obj_property>
       <obj_property name="ObjectShortName">dec_sel_immediate_out</obj_property>
    </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_sel_mem_output_out" type="logic">
-      <obj_property name="ElementShortName">dec_sel_mem_output_out</obj_property>
-      <obj_property name="ObjectShortName">dec_sel_mem_output_out</obj_property>
-   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/dec_em_forward_1" type="logic">
       <obj_property name="ElementShortName">dec_em_forward_1</obj_property>
       <obj_property name="ObjectShortName">dec_em_forward_1</obj_property>
@@ -231,10 +228,6 @@
       <obj_property name="ElementShortName">mem_addr_bus_in[31:0]</obj_property>
       <obj_property name="ObjectShortName">mem_addr_bus_in[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_sel_output_in" type="logic">
-      <obj_property name="ElementShortName">mem_sel_output_in</obj_property>
-      <obj_property name="ObjectShortName">mem_sel_output_in</obj_property>
-   </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_busy" type="logic">
       <obj_property name="ElementShortName">mem_busy</obj_property>
       <obj_property name="ObjectShortName">mem_busy</obj_property>
@@ -250,6 +243,14 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_rd_cntrl" type="logic">
       <obj_property name="ElementShortName">mem_rd_cntrl</obj_property>
       <obj_property name="ObjectShortName">mem_rd_cntrl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_data_fwd" type="logic">
+      <obj_property name="ElementShortName">mem_data_fwd</obj_property>
+      <obj_property name="ObjectShortName">mem_data_fwd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/core/pipeline/mem_addr_fwd" type="logic">
+      <obj_property name="ElementShortName">mem_addr_fwd</obj_property>
+      <obj_property name="ObjectShortName">mem_addr_fwd</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/wrb_data_bus_out" type="array">
       <obj_property name="ElementShortName">wrb_data_bus_out[31:0]</obj_property>
@@ -270,10 +271,6 @@
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_reg_wr_en_mem" type="logic">
       <obj_property name="ElementShortName">pt_reg_wr_en_mem</obj_property>
       <obj_property name="ObjectShortName">pt_reg_wr_en_mem</obj_property>
-   </wvobject>
-   <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_mem_sel_output" type="logic">
-      <obj_property name="ElementShortName">pt_mem_sel_output</obj_property>
-      <obj_property name="ObjectShortName">pt_mem_sel_output</obj_property>
    </wvobject>
    <wvobject fp_name="/cpu_tb/uut/core/pipeline/pt_reg_wr_addr_exe" type="array">
       <obj_property name="ElementShortName">pt_reg_wr_addr_exe[4:0]</obj_property>

@@ -84,9 +84,12 @@ architecture rtl of pipeline is
     signal mem_data_bus_in : std_logic_vector(31 downto 0);
     signal mem_data_bus_out : std_logic_vector(31 downto 0);
     signal mem_addr_bus_in : std_logic_vector(31 downto 0);
+    signal mem_reg_addr_1, mem_reg_addr_2 : std_logic_vector(4 downto 0);
     signal mem_busy : std_logic;
     signal mem_data_size_in : std_logic_vector(1 downto 0);
     signal mem_wr_cntrl, mem_rd_cntrl : std_logic;
+    signal mem_active : std_logic;
+    signal mem_data_fwd, mem_addr_fwd : std_logic;
     
     -- WRITEBACK STAGE SIGNALS
     signal wrb_data_bus_out : std_logic_vector(31 downto 0);
@@ -112,7 +115,8 @@ architecture rtl of pipeline is
 begin
     -- ================ PIPELINE CONTROL ENTITIES ================
     forwarding_unit : entity work.forwarding_unit(rtl)
-                      port map(de_reg_src_addr_1 => exe_reg_addr_1,
+                      port map(-- EXECUTE STAGE FORWARDING
+                               de_reg_src_addr_1 => exe_reg_addr_1,
                                de_reg_src_addr_2 => exe_reg_addr_2,
                                de_reg_1_used => exe_reg_1_used,
                                de_reg_2_used => exe_reg_2_used,
@@ -123,7 +127,12 @@ begin
                                em_hazard_src_1 => dec_em_forward_1,
                                em_hazard_src_2 => dec_em_forward_2,
                                mw_hazard_src_1 => dec_mw_forward_1,
-                               mw_hazard_src_2 => dec_mw_forward_2);
+                               mw_hazard_src_2 => dec_mw_forward_2,
+                               -- MEMORY STAGE FORWARDING
+                               mem_reg_data_src => mem_reg_addr_2,
+                               mem_wr_cntrl => mem_wr_cntrl,
+                               mem_hazard_src => mem_data_fwd
+                               );
 
     -- ================== STAGE INITIALIZATIONS ==================
     stage_fetch : entity work.stage_fetch(arch)
@@ -186,7 +195,9 @@ begin
                             mem_addr_in => mem_addr_bus_in,
                             mem_wr_cntrl => mem_wr_cntrl,
                             mem_rd_cntrl => mem_rd_cntrl,
-                            
+                            mem_data_fwd => wrb_data_bus_out,
+                            mem_data_fwd_cntrl => mem_data_fwd,
+                            mem_addr_fwd_cntrl => mem_addr_fwd,
                             -- Memory controller bussing
                             data_bus_out => data_bus_out,
                             data_bus_in => data_bus_in,
@@ -261,25 +272,29 @@ begin
                       en => pc_enable);
                       
     reg_em : entity work.register_var(arch)
-             generic map(WIDTH_BITS => 74)
+             generic map(WIDTH_BITS => 84)
                       -- Datapath data signals in
              port map(d(31 downto 0) => exe_alu_res_out,
                       -- Datapath control signals in
                       d(36 downto 32) => pt_reg_wr_addr_exe,
                       d(68 downto 37) => pt_reg_mem_data_exe,
                       d(70 downto 69) => pt_mem_data_size_exe,
-                      d(71) => pt_reg_wr_en_exe,
-                      d(72) => pt_mem_wr_cntrl,
-                      d(73) => pt_mem_rd_cntrl,
+                      d(75 downto 71) => exe_reg_addr_1,
+                      d(80 downto 76) => exe_reg_addr_2,
+                      d(81) => pt_reg_wr_en_exe,
+                      d(82) => pt_mem_wr_cntrl,
+                      d(83) => pt_mem_rd_cntrl,
                       -- Datapath data signals out
                       q(31 downto 0) => mem_addr_bus_in,
                       -- Datapath control signals out
                       q(36 downto 32) => pt_reg_wr_addr_mem,
                       q(68 downto 37) => mem_data_bus_in,
                       q(70 downto 69) => mem_data_size_in,
-                      q(71) => pt_reg_wr_en_mem,
-                      q(72) => mem_wr_cntrl,
-                      q(73) => mem_rd_cntrl,
+                      q(75 downto 71) => mem_reg_addr_1,
+                      q(80 downto 76) => mem_reg_addr_2,
+                      q(81) => pt_reg_wr_en_mem,
+                      q(82) => mem_wr_cntrl,
+                      q(83) => mem_rd_cntrl,
                       -- Register control
                       clk => clk,
                       reset => pc_reset_em,
@@ -304,6 +319,8 @@ begin
                       
     -- Signal assignments
     dec_data_bus_in <= wrb_data_bus_out;
+    
+    mem_active <= mem_wr_cntrl or mem_rd_cntrl;
     
     -- Pipeline register control signal assignments
     pc_reset_fd <= reset or sp_branch_taken_cntrl; 

@@ -123,9 +123,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param tcl.collectionResultDisplayLimit 0
   set_param chipscope.maxJobs 1
-  set_param xicom.use_bs_reader 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property board_part digilentinc.com:nexys-a7-100t:part0:1.0 [current_project]
@@ -141,9 +139,9 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1/io_wrapper.dcp}}
-  read_ip -quiet {{e:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_2/ila_2.xci}}
+  read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_2/ila_2.xci}}
   read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
-  read_ip -quiet {{e:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_1/ila_1.xci}}
+  read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_1/ila_1.xci}}
   read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_0/ila_0.xci}}
 OPTRACE "read constraints: implementation" START { }
   read_xdc {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/constrs_1/new/io_constraints.xdc}}
