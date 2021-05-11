@@ -9,11 +9,20 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==ila_2 || OR
 # IP: ip/clk_wiz_0/clk_wiz_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==clk_wiz_0 || ORIG_REF_NAME==clk_wiz_0} -quiet] -quiet
 
+# IP: ip/button_device_ila/button_device_ila.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==button_device_ila || ORIG_REF_NAME==button_device_ila} -quiet] -quiet
+
 # IP: ip/ila_1/ila_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==ila_1 || ORIG_REF_NAME==ila_1} -quiet] -quiet
 
+# IP: ip/registers_ila/registers_ila.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==registers_ila || ORIG_REF_NAME==registers_ila} -quiet] -quiet
+
 # IP: ip/ila_0/ila_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==ila_0 || ORIG_REF_NAME==ila_0} -quiet] -quiet
+
+# IP: ip/bus_controller_ila/bus_controller_ila.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==bus_controller_ila || ORIG_REF_NAME==bus_controller_ila} -quiet] -quiet
 
 # XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_2/ila_v6_2/constraints/ila_impl.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==ila_2 || ORIG_REF_NAME==ila_2} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
@@ -31,6 +40,14 @@ set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filte
 
 # XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc
 
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/button_device_ila/ila_v6_2/constraints/ila_impl.xdc
+set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==button_device_ila || ORIG_REF_NAME==button_device_ila} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/button_device_ila/ila_v6_2/constraints/ila.xdc
+#dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==button_device_ila || ORIG_REF_NAME==button_device_ila} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/button_device_ila/button_device_ila_ooc.xdc
+
 # XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_1/ila_v6_2/constraints/ila_impl.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==ila_1 || ORIG_REF_NAME==ila_1} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
@@ -39,6 +56,14 @@ set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filte
 
 # XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_1/ila_1_ooc.xdc
 
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/registers_ila/ila_v6_2/constraints/ila_impl.xdc
+set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==registers_ila || ORIG_REF_NAME==registers_ila} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/registers_ila/ila_v6_2/constraints/ila.xdc
+#dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==registers_ila || ORIG_REF_NAME==registers_ila} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/registers_ila/registers_ila_ooc.xdc
+
 # XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_0/ila_v6_2/constraints/ila_impl.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==ila_0 || ORIG_REF_NAME==ila_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
@@ -46,3 +71,11 @@ set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filte
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==ila_0 || ORIG_REF_NAME==ila_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
 # XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/ila_0/ila_0_ooc.xdc
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/bus_controller_ila/ila_v6_2/constraints/ila_impl.xdc
+set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==bus_controller_ila || ORIG_REF_NAME==bus_controller_ila} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/bus_controller_ila/ila_v6_2/constraints/ila.xdc
+#dup# set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==bus_controller_ila || ORIG_REF_NAME==bus_controller_ila} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: e:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/bus_controller_ila/bus_controller_ila_ooc.xdc

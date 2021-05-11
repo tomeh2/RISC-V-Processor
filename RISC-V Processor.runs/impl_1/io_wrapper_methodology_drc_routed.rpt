@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue May  4 20:34:16 2021
+| Date         : Tue May 11 20:53:30 2021
 | Host         : DESKTOP-JMFHVJF running 64-bit major release  (build 9200)
 | Command      : report_methodology -file io_wrapper_methodology_drc_routed.rpt -pb io_wrapper_methodology_drc_routed.pb -rpx io_wrapper_methodology_drc_routed.rpx
 | Design       : io_wrapper
@@ -23,16 +23,16 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 115
+             Violations found: 78
 +-----------+------------------+------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                      | Violations |
 +-----------+------------------+------------------------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 6          |
-| HPDR-2    | Warning          | Port pin INOUT inconsistency                                     | 32         |
+| HPDR-2    | Warning          | Port pin INOUT inconsistency                                     | 24         |
 | LUTAR-1   | Warning          | LUT drives async reset alert                                     | 4          |
-| PDRC-190  | Warning          | Suboptimally placed synchronized register chain                  | 12         |
+| PDRC-190  | Warning          | Suboptimally placed synchronized register chain                  | 15         |
 | TIMING-9  | Warning          | Unknown CDC Logic                                                | 1          |
-| TIMING-20 | Warning          | Non-clocked latch                                                | 53         |
+| TIMING-20 | Warning          | Non-clocked latch                                                | 21         |
 | TIMING-38 | Warning          | Bus skew constraint applied on multiple clocks                   | 4          |
 | TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 3          |
 +-----------+------------------+------------------------------------------------------------------+------------+
@@ -71,162 +71,122 @@ Related violations: <none>
 
 HPDR-2#1 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[0]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[0]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#2 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[10] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[10]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[10] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[10]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#3 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[11] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[11]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[11] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[11]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#4 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[12] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[12]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[12] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[12]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#5 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[13] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[13]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[13] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[13]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#6 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[14] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[14]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[14] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[14]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#7 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[15] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[15]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[15] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[15]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#8 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[16] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[16]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[1]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#9 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[17] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[17]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[2] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[2]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#10 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[18] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[18]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[3] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[3]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#11 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[19] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[19]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[4] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[4]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#12 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[1]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[5] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[5]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#13 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[20] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[20]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[6] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[6]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#14 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[21] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[21]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[7] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[7]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#15 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[22] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[22]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[8] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[8]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#16 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[23] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[23]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) led_device/data_bus[9] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (led_device/data_bus[9]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#17 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[24] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[24]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[0] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[0]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#18 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[25] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[25]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[1] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[1]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#19 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[26] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[26]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[2] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[2]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#20 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[27] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[27]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[3] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[3]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#21 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[28] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[28]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[4] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[4]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#22 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[29] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[29]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[5] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[5]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#23 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[2] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[2]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[6] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[6]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 HPDR-2#24 Warning
 Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[30] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[30]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#25 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[31] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[31]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#26 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[3] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[3]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#27 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[4] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[4]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#28 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[5] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[5]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#29 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[6] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[6]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#30 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[7] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[7]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#31 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[8] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[8]) connected to this hierarchical pin/port, but both were not found.
-Related violations: <none>
-
-HPDR-2#32 Warning
-Port pin INOUT inconsistency  
-Hierarchical port(pin) cpu/data_bus[9] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (i_data_bus[9]) connected to this hierarchical pin/port, but both were not found.
+Hierarchical port(pin) push_button_device/data_bus[7] direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (push_button_device/data_bus[7]) connected to this hierarchical pin/port, but both were not found.
 Related violations: <none>
 
 LUTAR-1#1 Warning
@@ -259,62 +219,77 @@ Related violations: <none>
 
 PDRC-190#1 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[0] in site SLICE_X39Y124 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[0] in site SLICE_X64Y120 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#2 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[1] in site SLICE_X40Y124 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[1] in site SLICE_X64Y122 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#3 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[2] in site SLICE_X41Y123 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[2] in site SLICE_X62Y123 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#4 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[3] in site SLICE_X40Y122 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_reg[3] in site SLICE_X63Y122 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD2/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#5 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[0] in site SLICE_X38Y121 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[0] in site SLICE_X65Y118 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#6 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[1] in site SLICE_X37Y122 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[1] in site SLICE_X64Y117 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#7 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[2] in site SLICE_X39Y122 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[2] in site SLICE_X62Y117 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#8 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[3] in site SLICE_X39Y120 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[3] in site SLICE_X64Y115 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[3] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#9 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[4] in site SLICE_X38Y123 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[4] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[4] in site SLICE_X65Y115 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[4] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#10 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[0] in site SLICE_X37Y125 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[5] in site SLICE_X63Y117 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[5] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#11 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[1] in site SLICE_X38Y126 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[6] in site SLICE_X63Y115 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[6] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 PDRC-190#12 Warning
 Suboptimally placed synchronized register chain  
-The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[2] in site SLICE_X38Y128 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_reg[7] in site SLICE_X63Y119 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD3/stat_reg_1_reg[7] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#13 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[0] in site SLICE_X66Y125 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[0] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#14 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[1] in site SLICE_X65Y127 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[1] is not placed in the same (SLICE) site.
+Related violations: <none>
+
+PDRC-190#15 Warning
+Suboptimally placed synchronized register chain  
+The FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_reg[2] in site SLICE_X64Y128 is part of a synchronized register chain that is suboptimally placed as the load FDRE cell dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_STAT/stat_reg_1_reg[2] is not placed in the same (SLICE) site.
 Related violations: <none>
 
 TIMING-9#1 Warning
@@ -344,267 +319,107 @@ Related violations: <none>
 
 TIMING-20#5 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[0] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[0]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[0] cannot be properly analyzed as its control pin led_device/i_data_register_reg[0]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#6 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[10] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[10]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[10] cannot be properly analyzed as its control pin led_device/i_data_register_reg[10]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#7 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[11] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[11]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[11] cannot be properly analyzed as its control pin led_device/i_data_register_reg[11]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#8 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[12] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[12]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[12] cannot be properly analyzed as its control pin led_device/i_data_register_reg[12]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#9 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[13] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[13]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[13] cannot be properly analyzed as its control pin led_device/i_data_register_reg[13]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#10 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[14] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[14]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[14] cannot be properly analyzed as its control pin led_device/i_data_register_reg[14]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#11 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[15] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[15]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[15] cannot be properly analyzed as its control pin led_device/i_data_register_reg[15]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#12 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[16] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[16]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[1] cannot be properly analyzed as its control pin led_device/i_data_register_reg[1]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#13 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[17] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[17]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[2] cannot be properly analyzed as its control pin led_device/i_data_register_reg[2]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#14 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[18] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[18]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[3] cannot be properly analyzed as its control pin led_device/i_data_register_reg[3]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#15 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[19] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[19]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[4] cannot be properly analyzed as its control pin led_device/i_data_register_reg[4]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#16 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[1] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[1]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[5] cannot be properly analyzed as its control pin led_device/i_data_register_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#17 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[20] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[20]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[6] cannot be properly analyzed as its control pin led_device/i_data_register_reg[6]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#18 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[21] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[21]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[7] cannot be properly analyzed as its control pin led_device/i_data_register_reg[7]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#19 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[22] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[22]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[8] cannot be properly analyzed as its control pin led_device/i_data_register_reg[8]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#20 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[23] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[23]/G is not reached by a timing clock
+The latch led_device/i_data_register_reg[9] cannot be properly analyzed as its control pin led_device/i_data_register_reg[9]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-20#21 Warning
 Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[24] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[24]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#22 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[25] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[25]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#23 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[26] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[26]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#24 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[27] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[27]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#25 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[28] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[28]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#26 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[29] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[29]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#27 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[2] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[2]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#28 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[30] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[30]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#29 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[31] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[31]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#30 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[3] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[3]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#31 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[4] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[4]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#32 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[5] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[5]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#33 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[6] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[6]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#34 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[7] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[7]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#35 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[8] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[8]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#36 Warning
-Non-clocked latch  
-The latch cpu/bus_controller/data_bus_reg[9] cannot be properly analyzed as its control pin cpu/bus_controller/data_bus_reg[9]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#37 Warning
-Non-clocked latch  
-The latch cpu/data_bus[31]_INST_0_i_1 cannot be properly analyzed as its control pin cpu/data_bus[31]_INST_0_i_1/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#38 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[0] cannot be properly analyzed as its control pin led_device/i_data_register_reg[0]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#39 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[10] cannot be properly analyzed as its control pin led_device/i_data_register_reg[10]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#40 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[11] cannot be properly analyzed as its control pin led_device/i_data_register_reg[11]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#41 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[12] cannot be properly analyzed as its control pin led_device/i_data_register_reg[12]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#42 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[13] cannot be properly analyzed as its control pin led_device/i_data_register_reg[13]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#43 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[14] cannot be properly analyzed as its control pin led_device/i_data_register_reg[14]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#44 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[15] cannot be properly analyzed as its control pin led_device/i_data_register_reg[15]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#45 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[1] cannot be properly analyzed as its control pin led_device/i_data_register_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#46 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[2] cannot be properly analyzed as its control pin led_device/i_data_register_reg[2]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#47 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[3] cannot be properly analyzed as its control pin led_device/i_data_register_reg[3]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#48 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[4] cannot be properly analyzed as its control pin led_device/i_data_register_reg[4]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#49 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[5] cannot be properly analyzed as its control pin led_device/i_data_register_reg[5]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#50 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[6] cannot be properly analyzed as its control pin led_device/i_data_register_reg[6]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#51 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[7] cannot be properly analyzed as its control pin led_device/i_data_register_reg[7]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#52 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[8] cannot be properly analyzed as its control pin led_device/i_data_register_reg[8]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#53 Warning
-Non-clocked latch  
-The latch led_device/i_data_register_reg[9] cannot be properly analyzed as its control pin led_device/i_data_register_reg[9]/G is not reached by a timing clock
+The latch push_button_device/i_next_reg cannot be properly analyzed as its control pin push_button_device/i_next_reg/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-38#1 Warning
 Bus skew constraint applied on multiple clocks  
-Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 169 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].wr_stg_inst/Q_reg_reg[0]/D
+Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 331 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].wr_stg_inst/Q_reg_reg[0]/D
 Related violations: <none>
 
 TIMING-38#2 Warning
 Bus skew constraint applied on multiple clocks  
-Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 171 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].rd_stg_inst/Q_reg_reg[0]/D
+Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 333 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].rd_stg_inst/Q_reg_reg[0]/D
 Related violations: <none>
 
 TIMING-38#3 Warning
 Bus skew constraint applied on multiple clocks  
-Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 174 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].wr_stg_inst/Q_reg_reg[0]/D
+Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 336 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].wr_stg_inst/Q_reg_reg[0]/D
 Related violations: <none>
 
 TIMING-38#4 Warning
 Bus skew constraint applied on multiple clocks  
-Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 176 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].rd_stg_inst/Q_reg_reg[0]/D
+Multiple clocks involved on source or destination of a bus skew constraint (see constraint position 338 in the Timing Constraint Window in Vivado IDE). It is recommended to have only one source clock and one destination clock per bus skew constraint. First endpoint covered by the constraint: dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gnxpm_cdc.gsync_stage[1].rd_stg_inst/Q_reg_reg[0]/D
 Related violations: <none>
 
 TIMING-56#1 Warning

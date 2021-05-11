@@ -51,11 +51,30 @@ entity register_file is
         -- Control busses
         reset : in std_logic;                                                           -- Sets all registers to 0 when high (synchronous)
         clk : in std_logic;                                                             -- Clock signal input
+        clk_debug : in std_logic;
         wr_en : in std_logic                                                            -- Write enable
     );
 end register_file;
 
 architecture rtl of register_file is
+    COMPONENT registers_ila
+
+    PORT (
+        clk : IN STD_LOGIC;
+    
+    
+    
+        probe0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe3 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe4 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe5 : IN STD_LOGIC_VECTOR(31 DOWNTO 0); 
+        probe6 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        probe7 : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
+    );
+    END COMPONENT  ;
+
     type reg_file_type is array (31 downto 0) of std_logic_vector(REG_SIZE_BITS - 1 downto 0);
     
     signal reg_file : reg_file_type;
@@ -77,6 +96,21 @@ begin
             end if;
         end if;
     end process;
+    
+    regs_0_to_7 : registers_ila
+    PORT MAP (
+        clk => clk_debug,
+    
+        probe0 => reg_file(0), 
+        probe1 => reg_file(1), 
+        probe2 => reg_file(2), 
+        probe3 => reg_file(3), 
+        probe4 => reg_file(4), 
+        probe5 => reg_file(5), 
+        probe6 => reg_file(6),
+        probe7 => reg_file(7)
+    );
+    
 end rtl;
 
 

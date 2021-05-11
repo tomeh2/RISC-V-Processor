@@ -37,7 +37,8 @@ entity led_interface is
         led_out : out std_logic_vector(15 downto 0);
         
         -- CPU bus interface signals
-        addr_bus, data_bus : in std_logic_vector(31 downto 0);
+        addr_bus : in std_logic_vector(31 downto 0);
+        data_bus : inout std_logic_vector(31 downto 0);
         ack : out std_logic;
         r_w, address_strobe : in std_logic;
         
@@ -73,7 +74,7 @@ begin
     begin
         if (i_state = INACTIVE) then
             if (address_strobe = '1') then
-                if (i_enable_read = '1') then
+                if (i_enable_read = '1' and r_w = '0') then
                     i_next <= READ_ACTIVE;
                 else
                     i_next <= INACTIVE;

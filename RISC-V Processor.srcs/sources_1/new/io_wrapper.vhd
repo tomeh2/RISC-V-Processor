@@ -36,6 +36,12 @@ entity io_wrapper is
         LED : out std_logic_vector(15 downto 0);
         SW : in std_logic_vector(15 downto 0);
     
+        BUTTON_CENTER : in std_logic;
+        BUTTON_LEFT : in std_logic;
+        BUTTON_RIGHT : in std_logic;
+        BUTTON_TOP : in std_logic;
+        BUTTON_DOWN : in std_logic;
+    
         CLK100MHZ : in std_logic
     );
 end io_wrapper;
@@ -66,21 +72,28 @@ architecture wrapper of io_wrapper is
         probe5 : IN STD_LOGIC_VECTOR(1 DOWNTO 0); 
         probe6 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
         probe7 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-        probe8 : IN STD_LOGIC_VECTOR(15 DOWNTO 0)
+        probe8 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+        probe9 : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
     END COMPONENT  ;
     
     
+    signal i_data_bus_button_dev : std_logic_vector(31 downto 0);
 
-    signal i_data_bus, i_addr_bus : std_logic_vector(31 downto 0);
+    signal i_data_bus_in, i_data_bus_out, i_addr_bus : std_logic_vector(31 downto 0);
     signal i_r_w_bus, i_ack_bus, i_address_strobe : std_logic;
     signal i_size_bus : std_logic_vector(1 downto 0);
     signal i_cpu_clk, i_clk_temp : std_logic;
     
     signal i_led : std_logic_vector(15 downto 0);
+    
+    signal i_ack_led, i_ack_pb : std_logic;
+    
+    signal test : std_logic_vector(31 downto 0);
 begin
     cpu : entity work.cpu(rtl)
-          port map(data_bus => i_data_bus,
+          port map(data_bus_in => i_data_bus_in,
+                   data_bus_out => i_data_bus_out,
                    addr_bus => i_addr_bus,
                    ack_bus => i_ack_bus,
                    r_w_bus => i_r_w_bus,
@@ -91,14 +104,40 @@ begin
                    reset => SW(0));
                    
     led_device : entity work.led_interface(rtl)
-                 port map(data_bus => i_data_bus,
+                 port map(data_bus => i_data_bus_out,
                           addr_bus => i_addr_bus,
                           led_out => i_led,
                           r_w => i_r_w_bus,
-                          ack => i_ack_bus,
+                          ack => i_ack_led,
                           address_strobe => i_address_strobe,
                           clk => i_cpu_clk,
                           reset => SW(0));
+                          
+    push_button_device : entity work.push_button_interface(rtl)
+                         port map(data_bus => i_data_bus_button_dev,
+                                  addr_bus => i_addr_bus,
+                                  buttons(4) => BUTTON_CENTER,
+                                  buttons(3) => BUTTON_TOP,
+                                  buttons(2) => BUTTON_DOWN,
+                                  buttons(1) => BUTTON_LEFT,
+                                  buttons(0) => BUTTON_RIGHT,
+                                  r_w => i_r_w_bus,
+                                  ack => i_ack_pb,
+                                  address_strobe => i_address_strobe,
+                                  clk => i_cpu_clk,
+                                  clk_ila => i_clk_temp,
+                                  reset => SW(0));
+                                  
+    input_dev_sel : entity work.mux_4_1(rtl)
+                    generic map(WIDTH_BITS => 32)
+                    port map(in_0 => i_data_bus_button_dev,
+                             in_1 => X"00000000",
+                             in_2 => X"00000000",
+                             in_3 => X"00000000",
+                             output => i_data_bus_in,
+                             sel => "00");
+                          
+    i_ack_bus <= i_ack_led or i_ack_pb;
                           
     cpu_main_clk : clk_wiz_0
                    port map ( 
@@ -114,7 +153,7 @@ begin
     
     
     
-        probe0 => i_data_bus, 
+        probe0 => i_data_bus_in,
         probe1 => i_addr_bus, 
         probe2(0) => i_r_w_bus, 
         probe3(0) => i_ack_bus, 
@@ -122,7 +161,8 @@ begin
         probe5 => i_size_bus, 
         probe6(0) => i_cpu_clk,
         probe7(0) => i_clk_temp,
-        probe8 => i_led
+        probe8 => i_led,
+        probe9 => i_data_bus_out
     );
 
     LED <= i_led;

@@ -78,15 +78,22 @@ begin
     -- Next instruction address logic  
     process(all)
     begin
-        if (pc_count_en = '1') then
-            if (pc_overwrite_en = '1') then
-                i_pc_in <= pc_overwrite_value;
-            else
-                i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 4);
-            end if;
+        if (pc_overwrite_en = '1') then
+            i_pc_in <= pc_overwrite_value;
+        elsif (pc_count_en = '1') then
+            i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 4);
         else
             i_pc_in <= i_pc_out;
         end if;
+--        if (pc_count_en = '1') then
+--            if (pc_overwrite_en = '1') then
+--                i_pc_in <= pc_overwrite_value;
+--            else
+--                i_pc_in <= std_logic_vector(unsigned(i_pc_out) + 4);
+--            end if;
+--        else
+--            i_pc_in <= i_pc_out;
+--        end if;
     end process;
     
     -- Instrcution address bus setting

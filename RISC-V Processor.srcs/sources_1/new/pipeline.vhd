@@ -174,6 +174,7 @@ begin
                             mem_data_size => dec_mem_data_size_out,
                             sel_op_1_pc => dec_sel_op_1_pc_out,
                             clk => clk,
+                            clk_debug => CLK100MHZ,
                             reset => reset);
                             
     stage_execute : entity work.stage_execute(arch)

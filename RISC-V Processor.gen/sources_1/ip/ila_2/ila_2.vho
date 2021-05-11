@@ -61,8 +61,9 @@ PORT (
 	probe4 : IN STD_LOGIC_VECTOR(0 DOWNTO 0); 
 	probe5 : IN STD_LOGIC_VECTOR(1 DOWNTO 0); 
 	probe6 : IN STD_LOGIC_VECTOR(0 DOWNTO 0); 
-	probe7 : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-	probe8 : IN STD_LOGIC_VECTOR(15 DOWNTO 0)
+	probe7 : IN STD_LOGIC_VECTOR(0 DOWNTO 0); 
+	probe8 : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+	probe9 : IN STD_LOGIC_VECTOR(31 DOWNTO 0)
 );
 END COMPONENT  ;
 
@@ -87,8 +88,9 @@ PORT MAP (
 	probe4 => probe4, 
 	probe5 => probe5, 
 	probe6 => probe6, 
-	probe7 => probe7,
-	probe8 => probe8
+	probe7 => probe7, 
+	probe8 => probe8,
+	probe9 => probe9
 );
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Tue May  4 20:34:11 2021
+| Date         : Tue May 11 20:53:20 2021
 | Host         : DESKTOP-JMFHVJF running 64-bit major release  (build 9200)
 | Command      : report_drc -file io_wrapper_drc_routed.rpt -pb io_wrapper_drc_routed.pb -rpx io_wrapper_drc_routed.rpx
 | Design       : io_wrapper
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 3
+             Violations found: 4
 +-----------+----------+-----------------------------------------------------+------------+
 | Rule      | Severity | Description                                         | Violations |
 +-----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1  | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153  | Warning  | Gated clock check                                   | 1          |
+| PDRC-153  | Warning  | Gated clock check                                   | 2          |
 | RTSTAT-10 | Warning  | No routable loads                                   | 1          |
 +-----------+----------+-----------------------------------------------------+------------+
 
@@ -53,9 +53,14 @@ Gated clock check
 Net cpu/bus_controller/p_0_out is a gated clock net sourced by a combinational pin cpu/bus_controller/FSM_sequential_i_next_reg[3]_i_2/O, cell cpu/bus_controller/FSM_sequential_i_next_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
+PDRC-153#2 Warning
+Gated clock check  
+Net push_button_device/i_next_reg_i_2_n_0 is a gated clock net sourced by a combinational pin push_button_device/i_next_reg_i_2/O, cell push_button_device/i_next_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
 RTSTAT-10#1 Warning
 No routable loads  
-37 net(s) have no routable loads. The problem bus(es) and/or net(s) are bus_probes/U0/ila_core_inst/u_ila_regs/U_XSDB_SLAVE/s_daddr_o[13],
+55 net(s) have no routable loads. The problem bus(es) and/or net(s) are bus_probes/U0/ila_core_inst/u_ila_regs/U_XSDB_SLAVE/s_daddr_o[13],
 cpu/core/pipeline/stage_decode/decode_stage_probes/U0/ila_core_inst/u_ila_regs/U_XSDB_SLAVE/s_daddr_o[13],
 dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD1/ctl_reg_en_2[1],
 dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i,
@@ -70,7 +75,7 @@ dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/s_bscan_tms,
 dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_capture[0],
 dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_drck[0],
 dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_runtest[0]
- (the first 15 of 35 listed).
+ (the first 15 of 53 listed).
 Related violations: <none>
 
 

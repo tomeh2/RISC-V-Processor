@@ -36,7 +36,8 @@ entity cpu is
         CLK100MHZ : in std_logic;
     
         addr_bus : out std_logic_vector(31 downto 0);      -- Address busses for reading memory locations (HARVARD ARCH.)           
-        data_bus : inout std_logic_vector(31 downto 0);    -- Data bus for reading/writing memory or I/O devices
+        data_bus_in : in std_logic_vector(31 downto 0);    -- Data bus for reading/writing memory or I/O devices
+        data_bus_out : out std_logic_vector(31 downto 0);
         address_strobe : out std_logic;
         r_w_bus : out std_logic;
         size_bus : out std_logic_vector(1 downto 0);
@@ -71,7 +72,8 @@ begin
                               execute => i_execute,
                               
                               -- Output bus side
-                              data_bus => data_bus,
+                              data_bus_out => data_bus_out,
+                              data_bus_in => data_bus_in,
                               addr_bus => addr_bus,
                               r_w_bus => r_w_bus,
                               address_strobe => address_strobe,
@@ -79,6 +81,7 @@ begin
                               ack => ack_bus,
                               
                               clk => clk_temp,
+                              clk_ila => CLK100MHZ,
                               reset => reset);
 
     core : entity work.core(rtl)

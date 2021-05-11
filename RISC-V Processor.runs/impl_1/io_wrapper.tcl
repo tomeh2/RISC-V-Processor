@@ -115,7 +115,6 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -143,8 +142,11 @@ OPTRACE "add files" START { }
   add_files -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.runs/synth_1/io_wrapper.dcp}}
   read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_2/ila_2.xci}}
   read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
+  read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/button_device_ila/button_device_ila.xci}}
   read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_1/ila_1.xci}}
+  read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/registers_ila/registers_ila.xci}}
   read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/ila_0/ila_0.xci}}
+  read_ip -quiet {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/ip/bus_controller_ila/bus_controller_ila.xci}}
 OPTRACE "read constraints: implementation" START { }
   read_xdc {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/constrs_1/new/io_constraints.xdc}}
 OPTRACE "read constraints: implementation" END { }

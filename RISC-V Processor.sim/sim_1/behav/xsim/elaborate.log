@@ -13,12 +13,14 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
 Compiling module xil_defaultlib.glbl
+Compiling architecture bus_controller_ila_arch of entity xil_defaultlib.bus_controller_ila [bus_controller_ila_default]
 Compiling architecture rtl of entity xil_defaultlib.bus_controller [bus_controller_default]
 Compiling architecture rtl of entity xil_defaultlib.forwarding_unit [forwarding_unit_default]
 Compiling architecture arch of entity xil_defaultlib.register_var [register_var_default]
 Compiling architecture ila_0_arch of entity xil_defaultlib.ila_0 [ila_0_default]
 Compiling architecture arch of entity xil_defaultlib.stage_fetch [stage_fetch_default]
 Compiling architecture rtl of entity xil_defaultlib.instruction_decoder [instruction_decoder_default]
+Compiling architecture registers_ila_arch of entity xil_defaultlib.registers_ila [registers_ila_default]
 Compiling architecture rtl of entity xil_defaultlib.register_file [register_file_default]
 Compiling architecture ila_1_arch of entity xil_defaultlib.ila_1 [ila_1_default]
 Compiling architecture arch of entity xil_defaultlib.stage_decode [stage_decode_default]
@@ -41,6 +43,5 @@ Compiling architecture rtl of entity xil_defaultlib.pipeline [pipeline_default]
 Compiling architecture rtl of entity xil_defaultlib.core [core_default]
 Compiling architecture memory of entity xil_defaultlib.rom_memory [rom_memory_default]
 Compiling architecture rtl of entity xil_defaultlib.cpu [cpu_default]
-Compiling architecture rtl of entity xil_defaultlib.led_interface [led_interface_default]
 Compiling architecture behavioral of entity xil_defaultlib.cpu_tb
 Built simulation snapshot cpu_tb_behav

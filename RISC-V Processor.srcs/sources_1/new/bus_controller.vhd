@@ -42,7 +42,8 @@ entity bus_controller is
         execute : in std_logic;
         
         -- BUS SIDE SIGNALS
-        data_bus : inout std_logic_vector(31 downto 0);
+        data_bus_in : in std_logic_vector(31 downto 0);
+        data_bus_out : out std_logic_vector(31 downto 0);
         addr_bus : out std_logic_vector(31 downto 0);
         r_w_bus : out std_logic;
         address_strobe : out std_logic;
@@ -50,11 +51,24 @@ entity bus_controller is
         ack : in std_logic;
         
         -- CONTROL SIGNALS
-        clk, reset : in std_logic
+        clk, reset : in std_logic;
+        clk_ila : in std_logic
     );
 end bus_controller;
 
 architecture rtl of bus_controller is
+    COMPONENT bus_controller_ila
+
+    PORT (
+        clk : IN STD_LOGIC;
+    
+    
+    
+        probe0 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        probe1 : IN STD_LOGIC_VECTOR(0 DOWNTO 0)
+    );
+    END COMPONENT  ;
+
     type state_type is (INACTIVE,
                         -- Read states
                         SR_SET_ADDR,
@@ -69,6 +83,7 @@ architecture rtl of bus_controller is
                         );
                         
     signal i_state, i_next : state_type;
+    signal i_out_en : std_logic;
 begin
     -- State register
     process(clk)
@@ -132,7 +147,9 @@ begin
         if (i_state = INACTIVE) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= (others => 'Z');
+            --data_bus <= (others => 'Z');
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= (others => '0');
             r_w_bus <= '0';
             address_strobe <= '0';
@@ -142,7 +159,9 @@ begin
         elsif (i_state = SR_SET_ADDR) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= (others => 'Z');
+            --data_bus <= (others => 'Z');
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '0';
@@ -150,7 +169,9 @@ begin
         elsif (i_state = SR_SET_STROBE) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= (others => 'Z');
+            --data_bus <= (others => 'Z');
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '1';
@@ -158,24 +179,30 @@ begin
         elsif (i_state = SR_WAIT_ACK) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= (others => 'Z');
+            --data_bus <= (others => 'Z');
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '1';
             size <= size_in;
         elsif (i_state = SR_FINALIZE) then
-            data_out <= data_bus;
+            data_out <= data_bus_in;
             ready <= '1';
             addr_bus <= addr_in;
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             r_w_bus <= r_w;
-            address_strobe <= '0';
+            address_strobe <= '1';
             size <= size_in;
         
         -- Writing to the bus
         elsif (i_state = SW_SET_ADDR_DATA) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= data_in;
+            --data_bus <= data_in;
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '0';
@@ -183,7 +210,9 @@ begin
         elsif (i_state = SW_SET_STROBE) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= data_in;
+            --data_bus <= data_in;
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '1';
@@ -191,7 +220,9 @@ begin
         elsif (i_state = SW_WAIT_ACK) then
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= data_in;
+            --data_bus <= data_in;
+            data_bus_out <= data_in;
+            i_out_en <= '1';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '1';
@@ -199,7 +230,9 @@ begin
         elsif (i_state = SW_FINALIZE) then
             data_out <= (others => '0');
             ready <= '1';
-            data_bus <= data_in;
+            --data_bus <= data_in;
+            data_bus_out <= data_in;
+            i_out_en <= '1';
             addr_bus <= addr_in;
             r_w_bus <= r_w;
             address_strobe <= '0';
@@ -207,13 +240,27 @@ begin
         else
             data_out <= (others => '0');
             ready <= '0';
-            data_bus <= (others => 'Z');
+            --data_bus <= (others => 'Z');
+            data_bus_out <= (others => '0');
+            i_out_en <= '0';
             addr_bus <= (others => '0');
             r_w_bus <= '0';
             address_strobe <= '0';
             size <= "00";
         end if;
     end process;
+    
+    --data_bus <= data_in when i_out_en = '1' else "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+    
+    bus_cntrlr_ila : bus_controller_ila
+    PORT MAP (
+        clk => clk,
+    
+    
+    
+        probe0 => data_in,
+        probe1(0) => ack
+    );
 end rtl;
 
 

@@ -37,7 +37,7 @@ end cpu_tb;
 architecture Behavioral of cpu_tb is
     constant T : time := 20ns;
 
-    signal addr_bus, data_bus : std_logic_vector(31 downto 0);
+    signal addr_bus, data_bus_in, data_bus_out : std_logic_vector(31 downto 0);
     signal clk, reset, ack_bus, r_w_bus, as, ack_bus_tb, ack_bus_led : std_logic;
     signal sw_test_reg : std_logic_vector(31 downto 0);
     
@@ -45,7 +45,8 @@ architecture Behavioral of cpu_tb is
 begin
     uut : entity work.cpu(rtl)
           port map(addr_bus => addr_bus,
-                   data_bus => data_bus,
+                   data_bus_in => data_bus_in,
+                   data_bus_out => data_bus_out,
                    clk_temp => clk,
                    CLK100MHZ => '0',
                    address_strobe => as,
@@ -53,15 +54,15 @@ begin
                    ack_bus => ack_bus,
                    reset => reset);
                    
-    uut_led : entity work.led_interface(rtl)
-              port map(addr_bus => addr_bus,
-                       data_bus => data_bus,
-                       led_out => led,
-                       address_strobe => as,
-                       r_w => r_w_bus,
-                       ack => ack_bus_led,
-                       clk => clk,
-                       reset => reset);
+--    uut_led : entity work.led_interface(rtl)
+--              port map(addr_bus => addr_bus,
+--                       data_bus => data_bus,
+--                       led_out => led,
+--                       address_strobe => as,
+--                       r_w => r_w_bus,
+--                       ack => ack_bus_led,
+--                       clk => clk,
+--                       reset => reset);
                    
     reset <= '1', '0' after T * 2;
                    
@@ -76,22 +77,31 @@ begin
     process
     begin
         addr_bus <= (others => 'Z');
-        data_bus <= (others => 'Z');
         ack_bus_tb <= '0';
-        wait for T * 70;
-        data_bus <= X"FFFFFFFF";
+        wait for T * 20;
+        data_bus_in <= X"00000010";
         ack_bus_tb <= '1';
-        wait for T;
-        data_bus <= (others => 'Z');
+        wait for T * 3;
         ack_bus_tb <= '0';
-        wait for T * 10;
-        sw_test_reg <= data_bus;
-        --ack_bus <= '1';
         wait for T;
-        --ack_bus <= '0';
+        wait for T * 20;
+        ack_bus_tb <= '1';
+        wait for T * 3;
+        ack_bus_tb <= '0';
+        
+        wait for T * 20;
+        data_bus_in <= X"00000000";
+        ack_bus_tb <= '1';
+        wait for T * 3;
+        ack_bus_tb <= '0';
+        wait for T;
+        wait for T * 20;
+        ack_bus_tb <= '1';
+        wait for T * 3;
+        ack_bus_tb <= '0';
     end process;
     
-    ack_bus <= ack_bus_tb or ack_bus_led;
+    ack_bus <= ack_bus_tb or '0';
 
 end Behavioral;
 

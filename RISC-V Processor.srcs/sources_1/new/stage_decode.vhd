@@ -57,7 +57,9 @@ entity stage_decode is
         reg_wr_addr_in : in std_logic_vector(4 downto 0);               -- Register write address signal used to address the register file (comes from the writeback stage)
         reg_wr_en : in std_logic;                                       -- Register write enable signal used to control the register file (comes from the writeback stage)
         
-        clk, reset : in std_logic
+        clk, reset : in std_logic;
+        
+        clk_debug : in std_logic
     );
 end stage_decode;
 
@@ -114,7 +116,8 @@ begin
                              wr_en => reg_wr_en,
                              wr_addr => reg_wr_addr_in,
                              wr_data => data_bus,      
-                             reset => reset,                
+                             reset => reset,     
+                             clk_debug => clk_debug,           
                              clk => clk);
                              
     reg_data_2 <= i_reg_data_2;
