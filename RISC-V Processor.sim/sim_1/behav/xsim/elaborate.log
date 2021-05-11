@@ -24,6 +24,7 @@ Compiling architecture registers_ila_arch of entity xil_defaultlib.registers_ila
 Compiling architecture rtl of entity xil_defaultlib.register_file [register_file_default]
 Compiling architecture ila_1_arch of entity xil_defaultlib.ila_1 [ila_1_default]
 Compiling architecture arch of entity xil_defaultlib.stage_decode [stage_decode_default]
+Compiling architecture rtl of entity xil_defaultlib.barrel_shifter_32 [barrel_shifter_32_default]
 Compiling architecture rtl of entity xil_defaultlib.alu [alu_default]
 Compiling architecture rtl of entity xil_defaultlib.mux_4_1 [\mux_4_1(width_bits=32)\]
 Compiling architecture rtl of entity xil_defaultlib.sign_extender [\sign_extender(extended_size_bit...]

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="barrel_shifter_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="barrel_shifter_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="3507259fs"></ZoomEndTime>
+      <Cursor1Time time="3000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="241"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject fp_name="/barrel_shifter_tb/uut/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/data_out" type="array">
+      <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_ammount" type="array">
+      <obj_property name="ElementShortName">shift_ammount[4:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_ammount[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_direction" type="logic">
+      <obj_property name="ElementShortName">shift_direction</obj_property>
+      <obj_property name="ObjectShortName">shift_direction</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_1_out" type="array">
+      <obj_property name="ElementShortName">shift_1_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_1_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_2_out" type="array">
+      <obj_property name="ElementShortName">shift_2_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_2_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_4_out" type="array">
+      <obj_property name="ElementShortName">shift_4_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_4_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_8_out" type="array">
+      <obj_property name="ElementShortName">shift_8_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_8_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_16_out" type="array">
+      <obj_property name="ElementShortName">shift_16_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_16_out[31:0]</obj_property>
+   </wvobject>
+</wave_config>

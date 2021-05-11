@@ -46,7 +46,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="nexys-a7-100t"/>
-    <Option Name="WTXSimLaunchSim" Val="510"/>
+    <Option Name="WTXSimLaunchSim" Val="523"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -185,6 +185,12 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/new/barrel_shifter_32.vhd">
+        <FileInfo SFType="VHDL2008">
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/alu.vhd">
         <FileInfo SFType="VHDL2008">
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -305,6 +311,13 @@
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sim_1/new/cpu_tb.vhd">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sim_1/new/barrel_shifter_tb.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -502,6 +515,17 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PPRDIR/barrel_shifter_tb_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UserDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/cpu_tb_barrel_shifter.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="cpu_tb"/>
@@ -537,6 +561,8 @@
         <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_execute.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_memory.wcfg"/>
         <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_bus_controller.wcfg"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/barrel_shifter_tb_behav.wcfg"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/cpu_tb_barrel_shifter.wcfg"/>
         <Option Name="Incremental" Val="0"/>
         <Option Name="xsim.simulate.runtime" Val="3000ns"/>
         <Option Name="NLNetlistMode" Val="funcsim"/>

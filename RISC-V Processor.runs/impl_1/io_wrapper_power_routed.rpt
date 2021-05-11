@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Tue May 11 20:53:36 2021
+| Date             : Tue May 11 22:16:35 2021
 | Host             : DESKTOP-JMFHVJF running 64-bit major release  (build 9200)
 | Command          : report_power -file io_wrapper_power_routed.rpt -pb io_wrapper_power_summary_routed.pb -rpx io_wrapper_power_routed.rpx
 | Design           : io_wrapper
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 0.216        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.130        |
+| Dynamic (W)              | 0.131        |
 | Device Static (W)        | 0.085        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.0         |
@@ -52,16 +52,16 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.022 |       11 |       --- |             --- |
-| Slice Logic              |     0.002 |    22030 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     5762 |     63400 |            9.09 |
-|   Register               |    <0.001 |    11843 |    126800 |            9.34 |
+| Clocks                   |     0.020 |       11 |       --- |             --- |
+| Slice Logic              |     0.003 |    22406 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     6054 |     63400 |            9.55 |
 |   LUT as Shift Register  |    <0.001 |     1017 |     19000 |            5.35 |
+|   Register               |    <0.001 |    11850 |    126800 |            9.35 |
 |   CARRY4                 |    <0.001 |      230 |     15850 |            1.45 |
-|   F7/F8 Muxes            |    <0.001 |      335 |     63400 |            0.53 |
+|   F7/F8 Muxes            |    <0.001 |      399 |     63400 |            0.63 |
 |   LUT as Distributed RAM |    <0.001 |       24 |     19000 |            0.13 |
-|   Others                 |     0.000 |     1129 |       --- |             --- |
-| Signals                  |     0.005 |    16850 |       --- |             --- |
+|   Others                 |     0.000 |     1131 |       --- |             --- |
+| Signals                  |     0.006 |    17067 |       --- |             --- |
 | Block RAM                |     0.005 |       20 |       135 |           14.81 |
 | PLL                      |     0.097 |        1 |         6 |           16.67 |
 | I/O                      |    <0.001 |       23 |       210 |           10.95 |
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.056 |       0.041 |      0.016 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.057 |       0.041 |      0.016 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.068 |       0.050 |      0.018 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -153,15 +153,15 @@ Table of Contents
 +--------------------------+-----------+
 | Name                     | Power (W) |
 +--------------------------+-----------+
-| io_wrapper               |     0.130 |
+| io_wrapper               |     0.131 |
 |   bus_probes             |     0.005 |
 |     U0                   |     0.005 |
 |       ila_core_inst      |     0.005 |
-|   cpu                    |     0.023 |
+|   cpu                    |     0.024 |
 |     bus_controller       |     0.003 |
 |       bus_cntrlr_ila     |     0.003 |
-|     core                 |     0.020 |
-|       pipeline           |     0.020 |
+|     core                 |     0.021 |
+|       pipeline           |     0.021 |
 |   cpu_main_clk           |     0.097 |
 |     inst                 |     0.097 |
 |   dbg_hub                |     0.002 |

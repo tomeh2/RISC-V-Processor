@@ -6,6 +6,8 @@ INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RIS
 INFO: [VRFC 10-3107] analyzing entity 'ila_0'
 INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.gen/sources_1/ip/bus_controller_ila/sim/bus_controller_ila.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'bus_controller_ila'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/barrel_shifter_32.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'barrel_shifter_32'
 INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'alu'
 INFO: [VRFC 10-163] Analyzing VHDL file "E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd" into library xil_defaultlib
