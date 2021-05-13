@@ -73,7 +73,6 @@ OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param tcl.collectionResultDisplayLimit 0
 set_param chipscope.maxJobs 1
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -93,6 +92,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_mem {{E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/rom.mem}}
 read_vhdl -library xil_defaultlib {
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/bin_to_hex_sseg_decoder.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/mux_4_1.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/sign_extender.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/branch_unit.vhd}
@@ -116,6 +116,7 @@ read_vhdl -vhdl2008 -library xil_defaultlib {
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/barrel_shifter_32.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/alu.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/led_interface.vhd}
+  {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/numeric_display_interface.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/push_button_interface.vhd}
   {E:/Vivado Projects/RISC-V Processor/RISC-V Processor.srcs/sources_1/new/io_wrapper.vhd}
 }

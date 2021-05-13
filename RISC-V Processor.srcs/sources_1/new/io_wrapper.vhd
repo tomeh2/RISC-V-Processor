@@ -41,6 +41,16 @@ entity io_wrapper is
         BUTTON_RIGHT : in std_logic;
         BUTTON_TOP : in std_logic;
         BUTTON_DOWN : in std_logic;
+        
+        AN : out std_logic_vector(7 downto 0);
+        CA : out std_logic;
+        CB : out std_logic;
+        CC : out std_logic;
+        CD : out std_logic;
+        CE : out std_logic;
+        CF : out std_logic;
+        CG : out std_logic;
+        DP : out std_logic;
     
         CLK100MHZ : in std_logic
     );
@@ -53,6 +63,7 @@ architecture wrapper of io_wrapper is
       -- Clock out ports
       clk_out1          : out    std_logic;
       clk_out2          : out    std_logic;
+      clk_out3          : out    std_logic;
       -- Status and control signals
       clk_in1           : in     std_logic
      );
@@ -83,11 +94,11 @@ architecture wrapper of io_wrapper is
     signal i_data_bus_in, i_data_bus_out, i_addr_bus : std_logic_vector(31 downto 0);
     signal i_r_w_bus, i_ack_bus, i_address_strobe : std_logic;
     signal i_size_bus : std_logic_vector(1 downto 0);
-    signal i_cpu_clk, i_clk_temp : std_logic;
+    signal i_cpu_clk, i_clk_temp, i_clk_sseg : std_logic;
     
     signal i_led : std_logic_vector(15 downto 0);
     
-    signal i_ack_led, i_ack_pb : std_logic;
+    signal i_ack_led, i_ack_pb, i_ack_num_disp : std_logic;
     
     signal test : std_logic_vector(31 downto 0);
 begin
@@ -113,6 +124,26 @@ begin
                           clk => i_cpu_clk,
                           reset => SW(0));
                           
+    numeric_display_interface : entity work.numeric_display_interface(rtl)
+                                port map(data_bus => i_data_bus_out,
+                                         addr_bus => i_addr_bus,
+                                         r_w => i_r_w_bus,
+                                         ack => i_ack_num_disp,
+                                         address_strobe => i_address_strobe,
+                                         clk => i_cpu_clk,
+                                         clk_disp => i_clk_sseg,
+                                         clk_ila => i_clk_temp,
+                                         reset => SW(0),
+                                         segment_bits(0) => DP,
+                                         segment_bits(1) => CG,
+                                         segment_bits(2) => CF,
+                                         segment_bits(3) => CE,
+                                         segment_bits(4) => CD,
+                                         segment_bits(5) => CC,
+                                         segment_bits(6) => CB,
+                                         segment_bits(7) => CA,
+                                         anode_bits => AN);
+                          
     push_button_device : entity work.push_button_interface(rtl)
                          port map(data_bus => i_data_bus_button_dev,
                                   addr_bus => i_addr_bus,
@@ -137,13 +168,14 @@ begin
                              output => i_data_bus_in,
                              sel => "00");
                           
-    i_ack_bus <= i_ack_led or i_ack_pb;
+    i_ack_bus <= i_ack_led or i_ack_pb or i_ack_num_disp;
                           
     cpu_main_clk : clk_wiz_0
                    port map ( 
                        -- Clock out ports  
                        clk_out1 => i_cpu_clk,    
                        clk_out2 => i_clk_temp,      
+                       clk_out3 => i_clk_sseg,
                        -- Clock in ports
                        clk_in1 => CLK100MHZ);
 

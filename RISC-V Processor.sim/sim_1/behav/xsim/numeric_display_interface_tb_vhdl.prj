@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../RISC-V Processor.srcs/sources_1/new/bin_to_hex_sseg_decoder.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../RISC-V Processor.srcs/sources_1/new/numeric_display_interface.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../RISC-V Processor.srcs/sim_1/new/numeric_display_interface_tb.vhd" \
+
+# Do not sort compile order
+nosort

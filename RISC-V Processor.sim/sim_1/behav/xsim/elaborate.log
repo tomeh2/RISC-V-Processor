@@ -1,6 +1,6 @@
 Vivado Simulator 2020.2
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: E:/Programs/Xilinx_Vivado/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 6f977d0df37f4ce7ae52c5f76e66322c --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot cpu_tb_behav xil_defaultlib.cpu_tb xil_defaultlib.glbl -log elaborate.log 
+Running: E:/Programs/Xilinx_Vivado/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto 6f977d0df37f4ce7ae52c5f76e66322c --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot numeric_display_interface_tb_behav xil_defaultlib.numeric_display_interface_tb xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -13,36 +13,7 @@ Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
 Compiling module xil_defaultlib.glbl
-Compiling architecture bus_controller_ila_arch of entity xil_defaultlib.bus_controller_ila [bus_controller_ila_default]
-Compiling architecture rtl of entity xil_defaultlib.bus_controller [bus_controller_default]
-Compiling architecture rtl of entity xil_defaultlib.forwarding_unit [forwarding_unit_default]
-Compiling architecture arch of entity xil_defaultlib.register_var [register_var_default]
-Compiling architecture ila_0_arch of entity xil_defaultlib.ila_0 [ila_0_default]
-Compiling architecture arch of entity xil_defaultlib.stage_fetch [stage_fetch_default]
-Compiling architecture rtl of entity xil_defaultlib.instruction_decoder [instruction_decoder_default]
-Compiling architecture registers_ila_arch of entity xil_defaultlib.registers_ila [registers_ila_default]
-Compiling architecture rtl of entity xil_defaultlib.register_file [register_file_default]
-Compiling architecture ila_1_arch of entity xil_defaultlib.ila_1 [ila_1_default]
-Compiling architecture arch of entity xil_defaultlib.stage_decode [stage_decode_default]
-Compiling architecture rtl of entity xil_defaultlib.barrel_shifter_32 [barrel_shifter_32_default]
-Compiling architecture rtl of entity xil_defaultlib.alu [alu_default]
-Compiling architecture rtl of entity xil_defaultlib.mux_4_1 [\mux_4_1(width_bits=32)\]
-Compiling architecture rtl of entity xil_defaultlib.sign_extender [\sign_extender(extended_size_bit...]
-Compiling architecture rtl of entity xil_defaultlib.sign_extender [\sign_extender(extended_size_bit...]
-Compiling architecture rtl of entity xil_defaultlib.sign_extender [\sign_extender(extended_size_bit...]
-Compiling architecture rtl of entity xil_defaultlib.branch_unit [branch_unit_default]
-Compiling architecture rtl of entity xil_defaultlib.sign_extender [\sign_extender(extended_size_bit...]
-Compiling architecture rtl of entity xil_defaultlib.mux_8_1 [\mux_8_1(width_bits=32)\]
-Compiling architecture arch of entity xil_defaultlib.stage_execute [stage_execute_default]
-Compiling architecture rtl of entity xil_defaultlib.mux_2_1 [\mux_2_1(width_bits=32)\]
-Compiling architecture arch of entity xil_defaultlib.stage_memory [stage_memory_default]
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=64)\]
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=182)\]
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=84)\]
-Compiling architecture arch of entity xil_defaultlib.register_var [\register_var(width_bits=38)\]
-Compiling architecture rtl of entity xil_defaultlib.pipeline [pipeline_default]
-Compiling architecture rtl of entity xil_defaultlib.core [core_default]
-Compiling architecture memory of entity xil_defaultlib.rom_memory [rom_memory_default]
-Compiling architecture rtl of entity xil_defaultlib.cpu [cpu_default]
-Compiling architecture behavioral of entity xil_defaultlib.cpu_tb
-Built simulation snapshot cpu_tb_behav
+Compiling architecture rtl of entity xil_defaultlib.bin_to_hex_sseg_decoder [bin_to_hex_sseg_decoder_default]
+Compiling architecture rtl of entity xil_defaultlib.numeric_display_interface [numeric_display_interface_defaul...]
+Compiling architecture behavioral of entity xil_defaultlib.numeric_display_interface_tb
+Built simulation snapshot numeric_display_interface_tb_behav

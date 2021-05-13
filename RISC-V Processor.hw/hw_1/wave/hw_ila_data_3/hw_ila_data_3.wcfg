@@ -15,33 +15,9 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="230"></NameColumnWidth>
-      <ValueColumnWidth column_width="104"></ValueColumnWidth>
+      <ValueColumnWidth column_width="60"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
-   <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_11" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_11[25:20]</obj_property>
-      <obj_property name="ObjectShortName">instr_bus_11[25:20]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_12" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_12[27:27]</obj_property>
-      <obj_property name="ObjectShortName">instr_bus_12[27:27]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_14" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_14[31:31]</obj_property>
-      <obj_property name="ObjectShortName">instr_bus_14[31:31]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
+   <WVObjectSize size="4" />
    <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_2" type="array">
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_2[2:1]</obj_property>
@@ -70,30 +46,6 @@
       <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_6[9:7]</obj_property>
       <obj_property name="ObjectShortName">instr_bus_6[9:7]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_7" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_7[27:27]</obj_property>
-      <obj_property name="ObjectShortName">instr_bus_7[27:27]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_8" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_8[17:11]</obj_property>
-      <obj_property name="ObjectShortName">instr_bus_8[17:11]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="LABELRADIX">true</obj_property>
-      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
-   </wvobject>
-   <wvobject fp_name="cpu/core/pipeline/stage_decode/instr_bus_9" type="array">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">cpu/core/pipeline/stage_decode/instr_bus_9[23:23]</obj_property>
-      <obj_property name="ObjectShortName">instr_bus_9[23:23]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="LABELRADIX">true</obj_property>
       <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
