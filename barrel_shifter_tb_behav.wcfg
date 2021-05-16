@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="3507259fs"></ZoomEndTime>
+      <ZoomEndTime time="3000000fs"></ZoomEndTime>
       <Cursor1Time time="3000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="241"></NameColumnWidth>
+      <NameColumnWidth column_width="237"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
+   <WVObjectSize size="10" />
    <wvobject fp_name="/barrel_shifter_tb/uut/data_in" type="array">
       <obj_property name="ElementShortName">data_in[31:0]</obj_property>
       <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
@@ -55,5 +55,9 @@
    <wvobject fp_name="/barrel_shifter_tb/uut/shift_16_out" type="array">
       <obj_property name="ElementShortName">shift_16_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">shift_16_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/barrel_shifter_tb/uut/shift_arith" type="logic">
+      <obj_property name="ElementShortName">shift_arith</obj_property>
+      <obj_property name="ObjectShortName">shift_arith</obj_property>
    </wvobject>
 </wave_config>

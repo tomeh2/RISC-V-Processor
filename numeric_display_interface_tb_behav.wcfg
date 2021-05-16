@@ -3,125 +3,21 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="numeric_display_interface_tb_behav.wdb" id="1">
+      <db_ref path="cpu_tb_behav.wdb" id="1">
          <top_modules>
+            <top_module name="cpu_tb" />
             <top_module name="glbl" />
-            <top_module name="numeric_display_interface_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="3000000fs"></ZoomEndTime>
-      <Cursor1Time time="705754fs"></Cursor1Time>
+      <ZoomEndTime time="3516fs"></ZoomEndTime>
+      <Cursor1Time time="705fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="237"></NameColumnWidth>
+      <NameColumnWidth column_width="233"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="26" />
-   <wvobject fp_name="/numeric_display_interface_tb/uut/segment_bits" type="array">
-      <obj_property name="ElementShortName">segment_bits[7:0]</obj_property>
-      <obj_property name="ObjectShortName">segment_bits[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/anode_bits" type="array">
-      <obj_property name="ElementShortName">anode_bits[7:0]</obj_property>
-      <obj_property name="ObjectShortName">anode_bits[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/addr_bus" type="array">
-      <obj_property name="ElementShortName">addr_bus[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_bus[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/data_bus" type="array">
-      <obj_property name="ElementShortName">data_bus[31:0]</obj_property>
-      <obj_property name="ObjectShortName">data_bus[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/ack" type="logic">
-      <obj_property name="ElementShortName">ack</obj_property>
-      <obj_property name="ObjectShortName">ack</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/r_w" type="logic">
-      <obj_property name="ElementShortName">r_w</obj_property>
-      <obj_property name="ObjectShortName">r_w</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/address_strobe" type="logic">
-      <obj_property name="ElementShortName">address_strobe</obj_property>
-      <obj_property name="ObjectShortName">address_strobe</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/clk_disp" type="logic">
-      <obj_property name="ElementShortName">clk_disp</obj_property>
-      <obj_property name="ObjectShortName">clk_disp</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/clk_ila" type="logic">
-      <obj_property name="ElementShortName">clk_ila</obj_property>
-      <obj_property name="ObjectShortName">clk_ila</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/reset" type="logic">
-      <obj_property name="ElementShortName">reset</obj_property>
-      <obj_property name="ObjectShortName">reset</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_state" type="other">
-      <obj_property name="ElementShortName">i_state</obj_property>
-      <obj_property name="ObjectShortName">i_state</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_next" type="other">
-      <obj_property name="ElementShortName">i_next</obj_property>
-      <obj_property name="ObjectShortName">i_next</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_data_register" type="array">
-      <obj_property name="ElementShortName">i_data_register[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i_data_register[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_data_register_write" type="logic">
-      <obj_property name="ElementShortName">i_data_register_write</obj_property>
-      <obj_property name="ObjectShortName">i_data_register_write</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_enable_read" type="logic">
-      <obj_property name="ElementShortName">i_enable_read</obj_property>
-      <obj_property name="ObjectShortName">i_enable_read</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_state_sseg" type="other">
-      <obj_property name="ElementShortName">i_state_sseg</obj_property>
-      <obj_property name="ObjectShortName">i_state_sseg</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_next_sseg" type="other">
-      <obj_property name="ElementShortName">i_next_sseg</obj_property>
-      <obj_property name="ObjectShortName">i_next_sseg</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/decoder_bin_in" type="array">
-      <obj_property name="ElementShortName">decoder_bin_in[3:0]</obj_property>
-      <obj_property name="ObjectShortName">decoder_bin_in[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_clk_div_counter" type="array">
-      <obj_property name="ElementShortName">i_clk_div_counter[9:0]</obj_property>
-      <obj_property name="ObjectShortName">i_clk_div_counter[9:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_disp_start_counter" type="array">
-      <obj_property name="ElementShortName">i_disp_start_counter[15:0]</obj_property>
-      <obj_property name="ObjectShortName">i_disp_start_counter[15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_disp_start" type="logic">
-      <obj_property name="ElementShortName">i_disp_start</obj_property>
-      <obj_property name="ObjectShortName">i_disp_start</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_disp_start_wait_rst" type="logic">
-      <obj_property name="ElementShortName">i_disp_start_wait_rst</obj_property>
-      <obj_property name="ObjectShortName">i_disp_start_wait_rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_disp_start_wait" type="logic">
-      <obj_property name="ElementShortName">i_disp_start_wait</obj_property>
-      <obj_property name="ObjectShortName">i_disp_start_wait</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_disp_en_rst" type="logic">
-      <obj_property name="ElementShortName">i_disp_en_rst</obj_property>
-      <obj_property name="ObjectShortName">i_disp_en_rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/numeric_display_interface_tb/uut/i_disp_en" type="logic">
-      <obj_property name="ElementShortName">i_disp_en</obj_property>
-      <obj_property name="ObjectShortName">i_disp_en</obj_property>
-   </wvobject>
+   <WVObjectSize size="0" />
 </wave_config>

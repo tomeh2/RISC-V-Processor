@@ -51,6 +51,7 @@ begin
                      port map(data_in => op_1,
                               data_out => i_shifter_res,
                               shift_ammount => op_2(4 downto 0),
+                              shift_arith => alu_op(3),
                               shift_direction => i_shifter_direction);
 
     process(all)
@@ -58,7 +59,6 @@ begin
         if (alu_op = "0000") then                                       -- ADD
             res <= std_logic_vector(signed(op_1) + signed(op_2));
         elsif (alu_op = "0001") then                                    -- SLL (Shift Left Logical)
-            --res <= op_1((OPERAND_WIDTH_BITS - 1) - 1 downto 0) & '0';
             i_shifter_direction <= '1';
             res <= i_shifter_res;
         elsif (alu_op = "0010") then                                    -- SLT (Signed Less Then)
@@ -76,7 +76,6 @@ begin
         elsif (alu_op = "0100") then                                    -- XOR
             res <= op_1 xor op_2;
         elsif (alu_op = "0101") then                                    -- SRL (Shift Right Logical)
-            --res <= "0" & op_1((OPERAND_WIDTH_BITS - 1) downto 1);
             res <= i_shifter_res;
             i_shifter_direction <= '0';
         elsif (alu_op = "0110") then                                    -- OR
@@ -86,7 +85,8 @@ begin
         elsif (alu_op = "1000") then                                    -- SUB
             res <= std_logic_vector(signed(op_1) - signed(op_2));
         elsif (alu_op = "1101") then                                    -- SRA (Shift Right Arithmetic)
-            res <= op_1(31) & op_1((OPERAND_WIDTH_BITS - 1) downto 1);
+            res <= i_shifter_res;
+            i_shifter_direction <= '0';
         elsif (alu_op = "1110") then
             if (op_1 = op_2) then
                 res <= X"00000001";

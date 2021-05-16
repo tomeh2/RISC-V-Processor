@@ -78,19 +78,9 @@ begin
     begin
         addr_bus <= (others => 'Z');
         ack_bus_tb <= '0';
-        wait for T * 20;
-        data_bus_in <= X"00000010";
-        ack_bus_tb <= '1';
-        wait for T * 3;
-        ack_bus_tb <= '0';
-        wait for T;
-        wait for T * 20;
-        ack_bus_tb <= '1';
-        wait for T * 3;
-        ack_bus_tb <= '0';
         
-        wait for T * 20;
-        data_bus_in <= X"00000000";
+        wait until addr_bus = X"FFFFF000";
+        data_bus_in <= X"0000FFFF";
         ack_bus_tb <= '1';
         wait for T * 3;
         ack_bus_tb <= '0';
